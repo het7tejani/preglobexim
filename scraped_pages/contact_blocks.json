@@ -1,0 +1,21 @@
+[
+  {
+    "type": "heading",
+    "level": "H1",
+    "text": "Contact Us"
+  },
+  {
+    "type": "heading",
+    "level": "H3",
+    "text": "Get Quotes &amp; Business Support"
+  },
+  {
+    "type": "image",
+    "src": "https://priglobexim.com/wp-content/plugins/wpforms-lite/assets/images/submit-spin.svg",
+    "alt": "Loading"
+  },
+  {
+    "type": "paragraph",
+    "text": "We\u2019re here to assist with your orders and questions."
+  }
+]
