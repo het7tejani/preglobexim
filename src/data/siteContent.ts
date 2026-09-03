@@ -23,8 +23,8 @@ export const SITE_INFO = {
   subtitle: 'Quality Products Exports for Global Markets',
   description:
     'PriGlob Exim delivers superior products with global reach, combining quality craftsmanship and competitive pricing to meet your business demands effectively.',
-  logo: 'https://priglobexim.com/wp-content/uploads/2026/03/Untitled_design__7_-removebg-preview.png',
-  logoDark: 'https://priglobexim.com/wp-content/uploads/2026/03/logo.png',
+  logo: '/images/Untitled_design__7_-removebg-preview.png',
+  logoDark: '/images/logo.png',
   address: '9, Sanskruti Park Society, Jahangirpura, Surat, Gujarat, India.',
   contacts: {
     asiaAfricaOceania: {
@@ -49,17 +49,17 @@ export const SITE_INFO = {
 export const HOME_MANUFACTURING_UNITS = [
   {
     title: 'Fabric Bag Mfg.',
-    image: 'https://priglobexim.com/wp-content/uploads/2026/03/Fabric-Bag-Mfg.png',
+    image: '/images/Fabric-Bag-Mfg.webp',
     link: '/cotton-jute-tote-bag',
   },
   {
     title: 'Jewellery Mfg.',
-    image: 'https://priglobexim.com/wp-content/uploads/2026/03/Jewellery-Mfg-1024x683.png',
+    image: '/images/Jewellery-Mfg-1024x683.webp',
     link: '/gems-jewellery',
   },
   {
     title: 'Indian Spices',
-    image: 'https://priglobexim.com/wp-content/uploads/2026/03/Indian-Spices-Photo-1024x683.png',
+    image: '/images/Indian-Spices-Photo-1024x683.webp',
     link: '/indian-spices',
   },
 ];
@@ -68,19 +68,19 @@ export const HOME_PRODUCTS = [
   {
     title: 'Cotton & Jute Bags',
     description: 'Eco-friendly cotton and jute bags designed for sustainable packaging, daily use, and global markets.',
-    image: 'https://priglobexim.com/wp-content/uploads/2026/03/Bag-1-638x1024.png',
+    image: '/images/Bag-1-638x1024.webp',
     link: '/cotton-jute-tote-bag',
   },
   {
     title: 'Gems & Jewellery',
     description: 'High-quality diamonds and colored gemstones crafted for fine jewellery and international luxury markets.',
-    image: 'https://priglobexim.com/wp-content/uploads/2026/03/Diamond-Jewellery-683x1024.png',
+    image: '/images/Diamond-Jewellery-683x1024.webp',
     link: '/gems-jewellery',
   },
   {
     title: 'Authentic Indian Spices',
     description: 'Fresh, aromatic spices sourced from trusted farms and processed for global culinary brands.',
-    image: 'https://priglobexim.com/wp-content/uploads/2026/03/Indian-Spices-683x1024.png',
+    image: '/images/Indian-Spices-683x1024.webp',
     link: '/indian-spices',
   },
 ];
@@ -108,27 +108,27 @@ export const HOME_JOURNEY_STATS = [
     value: '228',
     title: 'Consignment Done',
     description: '228 export consignments delivered worldwide with reliability and efficiency.',
-    icon: 'https://priglobexim.com/wp-content/uploads/2026/03/sea-shipment.png',
+    icon: '/images/sea-shipment.png',
   },
   {
     value: '63',
     title: 'Happy Buyers',
     description: '63 trusted buyers worldwide building long-term partnerships with us.',
-    icon: 'https://priglobexim.com/wp-content/uploads/2026/03/deal.png',
+    icon: '/images/deal.png',
   },
   {
     value: '4',
     title: 'Years Experience',
     description: '4 years of trusted experience in global export and international trade.',
-    icon: 'http://priglobexim.com/wp-content/uploads/2026/03/reputation.png',
+    icon: '/images/reputation.png',
   },
 ];
 
 export const PARTNER_LOGOS = [
-  'https://priglobexim.com/wp-content/uploads/2026/03/ChatGPT-Image-Mar-12-2026-05_53_35-PM.png',
-  'https://priglobexim.com/wp-content/uploads/2026/03/QYEvIxI_400x400-removebg-preview-1.png',
-  'https://priglobexim.com/wp-content/uploads/2026/03/ChatGPT-Image-Mar-12-2026-05_38_48-PM-2.png',
-  'https://priglobexim.com/wp-content/uploads/2026/03/logo.png',
+  '/images/ChatGPT-Image-Mar-12-2026-05_53_35-PM.webp',
+  '/images/QYEvIxI_400x400-removebg-preview-1.png',
+  '/images/ChatGPT-Image-Mar-12-2026-05_38_48-PM-2.webp',
+  '/images/logo.png',
 ];
 
 export const COTTON_JUTE_HIGHLIGHTS = [
@@ -190,13 +190,13 @@ export const FOUNDERS: Founder[] = [
     name: 'Jay Tejani',
     role: 'Co-Founder',
     bio: 'Jay brings strategic thinking and a strong business mindset, playing a key role in driving growth and building global connections for PriGlob Exim.',
-    image: 'https://priglobexim.com/wp-content/uploads/2026/03/jay-tejani.d58b439e22342d1b433c-300x300.jpg',
+    image: '/images/jay-tejani.d58b439e22342d1b433c-300x300.webp',
   },
   {
     name: 'Arsh Kukadiya',
     role: 'Co-Founder',
     bio: 'Arsh contributes with operational expertise and a forward-thinking approach, ensuring smooth execution and innovation in every aspect of the business.',
-    image: 'https://priglobexim.com/wp-content/uploads/2026/03/arsh-kukadiya.bb94d916e19db2daabf9-300x300.jpg',
+    image: '/images/arsh-kukadiya.bb94d916e19db2daabf9-300x300.webp',
   },
 ];
 
@@ -241,13 +241,13 @@ export const TRADE_EXECUTIVES: TradeExecutive[] = [
     name: 'Sumit Isamaliya',
     role: 'Italy Trade Executive',
     bio: 'Sumit drives global outreach by connecting PriGlob Exim’s products to international markets with smart execution and strong network support.',
-    image: 'https://priglobexim.com/wp-content/uploads/2026/03/Untitled-design-23-300x300.png',
+    image: '/images/Untitled-design-23-300x300.webp',
   },
   {
     name: 'Smit Moradiya',
     role: 'Germany Trade Executive',
     bio: 'Smit plays a key role in expanding PriGlob Exim’s global presence by building reliable trade connections and ensuring smooth market access.',
-    image: 'https://priglobexim.com/wp-content/uploads/2026/03/Untitled-design-22-1-300x300.png',
+    image: '/images/Untitled-design-22-1-300x300.webp',
   },
 ];
 

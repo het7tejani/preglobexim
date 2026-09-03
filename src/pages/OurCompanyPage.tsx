@@ -23,7 +23,7 @@ export const OurCompanyPage: React.FC = () => {
           {/* Left Column: Image */}
           <div className="w-full aspect-square rounded-[32px] overflow-hidden shadow-xs">
             <ImageWithFallback
-              src="https://priglobexim.com/wp-content/uploads/2026/03/Untitled-design-20.png"
+              src="/images/ChatGPT-Image-Mar-23-2026-09_11_04-AM.webp"
               alt="About PriGlob Exim"
               fallbackType="corporate"
               className="w-full h-full object-cover rounded-[32px]"
@@ -106,7 +106,7 @@ export const OurCompanyPage: React.FC = () => {
           <div className="flex flex-col items-center text-center space-y-4">
             <div className="w-56 h-56 rounded-full overflow-hidden shadow-sm">
               <ImageWithFallback
-                src="https://priglobexim.com/wp-content/uploads/2026/03/jay-tejani.d58b439e22342d1b433c-300x300.jpg"
+                src="/images/jay-tejani.d58b439e22342d1b433c-300x300.webp"
                 alt="Jay Tejani"
                 className="w-full h-full object-cover rounded-full"
                 fallbackType="corporate"
@@ -124,7 +124,7 @@ export const OurCompanyPage: React.FC = () => {
           <div className="flex flex-col items-center text-center space-y-4">
             <div className="w-56 h-56 rounded-full overflow-hidden shadow-sm">
               <ImageWithFallback
-                src="https://priglobexim.com/wp-content/uploads/2026/03/arsh-kukadiya.bb94d916e19db2daabf9-300x300.jpg"
+                src="/images/arsh-kukadiya.bb94d916e19db2daabf9-300x300.webp"
                 alt="Arsh Kukadiya"
                 className="w-full h-full object-cover rounded-full"
                 fallbackType="corporate"

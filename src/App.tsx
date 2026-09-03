@@ -13,11 +13,41 @@ import { ContactPage } from './pages/ContactPage';
 import { FAQPage } from './pages/FAQPage';
 import { MessageCircle } from 'lucide-react';
 import { SITE_INFO } from './data/siteContent';
+import {
+  COTTON_JUTE_CATEGORIES,
+  GEMS_JEWELLERY_CATEGORIES,
+  INDIAN_SPICES_CATEGORIES,
+} from './data/catalogData';
 
 export default function App() {
   const [activePage, setActivePage] = useState<ActivePage>('home');
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
   const [quoteProduct, setQuoteProduct] = useState<string | undefined>(undefined);
+
+  // Background prefetch catalog images during idle time so page openings are instantaneous
+  useEffect(() => {
+    const prefetchImages = () => {
+      const allUrls = [
+        ...COTTON_JUTE_CATEGORIES.flatMap(c => c.products.map(p => p.image)),
+        ...GEMS_JEWELLERY_CATEGORIES.flatMap(c => c.products.map(p => p.image)),
+        ...INDIAN_SPICES_CATEGORIES.flatMap(c => c.products.map(p => p.image)),
+      ];
+      allUrls.forEach(url => {
+        if (url) {
+          const img = new Image();
+          img.src = url;
+        }
+      });
+    };
+
+    if ('requestIdleCallback' in window) {
+      const id = (window as any).requestIdleCallback(prefetchImages, { timeout: 1500 });
+      return () => (window as any).cancelIdleCallback(id);
+    } else {
+      const timer = setTimeout(prefetchImages, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   // Sync with window hash for seamless back/forward navigation
   useEffect(() => {

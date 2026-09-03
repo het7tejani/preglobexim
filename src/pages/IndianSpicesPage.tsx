@@ -31,7 +31,7 @@ export const IndianSpicesPage: React.FC<IndianSpicesPageProps> = ({
           {/* Left Column: Image */}
           <div className="w-full aspect-square rounded-[32px] overflow-hidden shadow-xs">
             <ImageWithFallback
-              src="https://priglobexim.com/wp-content/uploads/2026/03/Untitled-design-17.png"
+              src="/images/Untitled-design-17.webp"
               alt="Authentic Indian Spices for Worldwide Export and Supply"
               fallbackType="spices"
               className="w-full h-full object-cover rounded-[32px]"

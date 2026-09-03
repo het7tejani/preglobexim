@@ -31,7 +31,7 @@ export const CottonJutePage: React.FC<CottonJutePageProps> = ({
           {/* Left Column: Image */}
           <div className="w-full aspect-square rounded-[32px] overflow-hidden shadow-xs">
             <ImageWithFallback
-              src="https://priglobexim.com/wp-content/uploads/2026/03/Untitled-design-10-scaled.png"
+              src="/images/Untitled-design-10-scaled.webp"
               alt="Cotton & Jute Reusable Tote Bags"
               fallbackType="bag"
               className="w-full h-full object-cover rounded-[32px]"

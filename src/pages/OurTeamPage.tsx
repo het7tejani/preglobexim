@@ -23,7 +23,7 @@ export const OurTeamPage: React.FC = () => {
           {/* Left Column: Image */}
           <div className="w-full aspect-square rounded-[32px] overflow-hidden shadow-xs">
             <ImageWithFallback
-              src="https://priglobexim.com/wp-content/uploads/2026/03/Untitled-design-21-scaled.png"
+              src="/images/ChatGPT-Image-Mar-23-2026-10_01_58-AM.webp"
               alt="About Our Team"
               fallbackType="corporate"
               className="w-full h-full object-cover rounded-[32px]"
@@ -96,7 +96,7 @@ export const OurTeamPage: React.FC = () => {
           <div className="flex flex-col items-center text-center space-y-4">
             <div className="w-56 h-56 rounded-full overflow-hidden shadow-sm">
               <ImageWithFallback
-                src="https://priglobexim.com/wp-content/uploads/2026/03/Untitled-design-23-300x300.png"
+                src="/images/Untitled-design-23-300x300.webp"
                 alt="Sumit Isamaliya"
                 className="w-full h-full object-cover rounded-full"
                 fallbackType="corporate"
@@ -119,7 +119,7 @@ export const OurTeamPage: React.FC = () => {
           <div className="flex flex-col items-center text-center space-y-4">
             <div className="w-56 h-56 rounded-full overflow-hidden shadow-sm">
               <ImageWithFallback
-                src="https://priglobexim.com/wp-content/uploads/2026/03/Untitled-design-22-1-300x300.png"
+                src="/images/Untitled-design-22-1-300x300.webp"
                 alt="Smit Moradiya"
                 className="w-full h-full object-cover rounded-full"
                 fallbackType="corporate"

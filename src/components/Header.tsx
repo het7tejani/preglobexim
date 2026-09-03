@@ -64,7 +64,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Desktop Navigation & Social Links */}
           <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-            <nav className="flex items-center space-x-1 xl:space-x-2 text-[15px] font-medium text-[#111111]">
+            <nav className="flex items-center space-x-5 xl:space-x-7 text-[15px] font-medium text-[#111111]">
               {/* Our Products Dropdown */}
               <div
                 className="relative"
@@ -74,10 +74,10 @@ export const Header: React.FC<HeaderProps> = ({
                 <button
                   id="nav-products-dropdown"
                   onClick={() => setProductsOpen(!productsOpen)}
-                  className={`px-3 py-2 rounded-full flex items-center gap-1.5 transition ${
+                  className={`py-1.5 px-0.5 flex items-center gap-1.5 transition text-[15px] border-b-2 ${
                     isProductActive
-                      ? 'text-black font-semibold bg-[#F9D9A7]/60'
-                      : 'hover:text-black hover:bg-[#EFE7D8]/60'
+                      ? 'border-[#111111] text-black font-semibold'
+                      : 'border-transparent text-[#222222] hover:text-black hover:border-[#111111]/30'
                   }`}
                   aria-expanded={productsOpen}
                 >
@@ -96,39 +96,45 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
 
                 {productsOpen && (
-                  <div className="absolute left-0 mt-1 w-60 rounded-2xl bg-[#F8F4EC] border border-[#E5DAC6] shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                  <div className="absolute left-0 mt-2 w-60 rounded-xl bg-[#F8F4EC] border border-[#E5DAC6] shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
                     <button
                       id="nav-sub-cotton-jute"
                       onClick={() => handleNav('cotton-jute-tote-bag')}
                       className={`w-full text-left px-4 py-2.5 text-sm transition ${
                         activePage === 'cotton-jute-tote-bag'
-                          ? 'bg-[#F9D9A7] font-semibold text-black'
+                          ? 'font-semibold text-black bg-[#F9D9A7]/40'
                           : 'text-[#222222] hover:bg-[#EFE7D8] hover:text-black'
                       }`}
                     >
-                      Cotton &amp; Jute Tote Bag
+                      <span className={activePage === 'cotton-jute-tote-bag' ? 'border-b border-[#111111] pb-0.5' : ''}>
+                        Cotton &amp; Jute Tote Bag
+                      </span>
                     </button>
                     <button
                       id="nav-sub-gems-jewellery"
                       onClick={() => handleNav('gems-jewellery')}
                       className={`w-full text-left px-4 py-2.5 text-sm transition ${
                         activePage === 'gems-jewellery'
-                          ? 'bg-[#F9D9A7] font-semibold text-black'
+                          ? 'font-semibold text-black bg-[#F9D9A7]/40'
                           : 'text-[#222222] hover:bg-[#EFE7D8] hover:text-black'
                       }`}
                     >
-                      Gems &amp; Jewellery
+                      <span className={activePage === 'gems-jewellery' ? 'border-b border-[#111111] pb-0.5' : ''}>
+                        Gems &amp; Jewellery
+                      </span>
                     </button>
                     <button
                       id="nav-sub-indian-spices"
                       onClick={() => handleNav('indian-spices')}
                       className={`w-full text-left px-4 py-2.5 text-sm transition ${
                         activePage === 'indian-spices'
-                          ? 'bg-[#F9D9A7] font-semibold text-black'
+                          ? 'font-semibold text-black bg-[#F9D9A7]/40'
                           : 'text-[#222222] hover:bg-[#EFE7D8] hover:text-black'
                       }`}
                     >
-                      Indian Spices
+                      <span className={activePage === 'indian-spices' ? 'border-b border-[#111111] pb-0.5' : ''}>
+                        Indian Spices
+                      </span>
                     </button>
                   </div>
                 )}
@@ -143,10 +149,10 @@ export const Header: React.FC<HeaderProps> = ({
                 <button
                   id="nav-about-dropdown"
                   onClick={() => setAboutOpen(!aboutOpen)}
-                  className={`px-3 py-2 rounded-full flex items-center gap-1.5 transition ${
+                  className={`py-1.5 px-0.5 flex items-center gap-1.5 transition text-[15px] border-b-2 ${
                     isAboutActive
-                      ? 'text-black font-semibold bg-[#F9D9A7]/60'
-                      : 'hover:text-black hover:bg-[#EFE7D8]/60'
+                      ? 'border-[#111111] text-black font-semibold'
+                      : 'border-transparent text-[#222222] hover:text-black hover:border-[#111111]/30'
                   }`}
                   aria-expanded={aboutOpen}
                 >
@@ -165,28 +171,32 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
 
                 {aboutOpen && (
-                  <div className="absolute left-0 mt-1 w-52 rounded-2xl bg-[#F8F4EC] border border-[#E5DAC6] shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                  <div className="absolute left-0 mt-2 w-52 rounded-xl bg-[#F8F4EC] border border-[#E5DAC6] shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
                     <button
                       id="nav-sub-our-company"
                       onClick={() => handleNav('our-company')}
                       className={`w-full text-left px-4 py-2.5 text-sm transition ${
                         activePage === 'our-company'
-                          ? 'bg-[#F9D9A7] font-semibold text-black'
+                          ? 'font-semibold text-black bg-[#F9D9A7]/40'
                           : 'text-[#222222] hover:bg-[#EFE7D8] hover:text-black'
                       }`}
                     >
-                      Our Company
+                      <span className={activePage === 'our-company' ? 'border-b border-[#111111] pb-0.5' : ''}>
+                        Our Company
+                      </span>
                     </button>
                     <button
                       id="nav-sub-our-team"
                       onClick={() => handleNav('our-team')}
                       className={`w-full text-left px-4 py-2.5 text-sm transition ${
                         activePage === 'our-team'
-                          ? 'bg-[#F9D9A7] font-semibold text-black'
+                          ? 'font-semibold text-black bg-[#F9D9A7]/40'
                           : 'text-[#222222] hover:bg-[#EFE7D8] hover:text-black'
                       }`}
                     >
-                      Our Team
+                      <span className={activePage === 'our-team' ? 'border-b border-[#111111] pb-0.5' : ''}>
+                        Our Team
+                      </span>
                     </button>
                   </div>
                 )}
@@ -196,10 +206,10 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 id="nav-contact"
                 onClick={() => handleNav('contact')}
-                className={`px-3 py-2 rounded-full transition ${
+                className={`py-1.5 px-0.5 transition text-[15px] border-b-2 ${
                   activePage === 'contact'
-                    ? 'text-black font-semibold bg-[#F9D9A7]/60'
-                    : 'hover:text-black hover:bg-[#EFE7D8]/60'
+                    ? 'border-[#111111] text-black font-semibold'
+                    : 'border-transparent text-[#222222] hover:text-black hover:border-[#111111]/30'
                 }`}
               >
                 Contact Us
@@ -209,10 +219,10 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 id="nav-faq"
                 onClick={() => handleNav('faq')}
-                className={`px-3 py-2 rounded-full transition ${
+                className={`py-1.5 px-0.5 transition text-[15px] border-b-2 ${
                   activePage === 'faq'
-                    ? 'text-black font-semibold bg-[#F9D9A7]/60'
-                    : 'hover:text-black hover:bg-[#EFE7D8]/60'
+                    ? 'border-[#111111] text-black font-semibold'
+                    : 'border-transparent text-[#222222] hover:text-black hover:border-[#111111]/30'
                 }`}
               >
                 FAQ
@@ -302,36 +312,44 @@ export const Header: React.FC<HeaderProps> = ({
             <div>
               <button
                 onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl font-medium text-base text-[#111111] hover:bg-[#EFE7D8]"
+                className="w-full flex items-center justify-between px-3 py-2.5 font-medium text-base text-[#111111] hover:bg-[#EFE7D8]/50"
               >
-                <span className={isProductActive ? 'font-bold' : ''}>Our Products</span>
+                <span className={`pb-0.5 ${isProductActive ? 'border-b-2 border-[#111111] font-bold text-black' : ''}`}>
+                  Our Products
+                </span>
                 <ChevronDown className={`w-4 h-4 transition-transform ${mobileProductsOpen ? 'rotate-180' : ''}`} />
               </button>
               {mobileProductsOpen && (
                 <div className="pl-4 pr-2 py-1 space-y-1">
                   <button
                     onClick={() => handleNav('cotton-jute-tote-bag')}
-                    className={`w-full text-left px-3 py-2 rounded-lg text-sm transition ${
-                      activePage === 'cotton-jute-tote-bag' ? 'bg-[#F9D9A7] font-semibold' : 'text-[#333333] hover:bg-[#EFE7D8]'
+                    className={`w-full text-left px-3 py-2 text-sm transition ${
+                      activePage === 'cotton-jute-tote-bag' ? 'font-semibold text-black' : 'text-[#333333] hover:text-black'
                     }`}
                   >
-                    Cotton &amp; Jute Tote Bag
+                    <span className={activePage === 'cotton-jute-tote-bag' ? 'border-b-2 border-[#111111] pb-0.5' : ''}>
+                      Cotton &amp; Jute Tote Bag
+                    </span>
                   </button>
                   <button
                     onClick={() => handleNav('gems-jewellery')}
-                    className={`w-full text-left px-3 py-2 rounded-lg text-sm transition ${
-                      activePage === 'gems-jewellery' ? 'bg-[#F9D9A7] font-semibold' : 'text-[#333333] hover:bg-[#EFE7D8]'
+                    className={`w-full text-left px-3 py-2 text-sm transition ${
+                      activePage === 'gems-jewellery' ? 'font-semibold text-black' : 'text-[#333333] hover:text-black'
                     }`}
                   >
-                    Gems &amp; Jewellery
+                    <span className={activePage === 'gems-jewellery' ? 'border-b-2 border-[#111111] pb-0.5' : ''}>
+                      Gems &amp; Jewellery
+                    </span>
                   </button>
                   <button
                     onClick={() => handleNav('indian-spices')}
-                    className={`w-full text-left px-3 py-2 rounded-lg text-sm transition ${
-                      activePage === 'indian-spices' ? 'bg-[#F9D9A7] font-semibold' : 'text-[#333333] hover:bg-[#EFE7D8]'
+                    className={`w-full text-left px-3 py-2 text-sm transition ${
+                      activePage === 'indian-spices' ? 'font-semibold text-black' : 'text-[#333333] hover:text-black'
                     }`}
                   >
-                    Indian Spices
+                    <span className={activePage === 'indian-spices' ? 'border-b-2 border-[#111111] pb-0.5' : ''}>
+                      Indian Spices
+                    </span>
                   </button>
                 </div>
               )}
@@ -341,28 +359,34 @@ export const Header: React.FC<HeaderProps> = ({
             <div>
               <button
                 onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl font-medium text-base text-[#111111] hover:bg-[#EFE7D8]"
+                className="w-full flex items-center justify-between px-3 py-2.5 font-medium text-base text-[#111111] hover:bg-[#EFE7D8]/50"
               >
-                <span className={isAboutActive ? 'font-bold' : ''}>About Us</span>
+                <span className={`pb-0.5 ${isAboutActive ? 'border-b-2 border-[#111111] font-bold text-black' : ''}`}>
+                  About Us
+                </span>
                 <ChevronDown className={`w-4 h-4 transition-transform ${mobileAboutOpen ? 'rotate-180' : ''}`} />
               </button>
               {mobileAboutOpen && (
                 <div className="pl-4 pr-2 py-1 space-y-1">
                   <button
                     onClick={() => handleNav('our-company')}
-                    className={`w-full text-left px-3 py-2 rounded-lg text-sm transition ${
-                      activePage === 'our-company' ? 'bg-[#F9D9A7] font-semibold' : 'text-[#333333] hover:bg-[#EFE7D8]'
+                    className={`w-full text-left px-3 py-2 text-sm transition ${
+                      activePage === 'our-company' ? 'font-semibold text-black' : 'text-[#333333] hover:text-black'
                     }`}
                   >
-                    Our Company
+                    <span className={activePage === 'our-company' ? 'border-b-2 border-[#111111] pb-0.5' : ''}>
+                      Our Company
+                    </span>
                   </button>
                   <button
                     onClick={() => handleNav('our-team')}
-                    className={`w-full text-left px-3 py-2 rounded-lg text-sm transition ${
-                      activePage === 'our-team' ? 'bg-[#F9D9A7] font-semibold' : 'text-[#333333] hover:bg-[#EFE7D8]'
+                    className={`w-full text-left px-3 py-2 text-sm transition ${
+                      activePage === 'our-team' ? 'font-semibold text-black' : 'text-[#333333] hover:text-black'
                     }`}
                   >
-                    Our Team
+                    <span className={activePage === 'our-team' ? 'border-b-2 border-[#111111] pb-0.5' : ''}>
+                      Our Team
+                    </span>
                   </button>
                 </div>
               )}
@@ -370,20 +394,20 @@ export const Header: React.FC<HeaderProps> = ({
 
             <button
               onClick={() => handleNav('contact')}
-              className={`w-full text-left px-3 py-2.5 rounded-xl font-medium text-base transition ${
-                activePage === 'contact' ? 'bg-[#F9D9A7] font-semibold' : 'text-[#111111] hover:bg-[#EFE7D8]'
-              }`}
+              className="w-full text-left px-3 py-2.5 font-medium text-base text-[#111111] transition hover:bg-[#EFE7D8]/50"
             >
-              Contact Us
+              <span className={`pb-0.5 ${activePage === 'contact' ? 'border-b-2 border-[#111111] font-bold text-black' : ''}`}>
+                Contact Us
+              </span>
             </button>
 
             <button
               onClick={() => handleNav('faq')}
-              className={`w-full text-left px-3 py-2.5 rounded-xl font-medium text-base transition ${
-                activePage === 'faq' ? 'bg-[#F9D9A7] font-semibold' : 'text-[#111111] hover:bg-[#EFE7D8]'
-              }`}
+              className="w-full text-left px-3 py-2.5 font-medium text-base text-[#111111] transition hover:bg-[#EFE7D8]/50"
             >
-              FAQ
+              <span className={`pb-0.5 ${activePage === 'faq' ? 'border-b-2 border-[#111111] font-bold text-black' : ''}`}>
+                FAQ
+              </span>
             </button>
           </div>
 

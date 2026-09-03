@@ -31,7 +31,7 @@ export const GemsJewelleryPage: React.FC<GemsJewelleryPageProps> = ({
           {/* Left Column: Image */}
           <div className="w-full aspect-square rounded-[32px] overflow-hidden shadow-xs">
             <ImageWithFallback
-              src="https://priglobexim.com/wp-content/uploads/2026/03/Untitled-design-16-scaled.png"
+              src="/images/Untitled-design-16-scaled.webp"
               alt="Discover Luxury Gems & Jewellery Crafted with Precision"
               fallbackType="jewellery"
               className="w-full h-full object-cover rounded-[32px]"

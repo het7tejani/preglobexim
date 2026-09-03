@@ -46,7 +46,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             <div className="space-y-4">
               <div className="rounded-[32px] overflow-hidden shadow-xs">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1670121180530-cfcba4438038?ixid=M3w0MzUxNjF8MHwxfHNlYXJjaHw1fHxnbG9iYWwlMjB0cmFkZXxlbnwwfHx8fDE3NzMxOTExMzJ8MA&ixlib=rb-4.1.0&orientation=portrait&fit=crop&crop=entropy%2Cfaces&auto=format%2Ccompress&w=1280"
+                  src="/images/hero-trade.webp"
                   alt="Global Trade & Logistics"
                   className="w-full aspect-[3/4] object-cover rounded-[32px]"
                   fallbackType="corporate"
@@ -65,7 +65,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               {/* Overlapping Airplane Cargo Image */}
               <div className="rounded-[32px] overflow-hidden shadow-xs -mt-16 sm:-mt-20">
                 <ImageWithFallback
-                  src="https://priglobexim.com/wp-content/uploads/2026/03/airlines-cta-image-1024x768.png"
+                  src="/images/airlines-cta-image-1024x768.webp"
                   alt="Airlines Cargo Worldwide Freight"
                   className="w-full aspect-[3/4] object-cover rounded-[32px]"
                   fallbackType="general"
@@ -98,7 +98,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             >
               <div className="w-full aspect-square rounded-[32px] overflow-hidden shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
                 <ImageWithFallback
-                  src="https://priglobexim.com/wp-content/uploads/2026/03/Fabric-Bag-Mfg.png"
+                  src="/images/Fabric-Bag-Mfg.webp"
                   alt="Fabric Bags Manufacturing Unit"
                   className="w-full h-full object-cover rounded-[32px]"
                   fallbackType="bag"
@@ -116,7 +116,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             >
               <div className="w-full aspect-square rounded-[32px] overflow-hidden shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
                 <ImageWithFallback
-                  src="https://priglobexim.com/wp-content/uploads/2026/03/Jewellery-Mfg-1024x683.png"
+                  src="/images/Jewellery-Mfg-1024x683.webp"
                   alt="Jewellery Design & Manufacturing Unit"
                   className="w-full h-full object-cover rounded-[32px]"
                   fallbackType="jewellery"
@@ -134,7 +134,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             >
               <div className="w-full aspect-square rounded-[32px] overflow-hidden shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
                 <ImageWithFallback
-                  src="https://priglobexim.com/wp-content/uploads/2026/03/Indian-Spices-Photo-1024x683.png"
+                  src="/images/Indian-Spices-Photo-1024x683.webp"
                   alt="Spice Sourcing & Processing Division"
                   className="w-full h-full object-cover rounded-[32px]"
                   fallbackType="spices"
@@ -169,7 +169,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           >
             <div className="w-full aspect-square overflow-hidden">
               <ImageWithFallback
-                src="https://priglobexim.com/wp-content/uploads/2026/03/Bag-1-638x1024.png"
+                src="/images/Bag-1-638x1024.webp"
                 alt="Cotton & Jute Bags"
                 className="w-full h-full object-cover"
                 fallbackType="bag"
@@ -192,7 +192,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           >
             <div className="w-full aspect-square overflow-hidden">
               <ImageWithFallback
-                src="https://priglobexim.com/wp-content/uploads/2026/03/Diamond-Jewellery-683x1024.png"
+                src="/images/Diamond-Jewellery-683x1024.webp"
                 alt="Gems & Jewellery"
                 className="w-full h-full object-cover"
                 fallbackType="jewellery"
@@ -215,7 +215,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           >
             <div className="w-full aspect-square overflow-hidden">
               <ImageWithFallback
-                src="https://priglobexim.com/wp-content/uploads/2026/03/Indian-Spices-683x1024.png"
+                src="/images/Indian-Spices-683x1024.webp"
                 alt="Authentic Indian Spices"
                 className="w-full h-full object-cover"
                 fallbackType="spices"
@@ -320,7 +320,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="flex items-center space-x-5">
             <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24">
               <img
-                src="http://priglobexim.com/wp-content/uploads/2026/03/cargo.png"
+                src="/images/sea-shipment.png"
                 alt="Cargo Consignments"
                 className="w-full h-full object-contain"
               />
@@ -339,7 +339,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="flex items-center space-x-5">
             <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24">
               <img
-                src="http://priglobexim.com/wp-content/uploads/2026/03/deal.png"
+                src="/images/deal.png"
                 alt="Happy Buyers"
                 className="w-full h-full object-contain"
               />
@@ -358,7 +358,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="flex items-center space-x-5">
             <div className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24">
               <img
-                src="http://priglobexim.com/wp-content/uploads/2026/03/reputation.png"
+                src="/images/reputation.png"
                 alt="Years Experience"
                 className="w-full h-full object-contain"
               />
@@ -381,22 +381,22 @@ export const HomePage: React.FC<HomePageProps> = ({
       <section className="py-12 bg-[#F9D9A7] px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-around gap-8 sm:gap-12">
           <img
-            src="http://priglobexim.com/wp-content/uploads/2026/03/ChatGPT-Image-Mar-12-2026-05_53_35-PM.png"
+            src="/images/ChatGPT-Image-Mar-12-2026-05_53_35-PM.webp"
             alt="Certification 1"
             className="h-16 sm:h-20 w-auto object-contain"
           />
           <img
-            src="https://priglobexim.com/wp-content/uploads/2026/03/QYEvIxI_400x400-removebg-preview-1.png"
+            src="/images/QYEvIxI_400x400-removebg-preview-1.png"
             alt="Certification 2"
             className="h-16 sm:h-20 w-auto object-contain"
           />
           <img
-            src="https://priglobexim.com/wp-content/uploads/2026/03/ChatGPT-Image-Mar-12-2026-05_38_48-PM-2.png"
+            src="/images/ChatGPT-Image-Mar-12-2026-05_38_48-PM-2.webp"
             alt="Certification 3"
             className="h-16 sm:h-20 w-auto object-contain"
           />
           <img
-            src="https://priglobexim.com/wp-content/uploads/2026/03/logo.png"
+            src="/images/logo.png"
             alt="Certification 4"
             className="h-16 sm:h-20 w-auto object-contain"
           />
