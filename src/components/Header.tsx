@@ -12,6 +12,7 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   activePage,
   onNavigate,
+  onOpenQuoteModal,
 }) => {
   const [productsOpen, setProductsOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -32,10 +33,39 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-50 bg-[#F8F4EC] border-b border-[#E8DFC8]/50 shadow-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+      {/* Global Trade & Exim Logistics Announcement Bar */}
+      <div className="bg-[#181614] text-[#EFEBE4] text-[11px] sm:text-xs py-1.5 px-4 sm:px-6 lg:px-8 border-b border-[#2C2824]">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-1.5 sm:gap-2">
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-1 text-center md:text-left">
+            <span className="inline-flex items-center gap-1.5 font-semibold text-[#F9D9A7]">
+              <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+              Govt. of India Recognized Merchant Exporter (IEC Code)
+            </span>
+            <span className="hidden sm:inline text-[#665F55]">•</span>
+            <span className="text-[#C8BFAF] hidden sm:inline">Ports: Mundra &amp; Pipavav (Sea) | Ahmedabad &amp; BOM (Air)</span>
+            <span className="hidden lg:inline text-[#665F55]">•</span>
+            <span className="text-[#C8BFAF] hidden lg:inline">Incoterms: FOB • CIF • CFR • EXW • DDP</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="text-[#A89F90] hidden md:inline">Direct Export Desk:</span>
+            <a href="tel:+919484855426" className="font-semibold text-white hover:text-[#F9D9A7] transition">
+              +91 948 485 5426
+            </a>
+            <span className="text-[#665F55]">•</span>
+            <button
+              onClick={() => onOpenQuoteModal?.()}
+              className="text-[#F9D9A7] hover:text-white font-semibold underline underline-offset-2 transition"
+            >
+              Request Export RFQ
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3.5">
         <div className="flex items-center justify-between">
-          {/* Site Logo */}
-          <div className="flex-shrink-0">
+          {/* Site Logo & Trade Credential */}
+          <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0">
             <button
               id="header-logo-button"
               onClick={() => handleNav('home')}
@@ -45,7 +75,7 @@ export const Header: React.FC<HeaderProps> = ({
               <img
                 src={SITE_INFO.logo}
                 alt="PriGlob Exim"
-                className="h-10 sm:h-12 md:h-14 w-auto object-contain max-w-[280px] sm:max-w-[340px]"
+                className="h-10 sm:h-12 md:h-13 w-auto object-contain max-w-[260px] sm:max-w-[320px]"
                 onError={(e) => {
                   (e.target as HTMLElement).style.display = 'none';
                   const fallback = document.getElementById('header-logo-fallback');
@@ -60,6 +90,14 @@ export const Header: React.FC<HeaderProps> = ({
                 PriGlob <span className="text-[#A36A23]">Exim</span>
               </span>
             </button>
+            <div className="hidden xl:block pl-3 border-l border-[#D8CEBA]">
+              <span className="block text-[10px] font-bold uppercase tracking-wider text-[#8A7555]">
+                International Trading House
+              </span>
+              <span className="block text-[11px] text-[#444444] font-medium">
+                Ocean &amp; Air Freight to 25+ Countries
+              </span>
+            </div>
           </div>
 
           {/* Desktop Navigation & Social Links */}
@@ -280,6 +318,18 @@ export const Header: React.FC<HeaderProps> = ({
                 </svg>
               </a>
             </div>
+
+            {/* Request Export Quote Button */}
+            {onOpenQuoteModal && (
+              <button
+                id="header-rfq-button"
+                onClick={() => onOpenQuoteModal()}
+                className="px-4 py-2 rounded-full bg-[#111111] text-white text-xs font-bold hover:bg-black transition flex items-center gap-1.5 shadow-xs whitespace-nowrap active:scale-95"
+              >
+                <span>Export RFQ</span>
+                <span className="text-[10px] bg-[#F9D9A7] text-[#111111] px-1.5 py-0.5 rounded font-bold">Fast-Track</span>
+              </button>
+            )}
           </div>
 
           {/* Mobile Hamburger Button */}
@@ -409,6 +459,22 @@ export const Header: React.FC<HeaderProps> = ({
                 FAQ
               </span>
             </button>
+
+            {/* Mobile RFQ Button */}
+            {onOpenQuoteModal && (
+              <div className="pt-2 px-3">
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenQuoteModal();
+                  }}
+                  className="w-full py-3 rounded-full bg-[#111111] text-white font-bold text-sm hover:bg-black transition flex items-center justify-center gap-2 shadow"
+                >
+                  <span>Request Export Quote (RFQ)</span>
+                  <span className="text-[10px] bg-[#F9D9A7] text-[#111111] px-2 py-0.5 rounded-full font-bold">24h Response</span>
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Social Links on Mobile */}

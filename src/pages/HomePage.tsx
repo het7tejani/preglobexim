@@ -1,6 +1,8 @@
 import React from 'react';
 import { ActivePage } from '../types';
 import { ImageWithFallback } from '../components/ImageWithFallback';
+import { HeroSlider } from '../components/HeroSlider';
+import { ExportTrustBar } from '../components/ExportTrustBar';
 
 interface HomePageProps {
   onNavigate: (page: ActivePage) => void;
@@ -14,221 +16,350 @@ export const HomePage: React.FC<HomePageProps> = ({
   return (
     <div className="bg-[#F8F4EC] text-[#111111] overflow-hidden">
       {/* ========================================================================= */}
-      {/* SECTION 1: HERO (WP wp-container-core-group-is-layout-a48a956d)           */}
+      {/* SECTION 1: HERO SHOWCASE (Clean, Simple & Spacious)                       */}
       {/* ========================================================================= */}
-      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* Left Column (58.3%) */}
-          <div className="lg:col-span-7 text-center lg:text-left space-y-5">
-            <h3 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#111111] leading-[1.25]">
-              Delivering Quality Products to International Markets for Global Brands
-            </h3>
-            <p className="text-base sm:text-lg font-medium text-[#111111]">
-              Quality Products Exports for Global Markets
-            </p>
-            <p className="text-sm sm:text-base text-[#444444] leading-relaxed max-w-xl mx-auto lg:mx-0">
-              PriGlob Exim delivers superior products with global reach, combining quality craftsmanship and competitive pricing to meet your business demands effectively.
-            </p>
-            <div className="pt-2 flex justify-center lg:justify-start">
-              <button
-                id="hero-quote-btn"
-                onClick={() => onOpenQuoteModal()}
-                className="px-8 py-3.5 rounded-full bg-[#111111] text-white font-bold text-sm sm:text-base hover:bg-black transition shadow-sm active:scale-95"
-              >
-                Request a Quote
-              </button>
-            </div>
-          </div>
-
-          {/* Right Column (41.7%) */}
-          <div className="lg:col-span-5 grid grid-cols-2 gap-4 sm:gap-6 items-start">
-            {/* Subcolumn 1 */}
-            <div className="space-y-4">
-              <div className="rounded-[32px] overflow-hidden shadow-xs">
-                <ImageWithFallback
-                  src="/images/hero-trade.webp"
-                  alt="Global Trade & Logistics"
-                  className="w-full aspect-[3/4] object-cover rounded-[32px]"
-                  fallbackType="corporate"
-                />
-              </div>
-              <div className="text-center pt-2">
-                <h2 className="text-4xl sm:text-5xl font-bold text-[#111111] tracking-tight">228</h2>
-                <p className="text-sm font-medium text-[#444444] mt-1">Global Supply Excellence</p>
-              </div>
-            </div>
-
-            {/* Subcolumn 2 */}
-            <div className="space-y-4">
-              {/* Top empty spacer card in tertiary #F9D9A7 */}
-              <div className="h-32 sm:h-40 rounded-[32px] bg-[#F9D9A7]" />
-              {/* Overlapping Airplane Cargo Image */}
-              <div className="rounded-[32px] overflow-hidden shadow-xs -mt-16 sm:-mt-20">
-                <ImageWithFallback
-                  src="/images/airlines-cta-image-1024x768.webp"
-                  alt="Airlines Cargo Worldwide Freight"
-                  className="w-full aspect-[3/4] object-cover rounded-[32px]"
-                  fallbackType="general"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSlider
+        onNavigate={onNavigate}
+        onOpenQuoteModal={onOpenQuoteModal}
+      />
 
       {/* ========================================================================= */}
-      {/* SECTION 2: MANUFACTURING UNITS (has-tertiary-background-color #F9D9A7)   */}
+      {/* SECTION 2: EXPORT TRUST & LOGISTICS STRIP (Borderless, Simple)             */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-20 bg-[#F9D9A7] px-4 sm:px-6 lg:px-8">
+      <ExportTrustBar />
+
+      {/* ========================================================================= */}
+      {/* SECTION 3: MANUFACTURING UNITS (Clean, Simple Editorial Style)            */}
+      {/* ========================================================================= */}
+      <section className="py-14 sm:py-20 bg-[#F9D9A7] px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#734A12] block mb-2">
+              Direct Sourcing &amp; Manufacturing
+            </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#111111]">
-              Premium Manufacturing Units for Worldwide Supply
+              Our Infrastructure for Global Supply
             </h2>
-            <p className="text-sm sm:text-base text-[#333333] mt-3 leading-relaxed">
-              Discover our expertly crafted products and unbeatable offers designed to optimize your global procurement.
+            <p className="text-sm sm:text-base text-[#444444] mt-2 leading-relaxed">
+              Industrial facilities engineered for high-volume custom production, strict batch inspection, and containerized export.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
             {/* Unit 1: Fabric Bags */}
             <div
               onClick={() => onNavigate('cotton-jute-tote-bag')}
-              className="cursor-pointer group flex flex-col items-center text-center"
+              className="cursor-pointer group flex flex-col text-left space-y-3"
             >
-              <div className="w-full aspect-square rounded-[32px] overflow-hidden shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
+              <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-sm bg-white">
                 <ImageWithFallback
                   src="/images/Fabric-Bag-Mfg.webp"
                   alt="Fabric Bags Manufacturing Unit"
-                  className="w-full h-full object-cover rounded-[32px]"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   fallbackType="bag"
                 />
               </div>
-              <figcaption className="mt-4 text-base sm:text-lg font-medium text-[#111111] group-hover:font-semibold transition">
-                Fabric Bags Manufacturing Unit
-              </figcaption>
+              <div className="space-y-1">
+                <span className="text-xs font-semibold text-[#734A12] uppercase tracking-wider block">
+                  OEM / ODM Facility • 50,000+ Units/Mo
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold text-[#111111] group-hover:text-[#8A5B20] transition">
+                  Fabric Bags Manufacturing Unit
+                </h3>
+                <p className="text-xs sm:text-sm text-[#444444] leading-relaxed">
+                  Automated cutting, custom silk-screen printing, and precision stitching for high-volume international retail orders.
+                </p>
+              </div>
             </div>
 
             {/* Unit 2: Jewellery */}
             <div
               onClick={() => onNavigate('gems-jewellery')}
-              className="cursor-pointer group flex flex-col items-center text-center"
+              className="cursor-pointer group flex flex-col text-left space-y-3"
             >
-              <div className="w-full aspect-square rounded-[32px] overflow-hidden shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
+              <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-sm bg-white">
                 <ImageWithFallback
                   src="/images/Jewellery-Mfg-1024x683.webp"
                   alt="Jewellery Design & Manufacturing Unit"
-                  className="w-full h-full object-cover rounded-[32px]"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   fallbackType="jewellery"
                 />
               </div>
-              <figcaption className="mt-4 text-base sm:text-lg font-medium text-[#111111] group-hover:font-semibold transition">
-                Jewellery Design &amp; Manufacturing Unit
-              </figcaption>
+              <div className="space-y-1">
+                <span className="text-xs font-semibold text-[#734A12] uppercase tracking-wider block">
+                  Artisan Lapidary • Hallmarked &amp; Insured
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold text-[#111111] group-hover:text-[#8A5B20] transition">
+                  Jewellery Design &amp; Manufacturing Unit
+                </h3>
+                <p className="text-xs sm:text-sm text-[#444444] leading-relaxed">
+                  Master gemstone cutting, diamond micro-setting, and 925 Silver / Gold casting certified for luxury global markets.
+                </p>
+              </div>
             </div>
 
             {/* Unit 3: Spices */}
             <div
               onClick={() => onNavigate('indian-spices')}
-              className="cursor-pointer group flex flex-col items-center text-center"
+              className="cursor-pointer group flex flex-col text-left space-y-3"
             >
-              <div className="w-full aspect-square rounded-[32px] overflow-hidden shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
+              <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-sm bg-white">
                 <ImageWithFallback
                   src="/images/Indian-Spices-Photo-1024x683.webp"
                   alt="Spice Sourcing & Processing Division"
-                  className="w-full h-full object-cover rounded-[32px]"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   fallbackType="spices"
                 />
               </div>
-              <figcaption className="mt-4 text-base sm:text-lg font-medium text-[#111111] group-hover:font-semibold transition">
-                Spice Sourcing &amp; Processing Division
-              </figcaption>
+              <div className="space-y-1">
+                <span className="text-xs font-semibold text-[#734A12] uppercase tracking-wider block">
+                  Direct Farm Source • FSSAI &amp; Spices Board
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold text-[#111111] group-hover:text-[#8A5B20] transition">
+                  Spice Sourcing &amp; Processing Division
+                </h3>
+                <p className="text-xs sm:text-sm text-[#444444] leading-relaxed">
+                  Cold-milling, sortex cleaning, and vacuum packaging preserving essential aromatic oils, color, and culinary potency.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* SECTION 3: OUR QUALITY PRODUCTS (Product Block matching source)           */}
+      {/* SECTION 4: OUR CORE PRODUCT LINES (Simple & Clean)                        */}
       {/* ========================================================================= */}
       <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#8A7555] block mb-2">
+            Export Product Catalogs
+          </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#111111]">
-            Our Quality Products for Worldwide Brands
+            Our Core Product Lines
           </h2>
-          <p className="text-sm sm:text-base text-[#555555] mt-3 leading-relaxed">
-            PriGlob Exim is committed to manufacturing superior products and facilitating smooth global supply chains. Our mission is to provide efficient, cost-effective solutions that support our customers’ growth and success worldwide.
+          <p className="text-sm sm:text-base text-[#555555] mt-2 leading-relaxed">
+            Standardized manufacturing, rigorous batch testing, and sea-worthy export palletization across 3 primary trade divisions.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
           {/* Card 1: Cotton & Jute Bags */}
           <div
             onClick={() => onNavigate('cotton-jute-tote-bag')}
-            className="bg-[#F9D9A7] rounded-[32px] overflow-hidden cursor-pointer flex flex-col transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+            className="cursor-pointer group flex flex-col space-y-3"
           >
-            <div className="w-full aspect-square overflow-hidden">
+            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-[#F0EBE1] shadow-sm">
               <ImageWithFallback
                 src="/images/Bag-1-638x1024.webp"
                 alt="Cotton & Jute Bags"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 fallbackType="bag"
               />
             </div>
-            <div className="p-6 sm:p-7 text-center space-y-2 flex-1 flex flex-col justify-center">
-              <h2 className="text-xl sm:text-2xl font-bold text-[#111111]">
-                <strong>Cotton &amp; Jute Bags</strong>
-              </h2>
-              <p className="text-sm text-[#444444] leading-relaxed">
-                Eco-friendly cotton and jute bags designed for sustainable packaging, daily use, and global markets.
+            <div className="space-y-1.5 text-left">
+              <div className="text-xs font-semibold text-[#8A5B20] uppercase tracking-wider">
+                Mundra Port • Sea FCL / LCL
+              </div>
+              <h3 className="text-xl font-bold text-[#111111] group-hover:text-[#8A5B20] transition">
+                Cotton &amp; Jute Bags
+              </h3>
+              <p className="text-xs sm:text-sm text-[#555555] leading-relaxed">
+                Certified canvas, juco, and organic cotton bags for international retail, supermarkets, and promotional brands.
               </p>
+              <div className="pt-2 flex items-center text-xs font-bold text-[#111111] group-hover:text-[#8A5B20] transition">
+                <span>View Bag Styles &amp; Specs →</span>
+              </div>
             </div>
           </div>
 
           {/* Card 2: Gems & Jewellery */}
           <div
             onClick={() => onNavigate('gems-jewellery')}
-            className="bg-[#F9D9A7] rounded-[32px] overflow-hidden cursor-pointer flex flex-col transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+            className="cursor-pointer group flex flex-col space-y-3"
           >
-            <div className="w-full aspect-square overflow-hidden">
+            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-[#F0EBE1] shadow-sm">
               <ImageWithFallback
                 src="/images/Diamond-Jewellery-683x1024.webp"
                 alt="Gems & Jewellery"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 fallbackType="jewellery"
               />
             </div>
-            <div className="p-6 sm:p-7 text-center space-y-2 flex-1 flex flex-col justify-center">
-              <h2 className="text-xl sm:text-2xl font-bold text-[#111111]">
-                <strong>Gems &amp; Jewellery</strong>
-              </h2>
-              <p className="text-sm text-[#444444] leading-relaxed">
-                High-quality diamonds and colored gemstones crafted for fine jewellery and international luxury markets.
+            <div className="space-y-1.5 text-left">
+              <div className="text-xs font-semibold text-[#8A5B20] uppercase tracking-wider">
+                Insured Air Cargo • Hallmarked Purity
+              </div>
+              <h3 className="text-xl font-bold text-[#111111] group-hover:text-[#8A5B20] transition">
+                Gems &amp; Fine Jewellery
+              </h3>
+              <p className="text-xs sm:text-sm text-[#555555] leading-relaxed">
+                Lab-grown &amp; natural diamonds, precious gemstones, and custom 925 sterling silver/gold fine jewellery collections.
               </p>
+              <div className="pt-2 flex items-center text-xs font-bold text-[#111111] group-hover:text-[#8A5B20] transition">
+                <span>View Jewellery Collection →</span>
+              </div>
             </div>
           </div>
 
           {/* Card 3: Authentic Indian Spices */}
           <div
             onClick={() => onNavigate('indian-spices')}
-            className="bg-[#F9D9A7] rounded-[32px] overflow-hidden cursor-pointer flex flex-col transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+            className="cursor-pointer group flex flex-col space-y-3"
           >
-            <div className="w-full aspect-square overflow-hidden">
+            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-[#F0EBE1] shadow-sm">
               <ImageWithFallback
                 src="/images/Indian-Spices-683x1024.webp"
                 alt="Authentic Indian Spices"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 fallbackType="spices"
               />
             </div>
-            <div className="p-6 sm:p-7 text-center space-y-2 flex-1 flex flex-col justify-center">
-              <h2 className="text-xl sm:text-2xl font-bold text-[#111111]">
-                <strong>Authentic Indian Spices</strong>
-              </h2>
-              <p className="text-sm text-[#444444] leading-relaxed">
-                Fresh, aromatic spices sourced from trusted farms and processed for global culinary brands.
+            <div className="space-y-1.5 text-left">
+              <div className="text-xs font-semibold text-[#8A5B20] uppercase tracking-wider">
+                20ft/40ft Ocean FCL • Phytosanitary
+              </div>
+              <h3 className="text-xl font-bold text-[#111111] group-hover:text-[#8A5B20] transition">
+                Authentic Indian Spices
+              </h3>
+              <p className="text-xs sm:text-sm text-[#555555] leading-relaxed">
+                Whole and ground turmeric, cumin, cardamom, red chili, and ginger sourced directly from certified agrarian zones.
               </p>
+              <div className="pt-2 flex items-center text-xs font-bold text-[#111111] group-hover:text-[#8A5B20] transition">
+                <span>View Spice Specifications →</span>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* SECTION: GLOBAL TRADE OPERATIONS & LOGISTICS NETWORK (Import/Export Core) */}
+      {/* ========================================================================= */}
+      <section className="py-14 sm:py-18 bg-[#181614] text-[#EDE8DF] px-4 sm:px-6 lg:px-8 border-y border-[#2D2924]">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-[#F9D9A7] bg-[#2C2824] px-3.5 py-1 rounded-full border border-[#3E3831]">
+              Global Trade Infrastructure
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white mt-3">
+              End-to-End Export Logistics &amp; Port Connectivity
+            </h2>
+            <p className="text-xs sm:text-sm text-[#B5ABA0] mt-2 leading-relaxed">
+              Seamlessly bridging Indian manufacturing hubs with international maritime trade corridors across Europe, the Americas, GCC, and the Asia-Pacific.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Box 1: Sea Ports */}
+            <div className="bg-[#24211D] p-5 rounded-2xl border border-[#36322C] space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-[#F9D9A7]/10 flex items-center justify-center text-[#F9D9A7]">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </div>
+              <h3 className="text-base font-bold text-white">Strategic Port Network</h3>
+              <ul className="space-y-2 text-xs text-[#B5ABA0]">
+                <li className="flex items-start gap-1.5">
+                  <span className="text-[#F9D9A7]">•</span>
+                  <span><strong>Mundra Port (INMUN1):</strong> India's largest commercial deep-sea gateway</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="text-[#F9D9A7]">•</span>
+                  <span><strong>Pipavav Port (INPAV1):</strong> Fast rail-linked container terminal</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="text-[#F9D9A7]">•</span>
+                  <span><strong>JNPT Nhava Sheva (INNSA1):</strong> High-frequency global liner services</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Box 2: Container Loads */}
+            <div className="bg-[#24211D] p-5 rounded-2xl border border-[#36322C] space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-[#F9D9A7]/10 flex items-center justify-center text-[#F9D9A7]">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+              </div>
+              <h3 className="text-base font-bold text-white">Container Shipping Modes</h3>
+              <ul className="space-y-2 text-xs text-[#B5ABA0]">
+                <li className="flex items-start gap-1.5">
+                  <span className="text-[#F9D9A7]">•</span>
+                  <span><strong>FCL (Full Container):</strong> 20ft Standard (33 CBM) &amp; 40ft High Cube (76 CBM)</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="text-[#F9D9A7]">•</span>
+                  <span><strong>LCL (Consolidated):</strong> Cost-effective palletized cargo consolidation</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="text-[#F9D9A7]">•</span>
+                  <span><strong>Air Freight Terminals:</strong> Ahmedabad (AMD) &amp; Mumbai (BOM)</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Box 3: Export Documentation */}
+            <div className="bg-[#24211D] p-5 rounded-2xl border border-[#36322C] space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-[#F9D9A7]/10 flex items-center justify-center text-[#F9D9A7]">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <h3 className="text-base font-bold text-white">Customs &amp; Compliance</h3>
+              <ul className="space-y-2 text-xs text-[#B5ABA0]">
+                <li className="flex items-start gap-1.5">
+                  <span className="text-[#F9D9A7]">•</span>
+                  <span><strong>Certificate of Origin (COO):</strong> Legalized via Chamber of Commerce</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="text-[#F9D9A7]">•</span>
+                  <span><strong>Phytosanitary &amp; Fumigation:</strong> ISPM-15 export quarantine standard</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="text-[#F9D9A7]">•</span>
+                  <span><strong>Testing &amp; Inspection:</strong> SGS, Intertek, or Bureau Veritas on request</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Box 4: Commercial Incoterms */}
+            <div className="bg-[#24211D] p-5 rounded-2xl border border-[#36322C] space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-[#F9D9A7]/10 flex items-center justify-center text-[#F9D9A7]">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                </svg>
+              </div>
+              <h3 className="text-base font-bold text-white">Commercial Trade Terms</h3>
+              <ul className="space-y-2 text-xs text-[#B5ABA0]">
+                <li className="flex items-start gap-1.5">
+                  <span className="text-[#F9D9A7]">•</span>
+                  <span><strong>FOB:</strong> Free On Board (Vessel dispatch at Indian port)</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="text-[#F9D9A7]">•</span>
+                  <span><strong>CIF &amp; CFR:</strong> Cost, Insurance &amp; Freight to destination port</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="text-[#F9D9A7]">•</span>
+                  <span><strong>Flexible Payment:</strong> Irrevocable L/C at sight, T/T wire transfer</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Fast Track Quote Banner */}
+          <div className="mt-10 p-5 sm:p-6 rounded-2xl bg-[#221F1B] border border-[#3E3831] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-center sm:text-left">
+              <h4 className="text-base sm:text-lg font-bold text-white">Need Container Rates or Freight Estimation?</h4>
+              <p className="text-xs text-[#A89F90] mt-1">Our international export desk provides CIF/FOB quotes within 24 hours.</p>
+            </div>
+            <button
+              onClick={() => onOpenQuoteModal()}
+              className="px-6 py-2.5 rounded-full bg-[#F9D9A7] text-[#111111] font-bold text-xs sm:text-sm hover:bg-white transition whitespace-nowrap shadow-sm"
+            >
+              Request Container Quote
+            </button>
           </div>
         </div>
       </section>

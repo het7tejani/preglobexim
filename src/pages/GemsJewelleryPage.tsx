@@ -99,22 +99,55 @@ export const GemsJewelleryPage: React.FC<GemsJewelleryPageProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* SECTION 4+: PRODUCT CATEGORIES (Rings, Bracelets, Necklace, Earrings)     */}
+      {/* SECTION 4: EXPORT SPECIFICATIONS STRIP (B2B Exim Capabilities)          */}
       {/* ========================================================================= */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mb-6 mt-10">
+        <div className="bg-[#FAF2E4] border border-[#E3D6C1] rounded-2xl p-4 sm:p-5 grid grid-cols-2 md:grid-cols-4 gap-4 text-xs sm:text-sm">
+          <div className="space-y-1">
+            <span className="font-bold text-[#111111] uppercase tracking-wider text-[11px] block">Logistics &amp; Courier</span>
+            <p className="text-[#555555]">Secure Insured Air Cargo (Malca-Amit / Brinks)</p>
+          </div>
+          <div className="space-y-1">
+            <span className="font-bold text-[#111111] uppercase tracking-wider text-[11px] block">Certifications</span>
+            <p className="text-[#555555]">GIA, IGI Hallmarked &amp; GJEPC Registered</p>
+          </div>
+          <div className="space-y-1">
+            <span className="font-bold text-[#111111] uppercase tracking-wider text-[11px] block">Custom OEM Designs</span>
+            <p className="text-[#555555]">CAD Prototyping &amp; Custom Diamond Sourcing</p>
+          </div>
+          <div className="space-y-1">
+            <span className="font-bold text-[#111111] uppercase tracking-wider text-[11px] block">Export Trade Terms</span>
+            <p className="text-[#555555]">FOB Surat/Mumbai • CIF Major Air Hubs</p>
+          </div>
+        </div>
+      </div>
+
+      {/* ========================================================================= */}
+      {/* SECTION 5+: PRODUCT CATEGORIES (Rings, Bracelets, Necklace, Earrings)     */}
+      {/* ========================================================================= */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16 sm:space-y-20">
         {GEMS_JEWELLERY_CATEGORIES.map((cat, catIdx) => (
-          <section key={catIdx} className="space-y-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-center text-[#111111]">
-              {cat.name}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <section key={catIdx} className="space-y-6 sm:space-y-8">
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-[#E8DFC8] pb-3 gap-2">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#111111]">
+                {cat.name}
+              </h2>
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#8A7555]">
+                {cat.products.length} Export Designs
+              </span>
+            </div>
+            <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
               {cat.products.map((product, pIdx) => (
-                <ProductCard
+                <div
                   key={pIdx}
-                  product={product}
-                  fallbackType="jewellery"
-                  onInquire={(title) => onOpenQuoteModal(title)}
-                />
+                  className="w-full sm:w-[calc(50%-16px)] md:w-[calc(33.333%-22px)] lg:w-[calc(25%-24px)] min-w-[260px] max-w-[310px] flex"
+                >
+                  <ProductCard
+                    product={product}
+                    fallbackType="jewellery"
+                    onInquire={(title) => onOpenQuoteModal(title)}
+                  />
+                </div>
               ))}
             </div>
           </section>

@@ -11,10 +11,23 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center text-center">
           {/* Column 1 (40% flex-basis on original site) */}
-          <div className="md:col-span-5 text-center">
+          <div className="md:col-span-5 text-center md:text-left space-y-1.5">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111111]">
-              PriGlob Exim
+              PriGlob <span className="text-[#A36A23]">Exim</span>
             </h2>
+            <p className="text-xs font-bold text-[#8A7555] uppercase tracking-wider">
+              International Merchant Exporter &amp; Trading House
+            </p>
+            <p className="text-xs text-[#555555]">
+              Govt. of India IEC Registered • Port of Loading: Mundra &amp; Pipavav
+            </p>
+            <div className="pt-1 flex flex-wrap gap-1.5 justify-center md:justify-start">
+              <span className="text-[10px] bg-[#EAE0CE] px-2 py-0.5 rounded text-[#222222] font-semibold">FOB</span>
+              <span className="text-[10px] bg-[#EAE0CE] px-2 py-0.5 rounded text-[#222222] font-semibold">CIF</span>
+              <span className="text-[10px] bg-[#EAE0CE] px-2 py-0.5 rounded text-[#222222] font-semibold">CFR</span>
+              <span className="text-[10px] bg-[#EAE0CE] px-2 py-0.5 rounded text-[#222222] font-semibold">DDP</span>
+              <span className="text-[10px] bg-[#111111] text-[#F9D9A7] px-2 py-0.5 rounded font-semibold">FCL / LCL</span>
+            </div>
           </div>
 
           {/* Column 2 (22.5% flex-basis on original site) */}

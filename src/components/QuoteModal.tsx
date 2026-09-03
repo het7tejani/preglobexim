@@ -17,6 +17,10 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
     name: '',
     email: '',
     phone: '',
+    country: '',
+    portOfDischarge: '',
+    incoterm: 'FOB',
+    shippingMode: 'Ocean FCL (Full Container)',
     product: defaultProduct,
     quantity: '',
     message: '',
@@ -48,6 +52,10 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
       name: '',
       email: '',
       phone: '',
+      country: '',
+      portOfDischarge: '',
+      incoterm: 'FOB',
+      shippingMode: 'Ocean FCL (Full Container)',
       product: '',
       quantity: '',
       message: '',
@@ -56,8 +64,8 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg bg-[#F8F4EC] rounded-3xl p-6 sm:p-8 shadow-2xl border border-[#E0D4BE] text-[#111111]">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/65 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
+      <div className="relative w-full max-w-xl bg-[#F8F4EC] rounded-3xl p-6 sm:p-8 shadow-2xl border border-[#E0D4BE] text-[#111111]">
         {/* Close button */}
         <button
           onClick={handleReset}
@@ -73,10 +81,10 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
               <CheckCircle2 className="w-8 h-8" />
             </div>
             <h3 className="text-2xl font-bold text-[#111111]">
-              Inquiry Received!
+              Export RFQ Received!
             </h3>
-            <p className="text-sm text-[#444444] max-w-sm mx-auto leading-relaxed">
-              Thank you for reaching out to PriGlob Exim. Our international trade team will review your specifications and get back to you with competitive quotes within 24 hours.
+            <p className="text-sm text-[#444444] max-w-md mx-auto leading-relaxed">
+              Thank you for submitting your Request for Quotation to PriGlob Exim. Our international export division will calculate freight rates, volume discounts, and shipping schedules to your target port within 24 hours.
             </p>
             <div className="pt-3">
               <button
@@ -89,98 +97,152 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
           </div>
         ) : (
           <div>
-            <div className="mb-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#8A7555]">
-                Export &amp; Supply Inquiry
-              </span>
-              <h3 className="text-2xl font-bold text-[#111111] mt-1">
-                Request a Custom Quote
+            <div className="mb-5">
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] font-bold uppercase tracking-wider bg-[#111111] text-[#F9D9A7] px-2.5 py-0.5 rounded-full">
+                  International Trade Desk
+                </span>
+                <span className="text-[11px] font-semibold text-[#8A7555]">
+                  Govt. of India IEC Registered
+                </span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-[#111111] mt-2">
+                Request an Export Quote (RFQ)
               </h3>
               <p className="text-xs text-[#555555] mt-1">
-                Direct manufacturing &amp; worldwide freight solutions from PriGlob Exim.
+                Direct factory manufacturing, container consolidation &amp; worldwide port shipping.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4 text-left">
-              <div>
-                <label className="block text-xs font-semibold text-[#222222] mb-1">
-                  Full Name <span className="text-red-600">*</span>
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. John Doe"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D5C8B0] text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="space-y-3.5 text-left text-xs sm:text-sm">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-semibold text-[#222222] mb-1">
-                    Work Email <span className="text-red-600">*</span>
+                    Contact / Buyer Name <span className="text-red-600">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Robert Smith"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#D5C8B0] text-xs sm:text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-[#222222] mb-1">
+                    Corporate Email <span className="text-red-600">*</span>
                   </label>
                   <input
                     type="email"
                     required
-                    placeholder="name@company.com"
+                    placeholder="buyer@globalcorp.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D5C8B0] text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-[#222222] mb-1">
-                    Phone / WhatsApp
-                  </label>
-                  <input
-                    type="tel"
-                    placeholder="+1 234 567 890"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D5C8B0] text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#D5C8B0] text-xs sm:text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-semibold text-[#222222] mb-1">
-                    Product of Interest
+                    Country of Destination <span className="text-red-600">*</span>
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g. Cotton Tote Bags, Turmeric, Rings"
-                    value={formData.product}
-                    onChange={(e) => setFormData({ ...formData, product: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D5C8B0] text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
+                    required
+                    placeholder="e.g. United States, Germany, UAE"
+                    value={formData.country}
+                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#D5C8B0] text-xs sm:text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-[#222222] mb-1">
-                    Estimated Quantity / MOQ
+                    Port of Discharge / City
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g. 500 pcs / 2 Tons"
+                    placeholder="e.g. Rotterdam, Hamburg, Los Angeles"
+                    value={formData.portOfDischarge}
+                    onChange={(e) => setFormData({ ...formData, portOfDischarge: e.target.value })}
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#D5C8B0] text-xs sm:text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-semibold text-[#222222] mb-1">
+                    Product / Commodity
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Cotton Tote Bags, Spices, Jewellery"
+                    value={formData.product}
+                    onChange={(e) => setFormData({ ...formData, product: e.target.value })}
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#D5C8B0] text-xs sm:text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-[#222222] mb-1">
+                    Target Volume / Container
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. 5,000 pcs / 20ft FCL / 2 Tons"
                     value={formData.quantity}
                     onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D5C8B0] text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#D5C8B0] text-xs sm:text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
                   />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-semibold text-[#222222] mb-1">
+                    Preferred Incoterm
+                  </label>
+                  <select
+                    value={formData.incoterm}
+                    onChange={(e) => setFormData({ ...formData, incoterm: e.target.value })}
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#D5C8B0] text-xs sm:text-sm text-[#111111] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
+                  >
+                    <option value="FOB">FOB (Mundra / JNPT / Air)</option>
+                    <option value="CIF">CIF (Cost, Insurance &amp; Freight)</option>
+                    <option value="CFR">CFR (Cost &amp; Freight)</option>
+                    <option value="EXW">EXW (Factory Warehouse)</option>
+                    <option value="DDP">DDP (Delivered Duty Paid)</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-[#222222] mb-1">
+                    Shipping Mode
+                  </label>
+                  <select
+                    value={formData.shippingMode}
+                    onChange={(e) => setFormData({ ...formData, shippingMode: e.target.value })}
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#D5C8B0] text-xs sm:text-sm text-[#111111] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
+                  >
+                    <option value="Ocean FCL (Full Container)">Ocean FCL (20ft / 40ft Container)</option>
+                    <option value="Ocean LCL (Consolidated)">Ocean LCL (Palletized Cargo)</option>
+                    <option value="Air Cargo Express">Air Cargo Express (Fast Delivery)</option>
+                    <option value="Courier Sample">Trial Sample Dispatches</option>
+                  </select>
                 </div>
               </div>
 
               <div>
                 <label className="block text-xs font-semibold text-[#222222] mb-1">
-                  Specific Requirements or Target Destination
+                  Custom OEM, Packaging &amp; Inspection Specifications
                 </label>
                 <textarea
-                  rows={3}
-                  placeholder="Share details regarding GSM, customization, ports of delivery, or certification needs..."
+                  rows={2}
+                  placeholder="Mention OEM branding, barcoding, fabric GSM, mesh size, SGS inspection, or payment terms (L/C, T/T)..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D5C8B0] text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
+                  className="w-full px-3 py-2 rounded-xl bg-white border border-[#D5C8B0] text-xs sm:text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
                 />
               </div>
 
@@ -191,18 +253,18 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                   className="w-full py-3 px-6 rounded-full bg-[#111111] hover:bg-black text-white text-sm font-semibold flex items-center justify-center space-x-2 transition shadow-md active:scale-98 disabled:opacity-75"
                 >
                   {submitting ? (
-                    <span>Processing...</span>
+                    <span>Calculating Global Rates...</span>
                   ) : (
                     <>
                       <Send className="w-4 h-4" />
-                      <span>Submit Quote Request</span>
+                      <span>Submit Export RFQ</span>
                     </>
                   )}
                 </button>
               </div>
 
               <p className="text-[11px] text-center text-[#666666] pt-1">
-                Direct email inquiries: {SITE_INFO.contacts.asiaAfricaOceania.email} | {SITE_INFO.contacts.euAmericas.email}
+                Direct export inquiries: {SITE_INFO.contacts.asiaAfricaOceania.email} | WhatsApp: +91 948 485 5426
               </p>
             </form>
           </div>
