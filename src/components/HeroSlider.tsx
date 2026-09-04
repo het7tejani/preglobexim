@@ -1,90 +1,131 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, ShieldCheck, Sparkles, CheckCircle2 } from 'lucide-react';
 import { ActivePage } from '../types';
-import { ImageWithFallback } from './ImageWithFallback';
 
-interface HeroSliderProps {
-  onNavigate: (page: ActivePage) => void;
-  onOpenQuoteModal: (product?: string) => void;
-}
-
-interface SlideItem {
+interface Slide {
   id: string;
   division: string;
-  pageTarget: ActivePage;
-  tag: string;
+  badge: string;
   title: string;
   subtitle: string;
-  image: string;
-  fallbackType: 'bag' | 'jewellery' | 'spices';
+  bgImage: string;
+  showcaseImage: string;
+  showcaseBadge: string;
+  showcaseLabel: string;
+  pageTarget: ActivePage;
+  ctaPrimary: string;
+  ctaSecondary: string;
   highlights: string[];
 }
 
-const SLIDES: SlideItem[] = [
+const SLIDE_DURATION = 6000; // 6 seconds per slide
+
+const SLIDES: Slide[] = [
   {
     id: 'bags',
     division: 'Cotton & Jute Bags',
+    badge: '100% Eco-Sustainable Packaging',
+    title: 'Organic Cotton & Classic Jute Bags',
+    subtitle: 'Certified GOTS raw organic cotton, heavy-duty 350 GSM natural golden jute, double-stitched export grade totes, and custom branded drawstring pouches manufactured directly in Surat.',
+    bgImage: '/images/Fabric-Bag-Mfg.webp',
+    showcaseImage: '/images/Bag-1-638x1024.webp',
+    showcaseBadge: 'Surat Factory Direct',
+    showcaseLabel: 'Natural Golden Jute & Organic Cotton',
     pageTarget: 'cotton-jute-tote-bag',
-    tag: 'Sustainable Packaging • Direct Factory',
-    title: 'Eco-Friendly Fabric Bags Crafted for Global Brands',
-    subtitle:
-      'High-grade organic cotton totes, heavy canvas shoppers, and biodegradable jute packaging manufactured for international retail chains and promotional merchandise.',
-    image: '/images/Fabric-Bag-Mfg.webp',
-    fallbackType: 'bag',
-    highlights: ['150–450 GSM Organic Cotton', 'Custom OEM Silkscreen & Embroidery', 'Mundra Port Sea FCL/LCL'],
+    ctaPrimary: 'Explore Bags Catalog',
+    ctaSecondary: 'Request Bags RFQ',
+    highlights: ['Custom DTF & Screen Print', '350 GSM Heavy Jute', 'Zero Single-Use Plastic'],
   },
   {
     id: 'jewellery',
-    division: 'Gems & Fine Jewellery',
+    division: 'Gems & Jewellery',
+    badge: 'Hallmarked Indian Craftsmanship',
+    title: 'Lab-Grown & Natural Fine Jewelry',
+    subtitle: 'Surat precision cut CVD & HPHT diamonds, certified emerald, sapphire & ruby engagement rings, tennis bracelets, and luxury artisan-crafted hallmarked gold & sterling silver collections.',
+    bgImage: '/images/Jewellery-Mfg-1024x683.webp',
+    showcaseImage: '/images/Diamond-Jewellery-683x1024.webp',
+    showcaseBadge: 'Hallmarked & Certified',
+    showcaseLabel: 'Surat Precision Cut Fine Jewelry',
     pageTarget: 'gems-jewellery',
-    tag: 'Artisan Craftsmanship • Certified Purity',
-    title: 'Natural Gemstones & Certified Fine Jewellery',
-    subtitle:
-      'Precision-cut diamonds, colored gemstones, and 925 sterling silver fine jewellery handmade in Surat for premier international luxury boutiques and private collections.',
-    image: '/images/Diamond-Jewellery-683x1024.webp',
-    fallbackType: 'jewellery',
-    highlights: ['Lab-Grown & Natural Diamonds', '925 Silver & Solid Gold Casting', 'Insured Priority Air Cargo'],
+    ctaPrimary: 'View Fine Jewelry',
+    ctaSecondary: 'Custom Jewelry RFQ',
+    highlights: ['IGI / GIA Certified', 'Surat Precision Cutting', 'Bespoke OEM Castings'],
   },
   {
     id: 'spices',
     division: 'Authentic Indian Spices',
+    badge: 'Phytosanitary & AGMARK Certified',
+    title: 'Direct Agrarian Indian Spices',
+    subtitle: 'Direct farm-sourced Salem turmeric fingers, unadulterated Gujarat cumin seeds, bold green cardamom, coriander, and steam-sterilized whole spices packaged for international food brands.',
+    bgImage: '/images/Indian-Spices-Photo-1024x683.webp',
+    showcaseImage: '/images/Indian-Spices-683x1024.webp',
+    showcaseBadge: 'Phytosanitary Cleared',
+    showcaseLabel: 'Salem Turmeric & Gujarat Cumin',
     pageTarget: 'indian-spices',
-    tag: 'Farm-Direct Agrarian Source • Spices Board',
-    title: 'Pure Aromatic Indian Spices Sourced for Importers',
-    subtitle:
-      'Sortex-cleaned whole and cold-milled spices vacuum-sealed at source to preserve essential aromatic oils, vibrant natural colors, and culinary potency.',
-    image: '/images/Indian-Spices-Photo-1024x683.webp',
-    fallbackType: 'spices',
-    highlights: ['High-Curcumin Turmeric & Cumin', 'Phytosanitary & FSSAI Compliant', '20ft/40ft Ocean Containers'],
+    ctaPrimary: 'Browse Spices Catalog',
+    ctaSecondary: 'Bulk Container Quote',
+    highlights: ['Steam Sterilized Whole', 'FSSAI & AGMARK Compliant', 'FCL & LCL Sea Shipments'],
+  },
+  {
+    id: 'global-trade',
+    division: 'Global Trade Network',
+    badge: 'Reliable Ocean & Air Logistics',
+    title: 'Direct Port-to-Port Global Trade',
+    subtitle: 'Comprehensive container shipping, pre-shipment quality verification, transparent Incoterms (FOB, CIF, CFR, DDP), and dedicated regional export trade desks serving 35+ countries.',
+    bgImage: '/images/hero-trade.webp',
+    showcaseImage: '/images/sea-shipment.png',
+    showcaseBadge: 'Global Inbound Logistics',
+    showcaseLabel: 'Serving Asia, EU & The Americas',
+    pageTarget: 'our-company',
+    ctaPrimary: 'Discover Our Company',
+    ctaSecondary: 'Contact Trade Desk',
+    highlights: ['Incoterms FOB / CIF / DDP', 'Pre-Shipment Inspection', 'Multilingual Trade Support'],
   },
 ];
+
+interface HeroSliderProps {
+  onNavigate: (page: ActivePage) => void;
+  onOpenQuoteModal: (division?: string) => void;
+}
 
 export const HeroSlider: React.FC<HeroSliderProps> = ({
   onNavigate,
   onOpenQuoteModal,
 }) => {
-  const [current, setCurrent] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const touchStartX = useRef<number | null>(null);
 
-  const active = SLIDES[current];
-
-  // Auto-play interval
+  // Rock-solid glitch-free timer using setTimeout
   useEffect(() => {
     if (isPaused) return;
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % SLIDES.length);
-    }, 5500);
-    return () => clearInterval(timer);
-  }, [isPaused, current]);
 
-  const handleNext = () => setCurrent((prev) => (prev + 1) % SLIDES.length);
-  const handlePrev = () => setCurrent((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
+    const timer = setTimeout(() => {
+      setCurrentIndex((prev) => (prev + 1) % SLIDES.length);
+    }, SLIDE_DURATION);
+
+    return () => clearTimeout(timer);
+  }, [currentIndex, isPaused]);
+
+  const goToSlide = (idx: number) => {
+    setCurrentIndex(idx);
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % SLIDES.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
+  };
+
+  const currentSlide = SLIDES[currentIndex];
 
   return (
     <section
-      className="relative w-full bg-[#F5EFEB] py-10 sm:py-14 lg:py-16 min-h-[620px] sm:min-h-[600px] lg:min-h-[580px] flex items-center overflow-hidden"
+      id="naturetote-hero"
+      className="relative w-full overflow-hidden bg-[#0a382b] text-white select-none"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={(e) => {
@@ -93,149 +134,242 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
       onTouchEnd={(e) => {
         if (touchStartX.current === null) return;
         const diff = touchStartX.current - e.changedTouches[0].clientX;
-        if (diff > 45) handleNext();
-        else if (diff < -45) handlePrev();
+        if (diff > 50) nextSlide();
+        if (diff < -50) prevSlide();
         touchStartX.current = null;
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-          {/* Left Column: Clean, Elegant Typography with Fixed Content Height */}
-          <div className="lg:col-span-6 text-left flex flex-col justify-between min-h-[380px] sm:min-h-[360px] lg:min-h-[420px]">
-            {/* Animated Slide Content Box */}
-            <div className="relative min-h-[310px] sm:min-h-[290px] lg:min-h-[340px]">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={active.id + '-text'}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.25 }}
-                  className="space-y-4 sm:space-y-5"
-                >
-                  {/* Clean Sub-tag */}
-                  <div className="h-6 flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#A36A23]"></span>
-                    <span className="text-xs sm:text-sm font-semibold text-[#8A5B20] tracking-wide uppercase">
-                      {active.tag}
-                    </span>
-                  </div>
+      {/* Background with Ambient Image & Naturetote Deep Forest Gradient */}
+      <div className="absolute inset-0 z-0">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide.id}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.7, ease: 'easeInOut' }}
+            className="absolute inset-0"
+          >
+            <img
+              src={currentSlide.bgImage}
+              alt=""
+              className="w-full h-full object-cover object-center"
+              onError={(e) => {
+                // Safe fallback to prevent broken visual
+                const target = e.currentTarget;
+                if (!target.src.includes('Fabric-Bag-Mfg.webp')) {
+                  target.src = '/images/Fabric-Bag-Mfg.webp';
+                }
+              }}
+            />
+            {/* Elegant Naturetote multi-stop gradient ensuring 100% readable text & visible background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#072a20]/95 via-[#0e5a46]/85 to-[#0e5a46]/65" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#072a20] via-transparent to-black/25" />
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-                  {/* Main Hero Headline (Reserved Height to prevent height jumping) */}
-                  <div className="min-h-[4.2rem] sm:min-h-[5.2rem] lg:min-h-[6.2rem] flex items-center">
-                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#111111] leading-[1.15]">
-                      {active.title}
-                    </h1>
-                  </div>
+      {/* Main Slide Content Area */}
+      <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[460px] sm:min-h-[500px]">
+          
+          {/* Left Column: Editorial Naturetote Content */}
+          <div className="lg:col-span-7 flex flex-col justify-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide.id}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.45, ease: 'easeOut' }}
+                className="space-y-4 sm:space-y-5"
+              >
+                {/* Top Badge */}
+                <div className="inline-flex items-center gap-2 bg-[#f5f1e8]/15 border border-[#f5f1e8]/25 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium text-[#f5f1e8] shadow-xs">
+                  <span className="w-2 h-2 rounded-full bg-[#6bcb5b] animate-pulse" />
+                  <span>{currentSlide.badge}</span>
+                </div>
 
-                  {/* Subtitle (Reserved Height to prevent height jumping) */}
-                  <div className="min-h-[3.8rem] sm:min-h-[3.2rem] lg:min-h-[3.6rem]">
-                    <p className="text-sm sm:text-base text-[#444444] leading-relaxed max-w-xl">
-                      {active.subtitle}
-                    </p>
-                  </div>
+                {/* Main Headline */}
+                <h1 className="font-serif-nature text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-white leading-[1.12]">
+                  {currentSlide.title}
+                </h1>
 
-                  {/* Minimal Highlights (Reserved Height) */}
-                  <div className="min-h-[2rem] flex flex-wrap items-center gap-x-4 gap-y-2 text-xs sm:text-sm text-[#333333]">
-                    {active.highlights.map((item, idx) => (
-                      <span key={idx} className="flex items-center gap-1.5">
-                        <span className="text-[#8A5B20] font-bold">✓</span>
-                        <span>{item}</span>
-                      </span>
-                    ))}
-                  </div>
+                {/* Subtitle */}
+                <p className="text-[#f5f1e8]/90 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl font-light">
+                  {currentSlide.subtitle}
+                </p>
 
-                  {/* Clean Action Buttons */}
-                  <div className="pt-2 flex flex-wrap items-center gap-3">
-                    <button
-                      id="hero-rfq-button"
-                      onClick={() => onOpenQuoteModal(active.division)}
-                      className="px-7 py-3.5 rounded-full bg-[#111111] text-white text-xs sm:text-sm font-bold hover:bg-black transition shadow-sm active:scale-95 flex items-center gap-2 group"
-                    >
-                      <span>Request Export RFQ</span>
-                      <ArrowRight className="w-4 h-4 text-[#F9D9A7] group-hover:translate-x-1 transition-transform" />
-                    </button>
+                {/* Value Checkpoints */}
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1 text-xs sm:text-sm text-[#f5f1e8]/85">
+                  {currentSlide.highlights.map((item, i) => (
+                    <div key={i} className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#6bcb5b] shrink-0" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
 
-                    <button
-                      onClick={() => onNavigate(active.pageTarget)}
-                      className="px-6 py-3.5 rounded-full bg-white/80 hover:bg-white text-[#111111] text-xs sm:text-sm font-semibold border border-[#D5C8B0] transition shadow-xs"
-                    >
-                      View {active.division.split(' ')[0]} Catalog
-                    </button>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Simple, Minimal Slide Indicators (Dots + Numbers) */}
-            <div className="pt-6 sm:pt-4 flex items-center gap-4 border-t border-[#E8DFC8]/60 mt-4">
-              <div className="flex items-center gap-2">
-                {SLIDES.map((slide, idx) => (
+                {/* Call-to-action Buttons */}
+                <div className="pt-3 flex flex-wrap items-center gap-3.5">
                   <button
-                    key={slide.id}
-                    onClick={() => setCurrent(idx)}
-                    className={`transition-all duration-300 rounded-full ${
-                      idx === current
-                        ? 'w-8 h-2 bg-[#111111]'
-                        : 'w-2 h-2 bg-[#C8BEB0] hover:bg-[#8A7555]'
-                    }`}
-                    aria-label={`Go to slide ${idx + 1}`}
-                  />
-                ))}
-              </div>
+                    id={`hero-btn-primary-${currentSlide.id}`}
+                    onClick={() => onNavigate(currentSlide.pageTarget)}
+                    className="bg-[#f5f1e8] hover:bg-white text-[#0e5a46] font-bold px-6 sm:px-8 py-3.5 rounded-xl text-xs sm:text-sm transition-all duration-200 shadow-md hover:shadow-xl flex items-center gap-2 cursor-pointer active:scale-95"
+                  >
+                    <span>{currentSlide.ctaPrimary}</span>
+                    <ArrowRight className="w-4 h-4 text-[#0e5a46]" />
+                  </button>
 
-              <span className="text-xs text-[#777777] font-medium">
-                0{current + 1} / 0{SLIDES.length}
-              </span>
-
-              <div className="flex items-center gap-1 ml-auto sm:ml-4">
-                <button
-                  onClick={handlePrev}
-                  className="p-2 rounded-full text-[#444444] hover:text-[#111111] hover:bg-white/60 transition"
-                  aria-label="Previous slide"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button
-                  onClick={handleNext}
-                  className="p-2 rounded-full text-[#444444] hover:text-[#111111] hover:bg-white/60 transition"
-                  aria-label="Next slide"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
+                  <button
+                    id={`hero-btn-rfq-${currentSlide.id}`}
+                    onClick={() => onOpenQuoteModal(currentSlide.division)}
+                    className="border border-[#f5f1e8]/60 hover:border-white bg-[#f5f1e8]/10 hover:bg-[#f5f1e8]/20 text-white font-semibold px-5 sm:px-7 py-3.5 rounded-xl text-xs sm:text-sm transition-all duration-200 backdrop-blur-xs cursor-pointer active:scale-95 flex items-center gap-2"
+                  >
+                    <Sparkles className="w-4 h-4 text-[#6bcb5b]" />
+                    <span>{currentSlide.ctaSecondary}</span>
+                  </button>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-          {/* Right Column: Clean, Large, Beautiful Image with Constant Aspect Ratio Container */}
-          <div className="lg:col-span-6 flex items-center justify-center">
-            <div className="w-full relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-md aspect-[4/3] sm:aspect-[16/11] bg-[#EDE5D8]">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={active.id + '-img'}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute inset-0 w-full h-full"
-                >
-                  <ImageWithFallback
-                    src={active.image}
-                    alt={active.title}
-                    className="w-full h-full object-cover"
-                    fallbackType={active.fallbackType}
+          {/* Right Column: Featured Product Showcase Card (Ensures Products are Clearly Visible) */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide.id}
+                initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: -15 }}
+                transition={{ duration: 0.45, ease: 'easeOut' }}
+                className="w-full max-w-sm sm:max-w-md bg-white rounded-2xl p-4 sm:p-5 shadow-2xl border border-white/20 text-[#2f3437] relative group"
+              >
+                {/* Product Image Frame */}
+                <div className="relative w-full aspect-4/3 sm:aspect-square rounded-xl overflow-hidden bg-[#f5f1e8] flex items-center justify-center p-3">
+                  <img
+                    src={currentSlide.showcaseImage}
+                    alt={currentSlide.title}
+                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (!target.src.includes('Bag-1-638x1024.webp')) {
+                        target.src = '/images/Bag-1-638x1024.webp';
+                      }
+                    }}
                   />
-
-                  {/* Subtle category label in bottom corner */}
-                  <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-xs text-white text-xs font-semibold px-3 py-1.5 rounded-lg z-10">
-                    {active.division}
+                  {/* Floating Trust Badge */}
+                  <div className="absolute top-3 left-3 bg-[#0e5a46] text-white text-[11px] font-semibold px-2.5 py-1 rounded-md shadow-md flex items-center gap-1.5">
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#6bcb5b]" />
+                    <span>{currentSlide.showcaseBadge}</span>
                   </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
+
+                  {/* Category Pill */}
+                  <div className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-xs text-[#0e5a46] text-[11px] font-bold px-2.5 py-1 rounded-full shadow-xs border border-[#e6dec9]">
+                    {currentSlide.division}
+                  </div>
+                </div>
+
+                {/* Card Bottom Meta */}
+                <div className="mt-3.5 flex items-center justify-between">
+                  <div>
+                    <h3 className="font-serif-nature font-bold text-base text-[#0e5a46] leading-tight">
+                      {currentSlide.showcaseLabel}
+                    </h3>
+                    <p className="text-xs text-[#2f3437]/65 mt-0.5">
+                      Export Quality • Custom Branding Available
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => onNavigate(currentSlide.pageTarget)}
+                    className="shrink-0 p-2 rounded-lg bg-[#e6dec9]/60 hover:bg-[#0e5a46] hover:text-white text-[#0e5a46] transition-colors cursor-pointer"
+                    aria-label="View product details"
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Navigation Arrow Controls */}
+      <button
+        id="hero-slider-prev-btn"
+        onClick={prevSlide}
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/35 hover:bg-[#0e5a46] text-white flex items-center justify-center backdrop-blur-md transition-all duration-200 cursor-pointer shadow-md hover:scale-105 active:scale-95"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+      </button>
+
+      <button
+        id="hero-slider-next-btn"
+        onClick={nextSlide}
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/35 hover:bg-[#0e5a46] text-white flex items-center justify-center backdrop-blur-md transition-all duration-200 cursor-pointer shadow-md hover:scale-105 active:scale-95"
+        aria-label="Next slide"
+      >
+        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+      </button>
+
+      {/* Interactive Bottom Progress Indicators & Slide Switcher */}
+      <div className="relative z-20 w-full bg-black/25 backdrop-blur-xs border-t border-white/10 py-3">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
+            {SLIDES.map((slide, idx) => {
+              const isCurrent = idx === currentIndex;
+              return (
+                <button
+                  key={slide.id}
+                  id={`hero-slide-tab-${slide.id}`}
+                  onClick={() => goToSlide(idx)}
+                  className={`text-left p-2 rounded-lg transition-all duration-200 cursor-pointer group ${
+                    isCurrent
+                      ? 'bg-white/15 border border-white/25 shadow-xs'
+                      : 'hover:bg-white/10 border border-transparent'
+                  }`}
+                  aria-label={`Go to ${slide.division}`}
+                >
+                  {/* Progress Line */}
+                  <div className="h-1 w-full bg-white/20 rounded-full overflow-hidden mb-1.5">
+                    {isCurrent ? (
+                      <motion.div
+                        key={`progress-${idx}-${currentIndex}-${isPaused}`}
+                        initial={{ width: '0%' }}
+                        animate={{ width: isPaused ? undefined : '100%' }}
+                        transition={{
+                          duration: isPaused ? 0 : SLIDE_DURATION / 1000,
+                          ease: 'linear',
+                        }}
+                        className="h-full bg-[#6bcb5b] rounded-full"
+                      />
+                    ) : (
+                      <div className="h-full w-0" />
+                    )}
+                  </div>
+
+                  {/* Tab Label */}
+                  <div className="flex items-center justify-between text-xs">
+                    <span
+                      className={`font-semibold truncate ${
+                        isCurrent ? 'text-white' : 'text-white/70 group-hover:text-white'
+                      }`}
+                    >
+                      {slide.division}
+                    </span>
+                    <span className="text-[10px] text-white/50 shrink-0 ml-1">
+                      0{idx + 1}
+                    </span>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
     </section>
   );
 };
+

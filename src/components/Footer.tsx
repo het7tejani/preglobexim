@@ -1,122 +1,232 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Mail, ArrowRight, Phone, MapPin, CheckCircle2 } from 'lucide-react';
 import { ActivePage } from '../types';
+import { SITE_INFO } from '../data/siteContent';
 
 interface FooterProps {
   onNavigate: (page: ActivePage) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+  const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setSubscribed(true);
+    setTimeout(() => {
+      setSubscribed(false);
+      setEmail('');
+    }, 4000);
+  };
+
+  const navTo = (page: ActivePage) => {
+    onNavigate(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-[#F8F4EC] border-t border-[#E3D6C1] py-10 px-4 sm:px-6 lg:px-8 text-[#111111]">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center text-center">
-          {/* Column 1 (40% flex-basis on original site) */}
-          <div className="md:col-span-5 text-center md:text-left space-y-1.5">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#111111]">
-              PriGlob <span className="text-[#A36A23]">Exim</span>
-            </h2>
-            <p className="text-xs font-bold text-[#8A7555] uppercase tracking-wider">
-              International Merchant Exporter &amp; Trading House
+    <footer className="w-full bg-[#e6dec9] border-t border-[#d8ceba] text-[#2f3437]">
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+          {/* Col 1: Brand Info & Newsletter (Naturetote ditto copy) */}
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            <button
+              onClick={() => navTo('home')}
+              className="flex items-center gap-2 cursor-pointer text-left focus:outline-none"
+            >
+              <img
+                src={SITE_INFO.logo}
+                alt="PriGlob Exim"
+                className="h-14 w-auto object-contain"
+                onError={(e) => {
+                  (e.target as HTMLElement).style.display = 'none';
+                }}
+              />
+              <div>
+                <span className="font-serif-nature font-bold text-2xl text-[#0e5a46] block leading-none">
+                  PriGlob <span className="text-[#478a3f]">Exim</span>
+                </span>
+                <span className="text-[11px] text-[#2f3437]/75 font-semibold tracking-wider uppercase block mt-1">
+                  International Merchant Exporter
+                </span>
+              </div>
+            </button>
+
+            <p className="text-sm font-light text-[#2f3437]/75 leading-relaxed max-w-sm">
+              Government of India recognized merchant exporter. Premium organic cotton &amp; jute bags, hallmarked diamond &amp; gemstone fine jewelry, and pure agrarian spices exported to global buyers across 25+ countries.
             </p>
-            <p className="text-xs text-[#555555]">
-              Govt. of India IEC Registered • Port of Loading: Mundra &amp; Pipavav
-            </p>
-            <div className="pt-1 flex flex-wrap gap-1.5 justify-center md:justify-start">
-              <span className="text-[10px] bg-[#EAE0CE] px-2 py-0.5 rounded text-[#222222] font-semibold">FOB</span>
-              <span className="text-[10px] bg-[#EAE0CE] px-2 py-0.5 rounded text-[#222222] font-semibold">CIF</span>
-              <span className="text-[10px] bg-[#EAE0CE] px-2 py-0.5 rounded text-[#222222] font-semibold">CFR</span>
-              <span className="text-[10px] bg-[#EAE0CE] px-2 py-0.5 rounded text-[#222222] font-semibold">DDP</span>
-              <span className="text-[10px] bg-[#111111] text-[#F9D9A7] px-2 py-0.5 rounded font-semibold">FCL / LCL</span>
+
+            {/* Newsletter Subscription */}
+            <div className="flex flex-col gap-3">
+              <h4 className="font-serif-nature font-bold text-base text-[#0e5a46]">
+                Subscribe to our trade newsletter
+              </h4>
+              <form onSubmit={handleSubscribe} className="relative max-w-sm flex items-center">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your corporate email address"
+                  className="w-full h-12 pl-10 pr-24 text-xs sm:text-sm bg-white border border-[#d8ceba] rounded-xl focus:outline-none focus:border-[#478a3f] text-[#2f3437] placeholder-[#2f3437]/50"
+                  required
+                />
+                <Mail className="absolute left-3.5 w-4.5 h-4.5 text-[#2f3437]/40 pointer-events-none" />
+                <button
+                  type="submit"
+                  className="absolute right-1.5 top-1.5 h-9 px-4 bg-[#0e5a46] hover:bg-[#197a60] text-white font-semibold rounded-lg flex items-center justify-center gap-1.5 transition-colors cursor-pointer text-xs"
+                >
+                  <span>{subscribed ? 'Joined!' : 'Join'}</span>
+                  {!subscribed && <ArrowRight className="w-3.5 h-3.5" />}
+                </button>
+              </form>
+              {subscribed && (
+                <p className="text-xs text-[#0e5a46] font-medium flex items-center gap-1">
+                  <CheckCircle2 className="w-3.5 h-3.5" /> Thank you for subscribing to PriGlob Exim export updates!
+                </p>
+              )}
             </div>
           </div>
 
-          {/* Column 2 (22.5% flex-basis on original site) */}
-          <div className="md:col-span-3 text-center">
-            <p className="text-sm text-[#333333] leading-relaxed">
-              9, Sanskruti Park Society, Jahangirpura, Surat, Gujarat, India.
-            </p>
-          </div>
-
-          {/* Column 3 (22.5% flex-basis on original site) */}
-          <div className="md:col-span-4 text-center space-y-3 text-sm">
-            <div>
-              <p className="font-bold text-[#111111]">For Asia, Africa &amp; Oceania</p>
-              <p className="text-[#333333]">
-                <a href="mailto:priglobexim@gmail.com" className="hover:underline">
-                  priglobexim@gmail.com
-                </a>
-                <br />
-                <a href="tel:+919484855426" className="hover:underline">
-                  +91 948 485 5426
-                </a>
-              </p>
+          {/* Col 2, 3, 4: Link Columns */}
+          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
+            {/* Information Column */}
+            <div className="flex flex-col gap-4">
+              <h4 className="font-serif-nature font-extrabold text-sm sm:text-base text-[#0e5a46] uppercase tracking-wider">
+                Information
+              </h4>
+              <ul className="flex flex-col gap-3 text-xs sm:text-sm font-medium text-[#2f3437]/80">
+                <li>
+                  <button
+                    onClick={() => navTo('our-company')}
+                    className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
+                  >
+                    Our Story &amp; Company
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => navTo('our-team')}
+                    className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
+                  >
+                    Executive Leadership
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => navTo('faq')}
+                    className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
+                  >
+                    Export FAQs &amp; Incoterms
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => navTo('contact')}
+                    className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
+                  >
+                    Contact Trade Desk
+                  </button>
+                </li>
+                <li>
+                  <span className="text-[#2f3437]/50 text-xs">Ports: Mundra &amp; Pipavav</span>
+                </li>
+              </ul>
             </div>
 
-            <div>
-              <p className="font-bold text-[#111111]">For EU &amp; North/South America</p>
-              <p className="text-[#333333]">
-                <a href="mailto:info.priglob@gmail.com" className="hover:underline">
-                  info.priglob@gmail.com
-                </a>
-                <br />
-                <a href="tel:+393445784783" className="hover:underline">
-                  +39 344 578 4783
-                </a>
-              </p>
+            {/* Quick Links / Export Divisions */}
+            <div className="flex flex-col gap-4">
+              <h4 className="font-serif-nature font-extrabold text-sm sm:text-base text-[#0e5a46] uppercase tracking-wider">
+                Export Lines
+              </h4>
+              <ul className="flex flex-col gap-3 text-xs sm:text-sm font-medium text-[#2f3437]/80">
+                <li>
+                  <button
+                    onClick={() => navTo('cotton-jute-tote-bag')}
+                    className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
+                  >
+                    Cotton &amp; Jute Bags
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => navTo('gems-jewellery')}
+                    className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
+                  >
+                    Gems &amp; Fine Jewellery
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => navTo('indian-spices')}
+                    className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
+                  >
+                    Authentic Indian Spices
+                  </button>
+                </li>
+                <li>
+                  <span className="text-[#2f3437]/60 text-xs">FCL &amp; LCL Container Lots</span>
+                </li>
+                <li>
+                  <span className="text-[#2f3437]/60 text-xs">OEM &amp; Custom Labeling</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Get In Touch Column */}
+            <div className="flex flex-col gap-4 col-span-2 sm:col-span-1">
+              <h4 className="font-serif-nature font-extrabold text-sm sm:text-base text-[#0e5a46] uppercase tracking-wider">
+                Get In Touch
+              </h4>
+              <div className="flex flex-col gap-3 text-xs sm:text-sm text-[#2f3437]/80">
+                <p className="flex items-start gap-2">
+                  <MapPin className="w-4 h-4 text-[#0e5a46] flex-shrink-0 mt-0.5" />
+                  <span>9, Sanskruti Park Society, Jahangirpura, Surat, Gujarat 395005, India.</span>
+                </p>
+                <p className="flex items-center gap-2">
+                  <Phone className="w-4 h-4 text-[#0e5a46] flex-shrink-0" />
+                  <a href="tel:+919484855426" className="hover:text-[#0e5a46] font-semibold">
+                    +91 948 485 5426
+                  </a>
+                </p>
+                <p className="flex items-center gap-2">
+                  <Mail className="w-4 h-4 text-[#0e5a46] flex-shrink-0" />
+                  <a href="mailto:priglobexim@gmail.com" className="hover:text-[#0e5a46]">
+                    priglobexim@gmail.com
+                  </a>
+                </p>
+                <div className="pt-2 flex flex-wrap gap-1.5">
+                  <span className="text-[10px] bg-white px-2 py-0.5 rounded text-[#2f3437] font-semibold border border-[#d8ceba]">
+                    FOB
+                  </span>
+                  <span className="text-[10px] bg-white px-2 py-0.5 rounded text-[#2f3437] font-semibold border border-[#d8ceba]">
+                    CIF
+                  </span>
+                  <span className="text-[10px] bg-white px-2 py-0.5 rounded text-[#2f3437] font-semibold border border-[#d8ceba]">
+                    CFR
+                  </span>
+                  <span className="text-[10px] bg-white px-2 py-0.5 rounded text-[#2f3437] font-semibold border border-[#d8ceba]">
+                    DDP
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Navigation & copyright */}
-        <div className="mt-10 pt-6 border-t border-[#EAE0D0] flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-xs text-[#666666]">
-          <button
-            onClick={() => { onNavigate('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="hover:text-black transition"
-          >
-            Home
-          </button>
-          <button
-            onClick={() => { onNavigate('cotton-jute-tote-bag'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="hover:text-black transition"
-          >
-            Cotton &amp; Jute Bags
-          </button>
-          <button
-            onClick={() => { onNavigate('gems-jewellery'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="hover:text-black transition"
-          >
-            Gems &amp; Jewellery
-          </button>
-          <button
-            onClick={() => { onNavigate('indian-spices'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="hover:text-black transition"
-          >
-            Indian Spices
-          </button>
-          <button
-            onClick={() => { onNavigate('our-company'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="hover:text-black transition"
-          >
-            Our Company
-          </button>
-          <button
-            onClick={() => { onNavigate('our-team'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="hover:text-black transition"
-          >
-            Our Team
-          </button>
-          <button
-            onClick={() => { onNavigate('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="hover:text-black transition"
-          >
-            Contact Us
-          </button>
-          <button
-            onClick={() => { onNavigate('faq'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="hover:text-black transition"
-          >
-            FAQ
-          </button>
+        {/* Bottom Copyright & Verification Line */}
+        <div className="border-t border-[#d8ceba] pt-8 mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#2f3437]/65">
+          <p>© {new Date().getFullYear()} PriGlob Exim. All rights reserved. Direct Manufacturer &amp; Merchant Exporter.</p>
+          <div className="flex flex-wrap items-center gap-3">
+            <span>Govt. IEC Registration</span>
+            <span>•</span>
+            <span>APEDA Member</span>
+            <span>•</span>
+            <span>Spices Board of India</span>
+            <span>•</span>
+            <span>GJEPC Registered</span>
+          </div>
         </div>
       </div>
     </footer>

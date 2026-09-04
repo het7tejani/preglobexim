@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle2, Send } from 'lucide-react';
+import { X, CheckCircle2, Send, ShieldCheck } from 'lucide-react';
 import { SITE_INFO } from '../data/siteContent';
 
 interface QuoteModalProps {
@@ -39,7 +39,6 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    // Simulate instantaneous smooth submission
     setTimeout(() => {
       setSubmitting(false);
       setSubmitted(true);
@@ -64,12 +63,12 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/65 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
-      <div className="relative w-full max-w-xl bg-[#F8F4EC] rounded-3xl p-6 sm:p-8 shadow-2xl border border-[#E0D4BE] text-[#111111]">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
+      <div className="relative w-full max-w-xl bg-[#f5f1e8] rounded-2xl p-6 sm:p-8 shadow-2xl border border-[#e6dec9] text-[#2f3437]">
         {/* Close button */}
         <button
           onClick={handleReset}
-          className="absolute top-5 right-5 p-2 rounded-full text-[#444444] hover:bg-[#EAE0CE] transition"
+          className="absolute top-5 right-5 p-2 rounded-full text-[#2f3437]/70 hover:bg-[#e6dec9] transition cursor-pointer"
           aria-label="Close dialog"
         >
           <X className="w-5 h-5" />
@@ -77,19 +76,19 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
 
         {submitted ? (
           <div className="py-8 text-center space-y-4">
-            <div className="w-14 h-14 bg-[#F9D9A7] rounded-full flex items-center justify-center mx-auto text-[#734A12]">
+            <div className="w-14 h-14 bg-[#0e5a46] rounded-full flex items-center justify-center mx-auto text-white shadow-md">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl font-bold text-[#111111]">
+            <h3 className="font-serif-nature text-2xl font-bold text-[#0e5a46]">
               Export RFQ Received!
             </h3>
-            <p className="text-sm text-[#444444] max-w-md mx-auto leading-relaxed">
-              Thank you for submitting your Request for Quotation to PriGlob Exim. Our international export division will calculate freight rates, volume discounts, and shipping schedules to your target port within 24 hours.
+            <p className="text-xs sm:text-sm text-[#2f3437]/75 max-w-md mx-auto leading-relaxed font-light">
+              Thank you for submitting your Request for Quotation to PriGlob Exim. Our international export division will calculate container freight rates, volume discounts, and shipping schedules to your target port within 24 hours.
             </p>
             <div className="pt-3">
               <button
                 onClick={handleReset}
-                className="bg-[#111111] text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-black transition shadow"
+                className="bg-[#0e5a46] hover:bg-[#197a60] text-white px-7 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition shadow-xs cursor-pointer"
               >
                 Close Window
               </button>
@@ -99,17 +98,17 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
           <div>
             <div className="mb-5">
               <div className="flex items-center gap-2">
-                <span className="text-[11px] font-bold uppercase tracking-wider bg-[#111111] text-[#F9D9A7] px-2.5 py-0.5 rounded-full">
+                <span className="text-[11px] font-bold uppercase tracking-wider bg-[#0e5a46] text-white px-2.5 py-0.5 rounded-full">
                   International Trade Desk
                 </span>
-                <span className="text-[11px] font-semibold text-[#8A7555]">
+                <span className="text-[11px] font-semibold text-[#478a3f]">
                   Govt. of India IEC Registered
                 </span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-[#111111] mt-2">
+              <h3 className="font-serif-nature text-xl sm:text-2xl font-bold text-[#0e5a46] mt-2">
                 Request an Export Quote (RFQ)
               </h3>
-              <p className="text-xs text-[#555555] mt-1">
+              <p className="text-xs text-[#2f3437]/65 mt-1 font-light">
                 Direct factory manufacturing, container consolidation &amp; worldwide port shipping.
               </p>
             </div>
@@ -117,97 +116,100 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
             <form onSubmit={handleSubmit} className="space-y-3.5 text-left text-xs sm:text-sm">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#222222] mb-1">
-                    Contact / Buyer Name <span className="text-red-600">*</span>
+                  <label className="block text-xs font-bold text-[#0e5a46] uppercase tracking-wider mb-1">
+                    Contact Name *
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Robert Smith"
+                    placeholder="Full Name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#D5C8B0] text-xs sm:text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#e6dec9] text-xs sm:text-sm text-[#2f3437] focus:outline-none focus:border-[#0e5a46]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#222222] mb-1">
-                    Corporate Email <span className="text-red-600">*</span>
+                  <label className="block text-xs font-bold text-[#0e5a46] uppercase tracking-wider mb-1">
+                    Business Email *
                   </label>
                   <input
                     type="email"
                     required
-                    placeholder="buyer@globalcorp.com"
+                    placeholder="buyer@company.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#D5C8B0] text-xs sm:text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#e6dec9] text-xs sm:text-sm text-[#2f3437] focus:outline-none focus:border-[#0e5a46]"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#222222] mb-1">
-                    Country of Destination <span className="text-red-600">*</span>
+                  <label className="block text-xs font-bold text-[#0e5a46] uppercase tracking-wider mb-1">
+                    Phone / WhatsApp *
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="+1 555 0192"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#e6dec9] text-xs sm:text-sm text-[#2f3437] focus:outline-none focus:border-[#0e5a46]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-[#0e5a46] uppercase tracking-wider mb-1">
+                    Destination Country &amp; Port *
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g. United States, Germany, UAE"
-                    value={formData.country}
-                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#D5C8B0] text-xs sm:text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-[#222222] mb-1">
-                    Port of Discharge / City
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Rotterdam, Hamburg, Los Angeles"
+                    placeholder="e.g. USA / Port of Los Angeles"
                     value={formData.portOfDischarge}
                     onChange={(e) => setFormData({ ...formData, portOfDischarge: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#D5C8B0] text-xs sm:text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#e6dec9] text-xs sm:text-sm text-[#2f3437] focus:outline-none focus:border-[#0e5a46]"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#222222] mb-1">
-                    Product / Commodity
+                  <label className="block text-xs font-bold text-[#0e5a46] uppercase tracking-wider mb-1">
+                    Product Category / Item *
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g. Cotton Tote Bags, Spices, Jewellery"
+                    required
+                    placeholder="Product title"
                     value={formData.product}
                     onChange={(e) => setFormData({ ...formData, product: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#D5C8B0] text-xs sm:text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#e6dec9] text-xs sm:text-sm text-[#2f3437] focus:outline-none focus:border-[#0e5a46]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#222222] mb-1">
-                    Target Volume / Container
+                  <label className="block text-xs font-bold text-[#0e5a46] uppercase tracking-wider mb-1">
+                    Estimated Quantity *
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g. 5,000 pcs / 20ft FCL / 2 Tons"
+                    required
+                    placeholder="e.g. 5,000 pcs / 1x 20ft FCL"
                     value={formData.quantity}
                     onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#D5C8B0] text-xs sm:text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#e6dec9] text-xs sm:text-sm text-[#2f3437] focus:outline-none focus:border-[#0e5a46]"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#222222] mb-1">
+                  <label className="block text-xs font-bold text-[#0e5a46] uppercase tracking-wider mb-1">
                     Preferred Incoterm
                   </label>
                   <select
                     value={formData.incoterm}
                     onChange={(e) => setFormData({ ...formData, incoterm: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#D5C8B0] text-xs sm:text-sm text-[#111111] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#e6dec9] text-xs sm:text-sm text-[#2f3437] focus:outline-none focus:border-[#0e5a46]"
                   >
                     <option value="FOB">FOB (Mundra / JNPT / Air)</option>
                     <option value="CIF">CIF (Cost, Insurance &amp; Freight)</option>
@@ -217,13 +219,13 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#222222] mb-1">
+                  <label className="block text-xs font-bold text-[#0e5a46] uppercase tracking-wider mb-1">
                     Shipping Mode
                   </label>
                   <select
                     value={formData.shippingMode}
                     onChange={(e) => setFormData({ ...formData, shippingMode: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#D5C8B0] text-xs sm:text-sm text-[#111111] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#e6dec9] text-xs sm:text-sm text-[#2f3437] focus:outline-none focus:border-[#0e5a46]"
                   >
                     <option value="Ocean FCL (Full Container)">Ocean FCL (20ft / 40ft Container)</option>
                     <option value="Ocean LCL (Consolidated)">Ocean LCL (Palletized Cargo)</option>
@@ -234,7 +236,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#222222] mb-1">
+                <label className="block text-xs font-bold text-[#0e5a46] uppercase tracking-wider mb-1">
                   Custom OEM, Packaging &amp; Inspection Specifications
                 </label>
                 <textarea
@@ -242,7 +244,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                   placeholder="Mention OEM branding, barcoding, fabric GSM, mesh size, SGS inspection, or payment terms (L/C, T/T)..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-white border border-[#D5C8B0] text-xs sm:text-sm text-[#111111] placeholder:text-[#999999] focus:outline-none focus:ring-2 focus:ring-[#CBA569]"
+                  className="w-full px-3 py-2 rounded-xl bg-white border border-[#e6dec9] text-xs sm:text-sm text-[#2f3437] focus:outline-none focus:border-[#0e5a46]"
                 />
               </div>
 
@@ -250,7 +252,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full py-3 px-6 rounded-full bg-[#111111] hover:bg-black text-white text-sm font-semibold flex items-center justify-center space-x-2 transition shadow-md active:scale-98 disabled:opacity-75"
+                  className="w-full py-3 px-6 rounded-xl bg-[#0e5a46] hover:bg-[#197a60] text-white text-xs sm:text-sm font-bold flex items-center justify-center space-x-2 transition shadow-md active:scale-98 disabled:opacity-75 cursor-pointer"
                 >
                   {submitting ? (
                     <span>Calculating Global Rates...</span>
@@ -263,7 +265,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                 </button>
               </div>
 
-              <p className="text-[11px] text-center text-[#666666] pt-1">
+              <p className="text-[11px] text-center text-[#2f3437]/65 pt-1">
                 Direct export inquiries: {SITE_INFO.contacts.asiaAfricaOceania.email} | WhatsApp: +91 948 485 5426
               </p>
             </form>

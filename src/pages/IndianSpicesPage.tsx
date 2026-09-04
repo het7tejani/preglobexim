@@ -2,6 +2,7 @@ import React from 'react';
 import { INDIAN_SPICES_CATEGORIES } from '../data/catalogData';
 import { ProductCard } from '../components/ProductCard';
 import { ImageWithFallback } from '../components/ImageWithFallback';
+import { CheckCircle2, ShieldCheck, Flame } from 'lucide-react';
 
 interface IndianSpicesPageProps {
   onOpenQuoteModal: (product?: string) => void;
@@ -11,136 +12,119 @@ export const IndianSpicesPage: React.FC<IndianSpicesPageProps> = ({
   onOpenQuoteModal,
 }) => {
   return (
-    <div className="bg-[#F8F4EC] text-[#111111] min-h-screen">
-      {/* ========================================================================= */}
-      {/* SECTION 1: TITLE BANNER (has-tertiary-background-color #F9D9A7)           */}
-      {/* ========================================================================= */}
-      <div className="bg-[#F9D9A7] py-6 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-xl sm:text-2xl font-bold text-[#111111]">
-            Indian Spices
-          </h1>
+    <div className="bg-[#f5f1e8] text-[#2f3437] min-h-screen">
+      {/* Naturetote Header Banner */}
+      <div className="bg-[#0e5a46] text-white py-8 sm:py-10 px-4 sm:px-6 lg:px-8 border-b border-[#e6dec9]">
+        <div className="max-w-screen-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-[#6bcb5b] block mb-1">
+              Phytosanitary &amp; AGMARK Certified Exports
+            </span>
+            <h1 className="font-serif-nature text-2xl sm:text-3xl lg:text-4xl font-bold">
+              Authentic Indian Spices
+            </h1>
+          </div>
+          <button
+            onClick={() => onOpenQuoteModal('Indian Spices')}
+            className="bg-white hover:bg-[#f5f1e8] text-[#0e5a46] font-bold px-6 py-2.5 rounded-xl text-xs sm:text-sm shadow-md transition-all cursor-pointer flex-shrink-0"
+          >
+            Request FCL Container RFQ
+          </button>
         </div>
       </div>
 
-      {/* ========================================================================= */}
-      {/* SECTION 2: ABOUT / INTRO                                                  */}
-      {/* ========================================================================= */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" id="about">
+      {/* Intro Spotlight */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-screen-2xl mx-auto" id="about">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left Column: Image */}
-          <div className="w-full aspect-square rounded-[32px] overflow-hidden shadow-xs">
+          <div className="w-full aspect-square rounded-2xl overflow-hidden shadow-md border border-[#e6dec9] bg-white p-2">
             <ImageWithFallback
               src="/images/Untitled-design-17.webp"
               alt="Authentic Indian Spices for Worldwide Export and Supply"
               fallbackType="spices"
-              className="w-full h-full object-cover rounded-[32px]"
+              className="w-full h-full object-cover rounded-xl"
             />
           </div>
 
           {/* Right Column: Text */}
-          <div className="text-center space-y-5">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#111111]">
-              <strong>Authentic Indian Spices for Worldwide Export and Supply</strong>
+          <div className="space-y-5">
+            <div className="inline-flex items-center gap-2 bg-[#0e5a46]/10 text-[#0e5a46] px-3.5 py-1 rounded-full text-xs font-semibold">
+              <Flame className="w-3.5 h-3.5" />
+              <span>Direct Agrarian Origin &amp; High Essential Oils</span>
+            </div>
+            <h2 className="font-serif-nature text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#0e5a46]">
+              Authentic Indian Spices for Worldwide Export &amp; Supply
             </h2>
-            <p className="text-sm sm:text-base text-[#444444] leading-relaxed">
-              Our spices are selected for their purity, freshness, and suitability for worldwide export requirements.
+            <p className="text-sm sm:text-base text-[#2f3437]/75 leading-relaxed font-light">
+              From unadulterated Gujarat cumin to Salem turmeric with guaranteed 3-5% curcumin levels, PriGlob Exim aggregates, cleans, steam-sterilizes, and containerizes export-grade whole and ground spices conforming to US FDA and European Commission import standards.
             </p>
-            <div className="text-xs sm:text-sm font-medium text-[#222222] leading-loose space-y-1">
-              <div>Turmeric</div>
-              <div>Cumin Seeds</div>
-              <div>Coriander Seeds</div>
-              <div>Red Chilli</div>
-              <div>Black Pepper</div>
-              <div>Cardamom</div>
-              <div>Cloves</div>
-              <div>Fenugreek Seeds</div>
-              <div>Mustard Seeds</div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2">
+              {[
+                'Turmeric Fingers (Curcumin 3%+)',
+                'Unjha Cumin Seeds (99% Clean)',
+                'Coriander Seeds Eagle Grade',
+                'Guntur Red Chilli S4 & Teja',
+                'Malabar Black Pepper',
+                'Green Cardamom Bold 8mm',
+                'Kerala Whole Cloves',
+                'Fenugreek & Mustard Seeds',
+                'Custom Blended Masalas',
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center gap-1.5 text-xs text-[#2f3437]/85 font-medium">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#0e5a46] flex-shrink-0" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="pt-4">
+              <button
+                onClick={() => onOpenQuoteModal('Indian Spices')}
+                className="bg-[#0e5a46] hover:bg-[#197a60] text-white font-bold px-7 py-3 rounded-xl text-xs sm:text-sm shadow-sm transition-all cursor-pointer"
+              >
+                Inquire for 20ft / 40ft Container Rates
+              </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ========================================================================= */}
-      {/* SECTION 3: PERFORMANCE HIGHLIGHTS (has-tertiary-background-color)         */}
-      {/* ========================================================================= */}
-      <section className="py-14 sm:py-16 bg-[#F9D9A7] px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#111111]">
-              Our Performance Highlights
-            </h2>
-            <p className="text-sm sm:text-base text-[#333333] mt-2">
-              Exporting premium gems and jewellery worldwide with superior quality and trusted craftsmanship.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <div className="text-center space-y-2">
-              <h3 className="text-3xl sm:text-4xl font-bold text-[#111111]">34+ Tons</h3>
-              <h3 className="text-lg font-bold text-[#111111]">Spices Supplied Annually</h3>
-              <p className="text-sm text-[#444444] leading-relaxed">
-                Delivering high-quality Indian spices in bulk quantities with consistent supply and export standards.
-              </p>
-            </div>
-
-            <div className="text-center space-y-2">
-              <h3 className="text-3xl sm:text-4xl font-bold text-[#111111]">23+</h3>
-              <h3 className="text-lg font-bold text-[#111111]">Spice Varieties Offered</h3>
-              <p className="text-sm text-[#444444] leading-relaxed">
-                Providing a diverse range of authentic spices sourced from trusted farms across India.
-              </p>
-            </div>
-
-            <div className="text-center space-y-2">
-              <h3 className="text-3xl sm:text-4xl font-bold text-[#111111]">92%</h3>
-              <h3 className="text-lg font-bold text-[#111111]">Repeat Orders</h3>
-              <p className="text-sm text-[#444444] leading-relaxed">
-                Trusted by global buyers for purity, rich aroma, and reliable delivery.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* SECTION 4: EXPORT SPECIFICATIONS STRIP (B2B Exim Capabilities)          */}
-      {/* ========================================================================= */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mb-6 mt-10">
-        <div className="bg-[#FAF2E4] border border-[#E3D6C1] rounded-2xl p-4 sm:p-5 grid grid-cols-2 md:grid-cols-4 gap-4 text-xs sm:text-sm">
+      {/* Export Specifications Bar */}
+      <div className="border-y border-[#e6dec9] bg-white py-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-screen-2xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div className="space-y-1">
-            <span className="font-bold text-[#111111] uppercase tracking-wider text-[11px] block">Shipping Ports</span>
-            <p className="text-[#555555]">Mundra Port / JNPT Mumbai (Ocean Freight)</p>
+            <span className="font-serif-nature font-bold text-[#0e5a46] text-xs uppercase tracking-wider block">Origin Verification</span>
+            <p className="text-xs sm:text-sm text-[#2f3437]/75">Spices Board of India Registered</p>
           </div>
           <div className="space-y-1">
-            <span className="font-bold text-[#111111] uppercase tracking-wider text-[11px] block">Container Supply</span>
-            <p className="text-[#555555]">20ft / 40ft FCL &amp; LCL Consolidated Cargo</p>
+            <span className="font-serif-nature font-bold text-[#0e5a46] text-xs uppercase tracking-wider block">Port of Loading</span>
+            <p className="text-xs sm:text-sm text-[#2f3437]/75">Mundra Port &amp; Pipavav Port, Gujarat</p>
           </div>
           <div className="space-y-1">
-            <span className="font-bold text-[#111111] uppercase tracking-wider text-[11px] block">Export Packaging</span>
-            <p className="text-[#555555]">Jute Bags, PP Bags, Vacuum Pouch, Master Cartons</p>
+            <span className="font-serif-nature font-bold text-[#0e5a46] text-xs uppercase tracking-wider block">Export Packaging</span>
+            <p className="text-xs sm:text-sm text-[#2f3437]/75">25kg / 50kg PP Bags, Jute Bags &amp; Vacuum</p>
           </div>
           <div className="space-y-1">
-            <span className="font-bold text-[#111111] uppercase tracking-wider text-[11px] block">Certificates</span>
-            <p className="text-[#555555]">Spices Board, Phytosanitary, Fumigation &amp; COO</p>
+            <span className="font-serif-nature font-bold text-[#0e5a46] text-xs uppercase tracking-wider block">Quality Testing</span>
+            <p className="text-xs sm:text-sm text-[#2f3437]/75">SGS / Geo-Chem Inspection Available</p>
           </div>
         </div>
       </div>
 
-      {/* ========================================================================= */}
-      {/* SECTION 5+: PRODUCT CATEGORIES (Authentic Indian Spices)                  */}
-      {/* ========================================================================= */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16 sm:space-y-20">
+      {/* Product Categories & Product Cards */}
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
         {INDIAN_SPICES_CATEGORIES.map((cat, catIdx) => (
           <section key={catIdx} className="space-y-6 sm:space-y-8">
-            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-[#E8DFC8] pb-3 gap-2">
-              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#111111]">
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-[#e6dec9] pb-3 gap-2">
+              <h2 className="font-serif-nature text-xl sm:text-2xl font-bold text-[#0e5a46]">
                 {cat.name}
               </h2>
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#8A7555]">
+              <span className="text-xs font-semibold text-[#478a3f]">
                 {cat.products.length} Spice Varieties
               </span>
             </div>
+
             <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
               {cat.products.map((product, pIdx) => (
                 <div

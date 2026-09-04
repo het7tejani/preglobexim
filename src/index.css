@@ -1,1 +1,35 @@
 @import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-brand-cream: #f5f1e8;
+    --color-brand-sand: #e6dec9;
+    --color-brand-gold: #6bcb5b;
+    --color-brand-gold-dark: #478a3f;
+    --color-brand-teal: #0e5a46;
+    --color-brand-teal-light: #197a60;
+    --color-brand-teal-dark: #0a4030;
+    --color-brand-forest: #0e5a46;
+    --color-brand-text: #2f3437;
+  }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--color-brand-cream);
+    color: var(--color-brand-text);
+  }
+
+  h1, h2, h3, .font-serif-nature {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+/* Custom hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
