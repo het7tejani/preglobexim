@@ -24,7 +24,7 @@ export const SITE_INFO = {
   description:
     'PriGlob Exim delivers superior products with global reach, combining quality craftsmanship and competitive pricing to meet your business demands effectively.',
   logo: '/images/Untitled_design__7_-removebg-preview.png',
-  logoDark: '/images/logo.png',
+  logoDark: '/images/Untitled_design__7_-removebg-preview.png',
   address: '9, Sanskruti Park Society, Jahangirpura, Surat, Gujarat, India.',
   contacts: {
     asiaAfricaOceania: {

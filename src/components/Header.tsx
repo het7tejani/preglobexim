@@ -61,19 +61,14 @@ export const Header: React.FC<HeaderProps> = ({
 
           <button
             onClick={() => handleNav('home')}
-            className="flex items-center gap-2 group cursor-pointer"
+            className="flex items-center group cursor-pointer focus:outline-hidden"
+            aria-label="PriGlob Exim Home"
           >
             <img
               src={SITE_INFO.logo}
               alt="PriGlob Exim"
-              className="h-10 sm:h-12 w-auto object-contain"
-              onError={(e) => {
-                (e.target as HTMLElement).style.display = 'none';
-              }}
+              className="h-9 sm:h-11 w-auto object-contain max-w-[190px]"
             />
-            <span className="font-serif-nature font-bold text-xl text-[#0e5a46]">
-              PriGlob <span className="text-[#478a3f]">Exim</span>
-            </span>
           </button>
 
           <button
@@ -88,27 +83,17 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Desktop Header Layout */}
         <div className="hidden lg:flex items-center justify-between w-full gap-8">
-          {/* Logo */}
+          {/* Brand Logo from preglobexim.vercel.app */}
           <button
             onClick={() => handleNav('home')}
-            className="flex items-center gap-3 group flex-shrink-0 cursor-pointer focus:outline-none"
+            className="flex items-center group flex-shrink-0 cursor-pointer focus:outline-hidden"
+            aria-label="PriGlob Exim Home"
           >
             <img
               src={SITE_INFO.logo}
               alt="PriGlob Exim"
-              className="h-12 w-auto object-contain"
-              onError={(e) => {
-                (e.target as HTMLElement).style.display = 'none';
-              }}
+              className="h-12 xl:h-14 w-auto object-contain max-w-[240px] transition-transform duration-200 group-hover:scale-102"
             />
-            <div className="text-left">
-              <span className="font-serif-nature font-bold text-2xl text-[#0e5a46] tracking-tight block">
-                PriGlob <span className="text-[#478a3f]">Exim</span>
-              </span>
-              <span className="text-[10px] text-[#2f3437]/70 font-semibold tracking-wider uppercase block">
-                Direct Merchant Exporter
-              </span>
-            </div>
           </button>
 
           {/* Nav Links */}

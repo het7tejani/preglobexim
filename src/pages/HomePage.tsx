@@ -3,6 +3,7 @@ import { ActivePage } from '../types';
 import { HeroSlider } from '../components/HeroSlider';
 import { CategorySlider } from '../components/CategorySlider';
 import { ProductCard } from '../components/ProductCard';
+import { VideoSection } from '../components/VideoSection';
 import {
   COTTON_JUTE_CATEGORIES,
   GEMS_JEWELLERY_CATEGORIES,
@@ -78,7 +79,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {toteProducts.slice(0, 4).map((product, idx) => (
+            {toteProducts.slice(0, 8).map((product, idx) => (
               <ProductCard
                 key={idx}
                 product={product}
@@ -163,6 +164,9 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
         </div>
       </section>
+
+      {/* Video Reels Section: Spotted It? Shop It! (Naturetote identical layout) */}
+      <VideoSection onSelectProduct={(title) => onOpenQuoteModal(title)} />
 
       {/* 6. Naturetote 4-Column Features / USP Banner */}
       <section className="w-full py-12 bg-white border-y border-[#e6dec9]">

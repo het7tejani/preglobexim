@@ -34,24 +34,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="lg:col-span-5 flex flex-col gap-6">
             <button
               onClick={() => navTo('home')}
-              className="flex items-center gap-2 cursor-pointer text-left focus:outline-none"
+              className="flex items-center cursor-pointer text-left focus:outline-none group"
+              aria-label="PriGlob Exim Home"
             >
               <img
                 src={SITE_INFO.logo}
                 alt="PriGlob Exim"
-                className="h-14 w-auto object-contain"
-                onError={(e) => {
-                  (e.target as HTMLElement).style.display = 'none';
-                }}
+                className="h-14 w-auto object-contain max-w-[240px]"
               />
-              <div>
-                <span className="font-serif-nature font-bold text-2xl text-[#0e5a46] block leading-none">
-                  PriGlob <span className="text-[#478a3f]">Exim</span>
-                </span>
-                <span className="text-[11px] text-[#2f3437]/75 font-semibold tracking-wider uppercase block mt-1">
-                  International Merchant Exporter
-                </span>
-              </div>
             </button>
 
             <p className="text-sm font-light text-[#2f3437]/75 leading-relaxed max-w-sm">
