@@ -204,10 +204,10 @@ export const ContactPage: React.FC = () => {
                         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                         className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6dec9] bg-[#fdfcf9] text-xs sm:text-sm focus:outline-none focus:border-[#0e5a46]"
                       >
-                        <option value="Cotton & Jute Bags">Cotton &amp; Jute Bags</option>
-                        <option value="Gems & Jewellery">Gems &amp; Fine Jewellery</option>
-                        <option value="Indian Spices">Authentic Indian Spices</option>
-                        <option value="Multi-product Sourcing">Multi-product Sourcing</option>
+                        <option value="Cotton Canvas Tote Bags">Cotton Canvas Tote Bags</option>
+                        <option value="Golden Jute Bags & Hampers">Golden Jute Bags &amp; Hampers</option>
+                        <option value="Drawstring Pouches & Packaging">Drawstring Pouches &amp; Packaging</option>
+                        <option value="Custom OEM / ODM Bag Manufacturing">Custom OEM / ODM Bag Manufacturing</option>
                       </select>
                     </div>
                     <div>

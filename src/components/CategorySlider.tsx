@@ -11,58 +11,64 @@ interface CategoryItem {
 
 const CATEGORIES: CategoryItem[] = [
   {
-    name: 'Cotton Tote Bags',
-    subtitle: '150-350 GSM Organic',
-    image: '/images/Bag-1-638x1024.webp',
+    name: 'Cotton Canvas Totes',
+    subtitle: '130-350 GSM Organic',
+    image: '/images/PlainWhiteandBrownToteBag.webp',
     pageTarget: 'cotton-jute-tote-bag',
   },
   {
-    name: 'Classic Jute Bags',
-    subtitle: 'Golden Fiber Hamper',
-    image: '/images/Fabric-Bag-Mfg.webp',
+    name: 'Golden Jute Bags',
+    subtitle: 'Eco Gift Hampers',
+    image: '/images/Artboard_5_80c1f5c2-dc65-4265-bf03-cd57e59c0866-1024x1024.webp',
     pageTarget: 'cotton-jute-tote-bag',
   },
   {
     name: 'Drawstring Pouches',
-    subtitle: 'Custom Eco Packaging',
+    subtitle: 'Bespoke Eco Packaging',
     image: '/images/3x4_72408bcc-66f6-49cc-bdb9-13e671d67be9-1024x1024.webp',
     pageTarget: 'cotton-jute-tote-bag',
   },
   {
-    name: 'Canvas Shoppers',
-    subtitle: 'Heavy Duty Carryall',
+    name: 'Large Carryall Totes',
+    subtitle: 'Heavy Duty Gusseted',
     image: '/images/Black_White-LargeCanvasToteBag-1024x1024.webp',
     pageTarget: 'cotton-jute-tote-bag',
   },
   {
-    name: 'Diamond & Gem Rings',
-    subtitle: 'Hallmarked 14k/18k',
-    image: '/images/Untitled-design-12.webp',
-    pageTarget: 'gems-jewellery',
+    name: 'Office & Lunch Bags',
+    subtitle: 'Dual Reinforced Handles',
+    image: '/images/Office_hand_Bag_Beige.webp',
+    pageTarget: 'cotton-jute-tote-bag',
   },
   {
-    name: 'Fine Bracelets & Bangles',
-    subtitle: 'Artisan Crafted',
-    image: '/images/Untitled-design-15.webp',
-    pageTarget: 'gems-jewellery',
+    name: 'Cotton Zipper Pouches',
+    subtitle: 'Multipurpose Utility',
+    image: '/images/ChatGPTImageFeb26_2026_11_25_49AM.webp',
+    pageTarget: 'cotton-jute-tote-bag',
   },
   {
-    name: 'Marquise Necklaces',
-    subtitle: 'Luxury Fine Jewelry',
-    image: '/images/DN1118A_940x.webp',
-    pageTarget: 'gems-jewellery',
+    name: 'Everyday Tote Bags',
+    subtitle: 'Screen Printed & Dyed',
+    image: '/images/0Z4A9035-ok-923x1024.webp',
+    pageTarget: 'cotton-jute-tote-bag',
   },
   {
-    name: 'Whole & Ground Spices',
-    subtitle: 'Cardamom, Cumin, Chili',
-    image: '/images/Indian-Spices-683x1024.webp',
-    pageTarget: 'indian-spices',
+    name: 'Kids Tote Bags',
+    subtitle: 'Embroidered & Playful',
+    image: '/images/ShinchanEmbroideryKidsBag-982x1024.webp',
+    pageTarget: 'cotton-jute-tote-bag',
   },
   {
-    name: 'Farm-Direct Spices',
-    subtitle: 'Turmeric & Masalas',
-    image: '/images/Indian-Spices-Photo-1024x683.webp',
-    pageTarget: 'indian-spices',
+    name: 'Wardrobe Organizers',
+    subtitle: 'Breathable Fabric Covers',
+    image: '/images/16_Inch-1024x1024.webp',
+    pageTarget: 'cotton-jute-tote-bag',
+  },
+  {
+    name: 'Classic Jute Bags',
+    subtitle: 'Natural Golden Fiber',
+    image: '/images/Fabric-Bag-Mfg.webp',
+    pageTarget: 'cotton-jute-tote-bag',
   },
 ];
 
@@ -87,7 +93,7 @@ export const CategorySlider: React.FC<CategorySliderProps> = ({ onSelectCategory
         <div className="flex items-center justify-center gap-3 mb-6">
           <ChevronLeft className="w-5 h-5 text-[#478a3f] md:hidden" />
           <h2 className="font-serif-nature text-xl sm:text-2xl font-bold text-[#0e5a46]">
-            Shop by Category
+            Product Overview
           </h2>
           <ChevronRight className="w-5 h-5 text-[#478a3f] md:hidden" />
         </div>

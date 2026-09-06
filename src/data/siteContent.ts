@@ -48,40 +48,40 @@ export const SITE_INFO = {
 
 export const HOME_MANUFACTURING_UNITS = [
   {
-    title: 'Fabric Bag Mfg.',
+    title: 'Fabric Sizing & Laser Cutting',
     image: '/images/Fabric-Bag-Mfg.webp',
     link: '/cotton-jute-tote-bag',
   },
   {
-    title: 'Jewellery Mfg.',
-    image: '/images/Jewellery-Mfg-1024x683.webp',
-    link: '/gems-jewellery',
+    title: 'Industrial Stitching & Assembly',
+    image: '/images/Untitled-design-10-scaled.webp',
+    link: '/cotton-jute-tote-bag',
   },
   {
-    title: 'Indian Spices',
-    image: '/images/Indian-Spices-Photo-1024x683.webp',
-    link: '/indian-spices',
+    title: 'Screen Printing & Embroidery',
+    image: '/images/ShinchanEmbroideryKidsBag-982x1024.webp',
+    link: '/cotton-jute-tote-bag',
   },
 ];
 
 export const HOME_PRODUCTS = [
   {
-    title: 'Cotton & Jute Bags',
-    description: 'Eco-friendly cotton and jute bags designed for sustainable packaging, daily use, and global markets.',
+    title: 'Cotton Canvas Tote Bags',
+    description: '100% organic cotton shoppers, grocery carriers, and promotional totes custom branded for international retailers.',
     image: '/images/Bag-1-638x1024.webp',
     link: '/cotton-jute-tote-bag',
   },
   {
-    title: 'Gems & Jewellery',
-    description: 'High-quality diamonds and colored gemstones crafted for fine jewellery and international luxury markets.',
-    image: '/images/Diamond-Jewellery-683x1024.webp',
-    link: '/gems-jewellery',
+    title: 'Golden Jute Bags & Hampers',
+    description: 'Heavy-duty natural jute totes with reinforced cotton cord handles, ideal for gourmet gifting and eco-shopping.',
+    image: '/images/ChatGPT-Image-Mar-23-2026-09_11_04-AM.webp',
+    link: '/cotton-jute-tote-bag',
   },
   {
-    title: 'Authentic Indian Spices',
-    description: 'Fresh, aromatic spices sourced from trusted farms and processed for global culinary brands.',
-    image: '/images/Indian-Spices-683x1024.webp',
-    link: '/indian-spices',
+    title: 'Drawstring Pouches & Packaging',
+    description: 'Fine muslin and canvas drawstring pouches tailored for sustainable retail packaging, cosmetics, and accessories.',
+    image: '/images/DrowstingsCottonPouches-768x1024.webp',
+    link: '/cotton-jute-tote-bag',
   },
 ];
 
@@ -253,23 +253,23 @@ export const TRADE_EXECUTIVES: TradeExecutive[] = [
 
 export const FAQ_ITEMS: FAQItem[] = [
   {
-    question: 'What types of products does PriGlob Exim provide?',
+    question: 'What types of products does PriGlob Exim manufacture and export?',
     answer:
-      'PriGlob Exim exports a variety of products including cotton bags (multipurpose bags, handbags, and kids bags), premium Indian spices, and quality gems and jewellery for global markets.',
+      'PriGlob Exim specializes in manufacturing and exporting sustainable cotton canvas totes, golden jute bags, drawstring pouches, and eco-friendly shopping packaging for global retail and commercial buyers.',
   },
   {
     question: 'What is the minimum order quantity (MOQ)?',
     answer:
-      'The minimum order quantity may vary depending on the product type and customization requirements. Please contact us to discuss your specific order details.',
+      'The standard minimum order quantity is 500 to 1,000 units per bag style with custom OEM screen-printing or embroidery. Contact us for custom sizing or bespoke fabric requirements.',
   },
   {
     question: 'How do you ensure product quality?',
     answer:
-      'At PriGlob Exim, every product goes through strict quality checks during manufacturing and before shipment to ensure high standards and customer satisfaction.',
+      'At PriGlob Exim, every batch undergoes multi-point inspection including GSM fabric density checks, azo-free dye fastness verification, and load-tested double X-box handle stitching.',
   },
   {
     question: 'What types of transportation do you provide for shipments?',
     answer:
-      'We offer both air freight and sea freight shipping options depending on the buyer’s requirements, delivery timeline, and order volume.',
+      'We support FOB, CIF, and DDP terms via ocean freight (20ft & 40ft FCL container loads or consolidated LCL) from Mundra and Pipavav ports, as well as express air freight for sample lots.',
   },
 ];

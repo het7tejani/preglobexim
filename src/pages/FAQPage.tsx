@@ -4,24 +4,24 @@ import { HelpCircle, ChevronDown } from 'lucide-react';
 export const FAQPage: React.FC = () => {
   const faqs = [
     {
-      question: 'What types of products does PriGlob Exim export?',
+      question: 'What types of bags does PriGlob Exim manufacture and export?',
       answer:
-        'PriGlob Exim specializes in three core sectors: eco-friendly organic cotton & heavy-duty jute bags (drawstring pouches, shopping totes, hampers), fine gems & certified jewellery (lab-grown and natural diamonds, emeralds, 925 silver), and authentic AGMARK certified Indian spices (turmeric, cumin, chilli, cardamom).',
+        'PriGlob Exim specializes in sustainable cotton and golden jute bags for international retail, grocery chains, corporate gifting, and luxury packaging. Our export line covers 100% GOTS organic cotton tote bags, canvas shoppers, heavy-duty 350 GSM natural jute hampers, drawstring packaging pouches, and custom wardrobe organizer covers.',
     },
     {
       question: 'What is the Minimum Order Quantity (MOQ)?',
       answer:
-        'For cotton and jute bags, standard MOQ is 500 to 1,000 units per design with custom OEM screen-printing. For gems and jewellery, MOQ starts from 10 to 50 pieces. For bulk spices, we supply starting from 500 kg up to full 20ft (12-14 MT) and 40ft (24-26 MT) FCL container loads.',
+        'Our standard export MOQ is 500 to 1,000 units per style with custom OEM screen-printing or embroidery. For bespoke custom-dyed fabrics or specialized hardware requirements, MOQ is 2,000 units. We also support trial sampling orders for verified corporate importers.',
     },
     {
-      question: 'How do you ensure batch quality and international compliance?',
+      question: 'How do you ensure fabric quality, stitch durability, and international compliance?',
       answer:
-        'Every shipment undergoes pre-dispatch inspection. Bag fabrics are tested for GSM weight and dye fastness. Gemstones & diamonds come with IGI, GIA, or SGL certificates. Spices are batch-tested for moisture, pesticide residue, and aflatoxin levels with SGS/Geo-Chem inspection certificates on request.',
+        'Every production batch undergoes strict multi-point inspection. Fabrics are verified for GSM weight, tensile strength, and azo-free dye fastness. Handles are reinforced with double X-box stitching tested to hold up to 15-20 kg. All products comply with EU REACH, GOTS organic standards, and zero-plastic eco-regulations.',
     },
     {
       question: 'What Incoterms and shipping methods do you support?',
       answer:
-        'We support FOB (Mundra/Pipavav Port), CIF (any global destination seaport or airport), CFR, EXW, and DDP terms. Shipments are handled via reputable ocean carriers (Maersk, MSC, CMA CGM) and express air couriers (DHL, FedEx, Malca-Amit for high-value jewelry).',
+        'We support FOB (Mundra & Pipavav Seaports), CIF (any global seaport or international airport), CFR, EXW, and DDP terms. Ocean shipments are containerized in 20ft and 40ft FCL or consolidated LCL with premier freight forwarders.',
     },
     {
       question: 'Can you manufacture custom branded bags with our company logo?',

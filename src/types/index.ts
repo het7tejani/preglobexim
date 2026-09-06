@@ -1,8 +1,6 @@
 export type ActivePage =
   | 'home'
   | 'cotton-jute-tote-bag'
-  | 'gems-jewellery'
-  | 'indian-spices'
   | 'our-company'
   | 'our-team'
   | 'contact'

@@ -6,19 +6,13 @@ import { Footer } from './components/Footer';
 import { QuoteModal } from './components/QuoteModal';
 import { HomePage } from './pages/HomePage';
 import { CottonJutePage } from './pages/CottonJutePage';
-import { GemsJewelleryPage } from './pages/GemsJewelleryPage';
-import { IndianSpicesPage } from './pages/IndianSpicesPage';
 import { OurCompanyPage } from './pages/OurCompanyPage';
 import { OurTeamPage } from './pages/OurTeamPage';
 import { ContactPage } from './pages/ContactPage';
 import { FAQPage } from './pages/FAQPage';
 import { MessageCircle } from 'lucide-react';
 import { SITE_INFO } from './data/siteContent';
-import {
-  COTTON_JUTE_CATEGORIES,
-  GEMS_JEWELLERY_CATEGORIES,
-  INDIAN_SPICES_CATEGORIES,
-} from './data/catalogData';
+import { COTTON_JUTE_CATEGORIES } from './data/catalogData';
 
 export default function App() {
   const navigate = useNavigate();
@@ -32,8 +26,6 @@ export default function App() {
     if (!clean || clean === 'home') return 'home';
     const validPages: ActivePage[] = [
       'cotton-jute-tote-bag',
-      'gems-jewellery',
-      'indian-spices',
       'our-company',
       'our-team',
       'contact',
@@ -42,16 +34,14 @@ export default function App() {
     return validPages.includes(clean as ActivePage) ? (clean as ActivePage) : 'home';
   }, [location.pathname]);
 
-  // Backward compatibility: If a user or legacy link arrives with a hash like #gems-jewellery,
-  // gracefully redirect to the clean path /gems-jewellery
+  // Backward compatibility: If a user or legacy link arrives with a hash like #cotton-jute-tote-bag,
+  // gracefully redirect to the clean path /cotton-jute-tote-bag
   useEffect(() => {
     if (window.location.hash) {
       const hashPage = window.location.hash.replace(/^#\/?/, '') as ActivePage;
       const validPages: ActivePage[] = [
         'home',
         'cotton-jute-tote-bag',
-        'gems-jewellery',
-        'indian-spices',
         'our-company',
         'our-team',
         'contact',
@@ -74,8 +64,6 @@ export default function App() {
     const prefetchImages = () => {
       const allUrls = [
         ...COTTON_JUTE_CATEGORIES.flatMap(c => c.products.map(p => p.image)),
-        ...GEMS_JEWELLERY_CATEGORIES.flatMap(c => c.products.map(p => p.image)),
-        ...INDIAN_SPICES_CATEGORIES.flatMap(c => c.products.map(p => p.image)),
       ];
       allUrls.forEach(url => {
         if (url) {
@@ -130,13 +118,14 @@ export default function App() {
             path="/cotton-jute-tote-bag"
             element={<CottonJutePage onOpenQuoteModal={handleOpenQuoteModal} />}
           />
+          {/* Gracefully redirect legacy removed category URLs to cotton-jute-tote-bag */}
           <Route
             path="/gems-jewellery"
-            element={<GemsJewelleryPage onOpenQuoteModal={handleOpenQuoteModal} />}
+            element={<Navigate to="/cotton-jute-tote-bag" replace />}
           />
           <Route
             path="/indian-spices"
-            element={<IndianSpicesPage onOpenQuoteModal={handleOpenQuoteModal} />}
+            element={<Navigate to="/cotton-jute-tote-bag" replace />}
           />
           <Route path="/our-company" element={<OurCompanyPage />} />
           <Route path="/our-team" element={<OurTeamPage />} />

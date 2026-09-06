@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, ShoppingBag, ChevronDown, Phone, Mail, ArrowRight } from 'lucide-react';
+import { Menu, X, ShoppingBag, Phone } from 'lucide-react';
 import { ActivePage } from '../types';
 import { SITE_INFO } from '../data/siteContent';
 
@@ -15,16 +15,12 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenQuoteModal,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
 
   const handleNav = (page: ActivePage) => {
     onNavigate(page);
     setMobileMenuOpen(false);
-    setProductsDropdownOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
-  const isProductsActive = ['cotton-jute-tote-bag', 'gems-jewellery', 'indian-spices'].includes(activePage);
 
   return (
     <header className="sticky top-0 z-50 w-full flex flex-col bg-[#f5f1e8]/95 backdrop-blur-md border-b border-[#e6dec9] transition-all duration-300">
@@ -109,59 +105,17 @@ export const Header: React.FC<HeaderProps> = ({
               Home
             </button>
 
-            {/* Products Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setProductsDropdownOpen(true)}
-              onMouseLeave={() => setProductsDropdownOpen(false)}
+            {/* Cotton & Jute Bags Direct Nav Link */}
+            <button
+              onClick={() => handleNav('cotton-jute-tote-bag')}
+              className={`py-1.5 transition-colors cursor-pointer ${
+                activePage === 'cotton-jute-tote-bag'
+                  ? 'text-[#0e5a46] font-bold border-b-2 border-[#0e5a46]'
+                  : 'hover:text-[#0e5a46]'
+              }`}
             >
-              <button
-                onClick={() => setProductsDropdownOpen(!productsDropdownOpen)}
-                className={`py-1.5 flex items-center gap-1 transition-colors cursor-pointer ${
-                  isProductsActive
-                    ? 'text-[#0e5a46] font-bold border-b-2 border-[#0e5a46]'
-                    : 'hover:text-[#0e5a46]'
-                }`}
-              >
-                <span>Export Products</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${productsDropdownOpen ? 'rotate-180' : ''}`} />
-              </button>
-
-              {productsDropdownOpen && (
-                <div className="absolute top-full left-0 w-64 bg-white border border-[#e6dec9] rounded-xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <button
-                    onClick={() => handleNav('cotton-jute-tote-bag')}
-                    className={`w-full text-left px-4 py-2.5 text-xs sm:text-sm transition-colors ${
-                      activePage === 'cotton-jute-tote-bag'
-                        ? 'bg-[#f5f1e8] text-[#0e5a46] font-bold'
-                        : 'text-[#2f3437] hover:bg-[#f5f1e8] hover:text-[#0e5a46]'
-                    }`}
-                  >
-                    Cotton &amp; Jute Bags
-                  </button>
-                  <button
-                    onClick={() => handleNav('gems-jewellery')}
-                    className={`w-full text-left px-4 py-2.5 text-xs sm:text-sm transition-colors ${
-                      activePage === 'gems-jewellery'
-                        ? 'bg-[#f5f1e8] text-[#0e5a46] font-bold'
-                        : 'text-[#2f3437] hover:bg-[#f5f1e8] hover:text-[#0e5a46]'
-                    }`}
-                  >
-                    Gems &amp; Fine Jewellery
-                  </button>
-                  <button
-                    onClick={() => handleNav('indian-spices')}
-                    className={`w-full text-left px-4 py-2.5 text-xs sm:text-sm transition-colors ${
-                      activePage === 'indian-spices'
-                        ? 'bg-[#f5f1e8] text-[#0e5a46] font-bold'
-                        : 'text-[#2f3437] hover:bg-[#f5f1e8] hover:text-[#0e5a46]'
-                    }`}
-                  >
-                    Authentic Indian Spices
-                  </button>
-                </div>
-              )}
-            </div>
+              Cotton &amp; Jute Bags
+            </button>
 
             <button
               onClick={() => handleNav('our-company')}
@@ -231,26 +185,13 @@ export const Header: React.FC<HeaderProps> = ({
             >
               Home
             </button>
-            <div className="py-2 px-3 font-bold text-[#0e5a46] text-xs uppercase tracking-wider">
-              Products
-            </div>
             <button
               onClick={() => handleNav('cotton-jute-tote-bag')}
-              className="text-left py-2 pl-6 pr-3 rounded-lg hover:bg-[#e6dec9]/50"
+              className={`text-left py-2 px-3 rounded-lg hover:bg-[#e6dec9]/50 ${
+                activePage === 'cotton-jute-tote-bag' ? 'font-bold text-[#0e5a46] bg-[#e6dec9]/40' : ''
+              }`}
             >
               Cotton &amp; Jute Bags
-            </button>
-            <button
-              onClick={() => handleNav('gems-jewellery')}
-              className="text-left py-2 pl-6 pr-3 rounded-lg hover:bg-[#e6dec9]/50"
-            >
-              Gems &amp; Fine Jewellery
-            </button>
-            <button
-              onClick={() => handleNav('indian-spices')}
-              className="text-left py-2 pl-6 pr-3 rounded-lg hover:bg-[#e6dec9]/50"
-            >
-              Authentic Indian Spices
             </button>
             <div className="border-t border-[#e6dec9] pt-2" />
             <button

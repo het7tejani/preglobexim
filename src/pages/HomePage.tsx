@@ -4,11 +4,7 @@ import { HeroSlider } from '../components/HeroSlider';
 import { CategorySlider } from '../components/CategorySlider';
 import { ProductCard } from '../components/ProductCard';
 import { VideoSection } from '../components/VideoSection';
-import {
-  COTTON_JUTE_CATEGORIES,
-  GEMS_JEWELLERY_CATEGORIES,
-  INDIAN_SPICES_CATEGORIES,
-} from '../data/catalogData';
+import { COTTON_JUTE_CATEGORIES } from '../data/catalogData';
 import {
   ChevronRight,
   Leaf,
@@ -19,9 +15,9 @@ import {
   Building2,
   Users2,
   ArrowRight,
-  Globe2,
-  Ship,
-  FileCheck,
+  PackageCheck,
+  Sparkles,
+  Scissors,
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -33,10 +29,14 @@ export const HomePage: React.FC<HomePageProps> = ({
   onNavigate,
   onOpenQuoteModal,
 }) => {
-  // Grab top 4 products for each category showcase matching Naturetote 4-column layout
-  const toteProducts = COTTON_JUTE_CATEGORIES.flatMap((c) => c.products).slice(0, 8);
-  const jewelleryProducts = GEMS_JEWELLERY_CATEGORIES.flatMap((c) => c.products).slice(0, 4);
-  const spiceProducts = INDIAN_SPICES_CATEGORIES.flatMap((c) => c.products).slice(0, 4);
+  // Grab bag subcategories for dedicated showcases
+  const canvasToteProducts =
+    COTTON_JUTE_CATEGORIES.find((c) => c.name.toLowerCase().includes('canvas'))?.products || [];
+  const juteProducts =
+    COTTON_JUTE_CATEGORIES.find((c) => c.name.toLowerCase().includes('jute'))?.products || [];
+  const pouchProducts =
+    COTTON_JUTE_CATEGORIES.find((c) => c.name.toLowerCase().includes('drawstring'))?.products || [];
+  const allBagProducts = COTTON_JUTE_CATEGORIES.flatMap((c) => c.products);
 
   return (
     <div className="w-full flex flex-col bg-[#f5f1e8] text-[#2f3437]">
@@ -46,7 +46,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         onOpenQuoteModal={onOpenQuoteModal}
       />
 
-      {/* 2. Naturetote Circular Category Rail */}
+      {/* 2. Product Overview Circular Slider (formerly Shop by Category) */}
       <CategorySlider
         onSelectCategory={(page) => {
           onNavigate(page);
@@ -54,16 +54,16 @@ export const HomePage: React.FC<HomePageProps> = ({
         }}
       />
 
-      {/* 3. Showcase 1: Cotton & Jute Bags (Naturetote ditto layout) */}
+      {/* 3. Showcase 1: Cotton Canvas & Everyday Totes */}
       <section className="w-full py-8 sm:py-12 border-t border-[#e6dec9]">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="font-serif-nature text-xl sm:text-2xl font-bold text-[#0e5a46]">
-                Cotton &amp; Jute Bags
+                Cotton Canvas &amp; Everyday Totes
               </h2>
               <p className="text-xs sm:text-sm text-[#2f3437]/65 font-light">
-                GOTS certified organic cotton totes &amp; heavy-duty 350 GSM natural golden jute hampers
+                GOTS certified organic cotton totes, heavy-duty 150-350 GSM shoppers &amp; double-stitched carryalls
               </p>
             </div>
             <button
@@ -73,94 +73,100 @@ export const HomePage: React.FC<HomePageProps> = ({
               }}
               className="text-xs sm:text-sm font-bold text-[#0e5a46] hover:text-[#197a60] flex items-center gap-1 hover:underline cursor-pointer"
             >
-              <span>View All ({COTTON_JUTE_CATEGORIES.flatMap(c => c.products).length})</span>
+              <span>View All ({allBagProducts.length})</span>
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {toteProducts.slice(0, 8).map((product, idx) => (
-              <ProductCard
-                key={idx}
-                product={product}
-                fallbackType="bag"
-                onInquire={(title) => onOpenQuoteModal(title)}
-              />
-            ))}
+            {(canvasToteProducts.length > 0 ? canvasToteProducts.slice(0, 8) : allBagProducts.slice(0, 8)).map(
+              (product, idx) => (
+                <ProductCard
+                  key={idx}
+                  product={product}
+                  fallbackType="bag"
+                  onInquire={(title) => onOpenQuoteModal(title)}
+                />
+              )
+            )}
           </div>
         </div>
       </section>
 
-      {/* 4. Showcase 2: Gems & Fine Jewellery (Naturetote ditto layout) */}
+      {/* 4. Showcase 2: Golden Jute & Hamper Collections */}
       <section className="w-full py-8 sm:py-12 bg-white/40 border-t border-[#e6dec9]">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="font-serif-nature text-xl sm:text-2xl font-bold text-[#0e5a46]">
-                Gems &amp; Fine Jewellery
+                Golden Jute Bags &amp; Eco Hampers
               </h2>
               <p className="text-xs sm:text-sm text-[#2f3437]/65 font-light">
-                IGI &amp; GIA certified Surat lab-grown &amp; natural diamonds, precious emeralds, and 925 fine silver
+                100% biodegradable natural golden jute fiber, heavy-duty load bearing, and padded cane/cotton handles
               </p>
             </div>
             <button
               onClick={() => {
-                onNavigate('gems-jewellery');
+                onNavigate('cotton-jute-tote-bag');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className="text-xs sm:text-sm font-bold text-[#0e5a46] hover:text-[#197a60] flex items-center gap-1 hover:underline cursor-pointer"
             >
-              <span>View All ({GEMS_JEWELLERY_CATEGORIES.flatMap(c => c.products).length})</span>
+              <span>Explore Jute Collection</span>
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {jewelleryProducts.map((product, idx) => (
-              <ProductCard
-                key={idx}
-                product={product}
-                fallbackType="jewellery"
-                onInquire={(title) => onOpenQuoteModal(title)}
-              />
-            ))}
+            {(juteProducts.length > 0 ? juteProducts.slice(0, 4) : allBagProducts.slice(8, 12)).map(
+              (product, idx) => (
+                <ProductCard
+                  key={idx}
+                  product={product}
+                  fallbackType="bag"
+                  onInquire={(title) => onOpenQuoteModal(title)}
+                />
+              )
+            )}
           </div>
         </div>
       </section>
 
-      {/* 5. Showcase 3: Authentic Indian Spices (Naturetote ditto layout) */}
+      {/* 5. Showcase 3: Drawstring Pouches & Organizer Bags */}
       <section className="w-full py-8 sm:py-12 border-t border-[#e6dec9]">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="font-serif-nature text-xl sm:text-2xl font-bold text-[#0e5a46]">
-                Authentic Indian Spices
+                Drawstring Pouches &amp; Packaging Bags
               </h2>
               <p className="text-xs sm:text-sm text-[#2f3437]/65 font-light">
-                Direct farm-origin Salem turmeric, Unjha cumin seeds, green cardamom &amp; AGMARK certified spices
+                Eco-friendly retail packaging pouches, dustproof wardrobe organizer covers &amp; bespoke gift bags
               </p>
             </div>
             <button
               onClick={() => {
-                onNavigate('indian-spices');
+                onNavigate('cotton-jute-tote-bag');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className="text-xs sm:text-sm font-bold text-[#0e5a46] hover:text-[#197a60] flex items-center gap-1 hover:underline cursor-pointer"
             >
-              <span>View All ({INDIAN_SPICES_CATEGORIES.flatMap(c => c.products).length})</span>
+              <span>View All Pouches</span>
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {spiceProducts.map((product, idx) => (
-              <ProductCard
-                key={idx}
-                product={product}
-                fallbackType="spices"
-                onInquire={(title) => onOpenQuoteModal(title)}
-              />
-            ))}
+            {(pouchProducts.length > 0 ? pouchProducts.slice(0, 4) : allBagProducts.slice(12, 16)).map(
+              (product, idx) => (
+                <ProductCard
+                  key={idx}
+                  product={product}
+                  fallbackType="bag"
+                  onInquire={(title) => onOpenQuoteModal(title)}
+                />
+              )
+            )}
           </div>
         </div>
       </section>
@@ -178,10 +184,10 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <Leaf className="w-6 h-6" />
               </div>
               <h3 className="font-serif-nature text-[#0e5a46] text-base sm:text-lg font-bold">
-                100% Biodegradable &amp; Pure
+                100% Biodegradable &amp; Organic
               </h3>
               <p className="text-[#2f3437]/65 text-xs sm:text-sm font-light leading-relaxed">
-                Natural unbleached organic jute, zero-plastic cotton fibres, and unadulterated agrarian whole spices.
+                Natural unbleached organic jute, zero-plastic cotton fibres, and GOTS-certified sustainable packaging.
               </p>
             </div>
 
@@ -194,7 +200,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 Custom OEM Branding
               </h3>
               <p className="text-[#2f3437]/65 text-xs sm:text-sm font-light leading-relaxed">
-                Corporate logos, screen-printed hangtags, custom jewelry engraving, and bespoke retail packaging.
+                Corporate logos, silk-screen printing, bespoke embroidery, custom hangtags, and private label packaging.
               </p>
             </div>
 
@@ -207,7 +213,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 Made in India Direct
               </h3>
               <p className="text-[#2f3437]/65 text-xs sm:text-sm font-light leading-relaxed">
-                Manufactured by master Gujarat artisans and native growers with zero third-party agent markups.
+                Manufactured by master Gujarat artisans and stitching technicians with zero third-party agent markups.
               </p>
             </div>
 
@@ -233,11 +239,11 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-5 flex flex-col gap-3">
               <h2 className="font-serif-nature text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0e5a46] leading-tight">
-                Why Choose Export Products <br />from PriGlob Exim?
+                Why Choose Export Bags <br />from PriGlob Exim?
               </h2>
               <div className="w-16 h-1 bg-[#478a3f]/60 rounded-full" />
               <p className="text-[#2f3437]/70 text-sm font-light leading-relaxed mt-2">
-                We bridge the gap between India&apos;s rich manufacturing heritage and international trade requirements. Every shipment is batch-tested, certified by statutory export promotion councils, and delivered on strict FOB/CIF schedules.
+                We bridge the gap between India&apos;s rich textile heritage and international trade requirements. Every bag batch is inspected for seam strength, dye fastness, and delivered on strict FOB/CIF schedules.
               </p>
             </div>
 
@@ -252,21 +258,21 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-[#0e5a46] mt-0.5 flex-shrink-0" />
                 <p className="text-xs sm:text-sm text-[#2f3437]/85 font-medium leading-normal">
-                  Certified unbleached raw organic cotton fibers compliant with EU REACH standards.
+                  Certified unbleached raw organic cotton fibers compliant with EU REACH &amp; GOTS standards.
                 </p>
               </div>
 
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-[#0e5a46] mt-0.5 flex-shrink-0" />
                 <p className="text-xs sm:text-sm text-[#2f3437]/85 font-medium leading-normal">
-                  Surat precision lab-grown &amp; natural diamond cuts with laser-engraved certification.
+                  Custom OEM screen printing, azo-free natural dyes, and computerized embroidery branding.
                 </p>
               </div>
 
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-[#0e5a46] mt-0.5 flex-shrink-0" />
                 <p className="text-xs sm:text-sm text-[#2f3437]/85 font-medium leading-normal">
-                  Steam-sterilized Indian whole spices with verified moisture, oil content &amp; curcumin tests.
+                  100% biodegradable, compostable, and plastic-free golden jute and cotton textiles.
                 </p>
               </div>
 
@@ -289,7 +295,6 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* 8. Dedicated "Our Company & Executive Team" Spotlight */}
-      {/* (User prompt: "paste same to same, but it reference site dont have thong like our team our company then add it") */}
       <section className="w-full py-14 sm:py-18 bg-white border-b border-[#e6dec9]">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
@@ -300,7 +305,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               About PriGlob Exim &amp; Our Team
             </h2>
             <p className="text-xs sm:text-sm text-[#2f3437]/65 mt-2 font-light">
-              Rooted in Surat, Gujarat — India&apos;s trade capital — we connect global buyers directly with certified manufacturing facilities.
+              Rooted in Gujarat — India&apos;s textile and export capital — we connect global buyers directly with specialized bag manufacturing facilities.
             </p>
           </div>
 
@@ -312,10 +317,10 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <Building2 className="w-6 h-6" />
                 </div>
                 <h3 className="font-serif-nature text-xl font-bold text-[#0e5a46]">
-                  Our Company Infrastructure
+                  Our Manufacturing Infrastructure
                 </h3>
                 <p className="text-xs sm:text-sm text-[#2f3437]/75 font-light leading-relaxed">
-                  PriGlob Exim operates dedicated manufacturing units for cotton &amp; jute bags, gemstone lapidary workshops in Surat, and agrarian spice aggregation hubs in Gujarat. Fully compliant with international customs and environmental protocols.
+                  PriGlob Exim operates dedicated fabric sizing, cutting, sewing, and screen-printing facilities for cotton canvas and golden jute bags in Gujarat. Fully compliant with international customs, REACH, and environmental sustainability protocols.
                 </p>
                 <div className="pt-2 flex flex-wrap gap-2 text-[11px] font-semibold text-[#0e5a46]">
                   <span className="bg-white px-2.5 py-1 rounded-md border border-[#e6dec9]">Govt. IEC Registration</span>

@@ -45,7 +45,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </button>
 
             <p className="text-sm font-light text-[#2f3437]/75 leading-relaxed max-w-sm">
-              Government of India recognized merchant exporter. Premium organic cotton &amp; jute bags, hallmarked diamond &amp; gemstone fine jewelry, and pure agrarian spices exported to global buyers across 25+ countries.
+              Government of India recognized merchant exporter. Premium organic cotton canvas totes, heavy-duty golden jute hampers, and custom eco-friendly packaging exported to global buyers across 25+ countries.
             </p>
 
             {/* Newsletter Subscription */}
@@ -136,30 +136,30 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     onClick={() => navTo('cotton-jute-tote-bag')}
                     className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
                   >
-                    Cotton &amp; Jute Bags
+                    Cotton Canvas Totes
                   </button>
                 </li>
                 <li>
                   <button
-                    onClick={() => navTo('gems-jewellery')}
+                    onClick={() => navTo('cotton-jute-tote-bag')}
                     className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
                   >
-                    Gems &amp; Fine Jewellery
+                    Golden Jute Bags &amp; Hampers
                   </button>
                 </li>
                 <li>
                   <button
-                    onClick={() => navTo('indian-spices')}
+                    onClick={() => navTo('cotton-jute-tote-bag')}
                     className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
                   >
-                    Authentic Indian Spices
+                    Drawstring Pouches &amp; Packaging
                   </button>
                 </li>
                 <li>
                   <span className="text-[#2f3437]/60 text-xs">FCL &amp; LCL Container Lots</span>
                 </li>
                 <li>
-                  <span className="text-[#2f3437]/60 text-xs">OEM &amp; Custom Labeling</span>
+                  <span className="text-[#2f3437]/60 text-xs">OEM &amp; Screen Printing</span>
                 </li>
               </ul>
             </div>
@@ -211,11 +211,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="flex flex-wrap items-center gap-3">
             <span>Govt. IEC Registration</span>
             <span>•</span>
-            <span>APEDA Member</span>
+            <span>EPC Textile &amp; Jute Member</span>
             <span>•</span>
-            <span>Spices Board of India</span>
+            <span>GOTS Organic Compliance</span>
             <span>•</span>
-            <span>GJEPC Registered</span>
+            <span>Port of Mundra &amp; Pipavav</span>
           </div>
         </div>
       </div>

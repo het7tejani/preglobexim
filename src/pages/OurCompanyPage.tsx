@@ -40,10 +40,10 @@ export const OurCompanyPage: React.FC = () => {
               About PriGlob Exim
             </h2>
             <p className="text-sm sm:text-base text-[#2f3437]/75 leading-relaxed font-light">
-              At PriGlob Exim, we specialize in delivering export-grade Indian products across diverse sectors to international buyers. With our industrial base in Surat, Gujarat — India&apos;s leading textile and diamond hub — we combine native artisan craftsmanship with rigorous international quality standards.
+              At PriGlob Exim, we specialize in manufacturing and exporting sustainable cotton canvas and golden jute bags to international retailers, supermarkets, and corporate clients. With our industrial manufacturing and stitching base in Gujarat — India&apos;s leading textile capital — we combine native craftsmanship with rigorous international export standards.
             </p>
             <p className="text-sm sm:text-base text-[#2f3437]/75 leading-relaxed font-light">
-              Our direct factory integration eliminates intermediary markup, guaranteeing transparent pricing, certified testing documentation, and consistent containerized dispatches.
+              Our direct factory integration eliminates intermediary markups, guaranteeing competitive pricing, verified raw material certifications, and consistent containerized dispatches.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
@@ -61,7 +61,7 @@ export const OurCompanyPage: React.FC = () => {
               </div>
               <div className="flex items-center gap-2 text-xs text-[#2f3437]/85 font-medium">
                 <CheckCircle2 className="w-4 h-4 text-[#0e5a46] flex-shrink-0" />
-                <span>IGI, GIA &amp; AGMARK Certification</span>
+                <span>Reinforced Seams &amp; Load Tested</span>
               </div>
             </div>
           </div>
@@ -104,7 +104,7 @@ export const OurCompanyPage: React.FC = () => {
                 Our Vision
               </h3>
               <p className="text-xs sm:text-sm text-[#2f3437]/75 leading-relaxed font-light">
-                To be universally recognized as the preferred Indian merchant export house for sustainable packaging, certified fine jewelry, and pure agrarian spices across North America, Europe, Asia, and Oceania.
+                To be universally recognized as the preferred Indian manufacturer and merchant exporter for sustainable cotton, canvas, and golden jute bags across North America, Europe, Asia, and Oceania.
               </p>
             </div>
           </div>
@@ -115,7 +115,7 @@ export const OurCompanyPage: React.FC = () => {
       <section className="py-14 sm:py-16 max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="text-xs font-bold uppercase tracking-widest text-[#478a3f] block mb-2">
-            Integrated Manufacturing
+            Integrated Bag Manufacturing
           </span>
           <h2 className="font-serif-nature text-2xl sm:text-3xl font-bold text-[#0e5a46]">
             Our Sourcing &amp; Processing Units
@@ -128,34 +128,34 @@ export const OurCompanyPage: React.FC = () => {
               <img src="/images/Fabric-Bag-Mfg.webp" alt="Fabric Bags Manufacturing" className="w-full h-full object-cover" />
             </div>
             <h3 className="font-serif-nature text-lg font-bold text-[#0e5a46]">
-              Fabric Bag Stitching &amp; Printing Unit
+              Fabric Sizing &amp; Laser Cutting Unit
             </h3>
             <p className="text-xs text-[#2f3437]/70 font-light leading-relaxed">
-              Industrial sewing lines, automated fabric laser cutters, and screen-printing stations with 50,000+ units monthly capacity.
+              Automated multi-ply fabric spreading and precision computerized laser cutters ensuring millimeter-accurate panels for totes and pouches.
             </p>
           </div>
 
           <div className="bg-white border border-[#e6dec9] rounded-2xl p-6 space-y-3 shadow-sm hover:shadow-md transition-shadow">
             <div className="w-full aspect-[4/3] rounded-xl overflow-hidden bg-[#fbfaf7]">
-              <img src="/images/Jewellery-Mfg-1024x683.webp" alt="Jewellery Design Unit" className="w-full h-full object-cover" />
+              <img src="/images/Untitled-design-10-scaled.webp" alt="Industrial Assembly Lines" className="w-full h-full object-cover" />
             </div>
             <h3 className="font-serif-nature text-lg font-bold text-[#0e5a46]">
-              Jewellery Design &amp; Casting Studio
+              Heavy-Duty Stitching &amp; Assembly Lines
             </h3>
             <p className="text-xs text-[#2f3437]/70 font-light leading-relaxed">
-              Surat master lapidary workshop, precision diamond setting, 3D CAD modeling, and hallmarking assay partnerships.
+              Industrial sewing lines, automated hem-stitching, cross-box handle reinforcement, and multi-point tensile load testing stations.
             </p>
           </div>
 
           <div className="bg-white border border-[#e6dec9] rounded-2xl p-6 space-y-3 shadow-sm hover:shadow-md transition-shadow">
             <div className="w-full aspect-[4/3] rounded-xl overflow-hidden bg-[#fbfaf7]">
-              <img src="/images/Spices-Mfg-1024x683.webp" alt="Spice Aggregation Unit" className="w-full h-full object-cover" />
+              <img src="/images/ShinchanEmbroideryKidsBag-982x1024.webp" alt="Silk Screen Printing & Embroidery" className="w-full h-full object-cover" />
             </div>
             <h3 className="font-serif-nature text-lg font-bold text-[#0e5a46]">
-              Spice Aggregation &amp; Packaging Facility
+              Printing &amp; Custom Embroidery Studio
             </h3>
             <p className="text-xs text-[#2f3437]/70 font-light leading-relaxed">
-              Mechanical cleaning, destoning, steam sterilization, moisture checking, and vacuum container packaging.
+              Multi-color silk-screen printing tables, computerized embroidery machinery, azo-free natural dyes, and private-label hangtag packaging.
             </p>
           </div>
         </div>
