@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight, Volume2, VolumeX, ArrowUpRight, Play, Pause, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Volume2, VolumeX, ArrowUpRight, Play, X } from 'lucide-react';
 
 export interface VideoReel {
   id: string;
   videoUrl: string;
   posterUrl: string;
   productTitle: string;
-  price: string;
+  subtitle: string;
   productImage: string;
   tagline: string;
 }
@@ -14,57 +14,57 @@ export interface VideoReel {
 export const REELS_DATA: VideoReel[] = [
   {
     id: 'reel-1',
-    videoUrl: 'https://bytebiz.fra1.cdn.digitaloceanspaces.com/byte-qr-nfc/general/49191783081807649.mp4',
-    posterUrl: 'https://bytebiz.fra1.cdn.digitaloceanspaces.com/byte-qr-nfc/general/17551783054901731.png',
-    productTitle: 'Sweet Kitty Tote Bag | 300 Gsm',
-    price: '₹449',
-    productImage: '/images/14x16_Inch-1024x1024.webp',
-    tagline: 'Custom Printed Drawstring & Tote',
+    videoUrl: '/videos/trade-1.mp4',
+    posterUrl: '/videos/trade-1-poster.jpg',
+    productTitle: 'Global Ocean Freight Transit',
+    subtitle: 'Deep-Sea Full Container Load (FCL)',
+    productImage: '/images/sea-shipment.png',
+    tagline: 'Worldwide Sea Logistics',
   },
   {
     id: 'reel-2',
-    videoUrl: 'https://bytebiz.fra1.cdn.digitaloceanspaces.com/byte-qr-nfc/general/17281783082072159.mp4',
-    posterUrl: 'https://bytebiz.fra1.cdn.digitaloceanspaces.com/byte-qr-nfc/general/20011783054930626.png',
-    productTitle: 'Artisan Screen Print Cotton Tote',
-    price: '₹399',
-    productImage: '/images/3x4_72408bcc-66f6-49cc-bdb9-13e671d67be9-1024x1024.webp',
-    tagline: 'High Precision Heat Transfer Art',
+    videoUrl: '/videos/trade-2.mp4',
+    posterUrl: '/videos/trade-2-poster.jpg',
+    productTitle: 'Intermodal Port Container Handling',
+    subtitle: 'Mundra & Nhava Sheva Port Loading',
+    productImage: '/images/hero-trade.webp',
+    tagline: 'Heavy Port Gantry Operations',
   },
   {
     id: 'reel-3',
-    videoUrl: 'https://bytebiz.fra1.cdn.digitaloceanspaces.com/byte-qr-nfc/general/61971783082842806.mp4',
-    posterUrl: 'https://bytebiz.fra1.cdn.digitaloceanspaces.com/byte-qr-nfc/general/81371783054955341.png',
-    productTitle: 'Export Fabric Precision Cutting',
-    price: '₹249',
-    productImage: '/images/Fabric-Bag-Mfg.webp',
-    tagline: 'Mass Production Textile Workshop',
+    videoUrl: '/videos/trade-3.mp4',
+    posterUrl: '/videos/trade-3-poster.jpg',
+    productTitle: 'Direct Merchant Vessel Dispatch',
+    subtitle: 'Scheduled International Freight Lines',
+    productImage: '/images/sea-shipment.png',
+    tagline: 'Commercial Maritime Transit',
   },
   {
     id: 'reel-4',
-    videoUrl: 'https://bytebiz.fra1.cdn.digitaloceanspaces.com/byte-qr-nfc/general/62441783082362828.mp4',
-    posterUrl: 'https://bytebiz.fra1.cdn.digitaloceanspaces.com/byte-qr-nfc/general/68131783054987885.png',
-    productTitle: 'Brahmras Premium Eco Bag Range',
-    price: '₹599',
-    productImage: '/images/Bag-1-638x1024.webp',
-    tagline: 'Founder Product Quality Tour',
+    videoUrl: '/videos/trade-4.mp4',
+    posterUrl: '/videos/trade-4-poster.jpg',
+    productTitle: 'Export Fulfillment & Loading Docks',
+    subtitle: 'Customs-Cleared Palletized Cargo',
+    productImage: '/images/Office_hand_Bag_Beige.webp',
+    tagline: 'Multi-Modal Logistics Hub',
   },
   {
     id: 'reel-5',
-    videoUrl: 'https://bytebiz.fra1.cdn.digitaloceanspaces.com/byte-qr-nfc/general/70191783083089824.mp4',
-    posterUrl: 'https://bytebiz.fra1.cdn.digitaloceanspaces.com/byte-qr-nfc/general/46591783055003338.png',
-    productTitle: 'Sustainable Cotton Canvas Bags',
-    price: '₹349',
-    productImage: '/images/14x16_Inch-1024x1024.webp',
-    tagline: 'Aakhirkaar Sustainable Bag Hi Kyun?',
+    videoUrl: '/videos/trade-5.mp4',
+    posterUrl: '/videos/trade-5-poster.jpg',
+    productTitle: 'OEM Export Textile Stitching',
+    subtitle: 'Heavy-Duty Canvas & Jute Production',
+    productImage: '/images/Fabric-Bag-Mfg.webp',
+    tagline: 'Artisan Workshop Manufacturing',
   },
   {
     id: 'reel-6',
-    videoUrl: 'https://bytebiz.fra1.cdn.digitaloceanspaces.com/byte-qr-nfc/general/39291783083055949.mp4',
-    posterUrl: 'https://bytebiz.fra1.cdn.digitaloceanspaces.com/byte-qr-nfc/general/49861783138499153.png',
-    productTitle: 'Heavy-Duty Jute & Cotton Packaging',
-    price: '₹299',
-    productImage: '/images/Fabric-Bag-Mfg.webp',
-    tagline: 'Direct Factory Floor Manufacturing',
+    videoUrl: '/videos/trade-6.mp4',
+    posterUrl: '/videos/trade-6-poster.jpg',
+    productTitle: 'Priority Air Cargo & Express Customs',
+    subtitle: 'IATA Fast-Track Worldwide Transit',
+    productImage: '/images/airlines-cta-image-1024x768.webp',
+    tagline: 'Global Air Consignments',
   },
 ];
 
@@ -107,14 +107,17 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ onSelectProduct }) =
   return (
     <section className="w-full py-12 sm:py-16 bg-[#faf7f2] border-b border-[#e6dec9]/60 overflow-hidden">
       <div className="max-w-screen-2xl px-4 sm:px-6 lg:px-8 mx-auto">
-        {/* Section Header (Matches Naturetote 'Spotted It? Shop It!') */}
+        {/* Section Header */}
         <div className="flex flex-col items-center gap-2 mb-8 sm:mb-10 text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0e5a46]/10 border border-[#0e5a46]/20 text-[#0e5a46] text-xs font-semibold tracking-wide uppercase">
+            Global Trade In Motion
+          </div>
           <h2 className="font-serif-nature text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#0e5a46] tracking-tight">
-            Spotted It? Shop It!
+            Export Logistics & Factory Reels
           </h2>
           <div className="w-16 h-1 bg-[#478a3f]/70 rounded-full my-1" />
-          <p className="text-xs sm:text-sm text-[#2f3437]/75 max-w-lg">
-            Real reels from our active workshops, manufacturing facilities, and client showcases.
+          <p className="text-xs sm:text-sm text-[#2f3437]/75 max-w-xl">
+            Live reels from our international ocean cargo transit, intermodal port terminals, customs fulfillment hubs, and artisan export workshops.
           </p>
         </div>
 
@@ -170,9 +173,9 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ onSelectProduct }) =
                   <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10 pointer-events-none" />
 
                   {/* Top Bar: Brand Watermark & Sound Toggle */}
-                  <div className="absolute top-3.5 left-3.5 right-3.5 z-20 flex items-center justify-between">
-                    <span className="text-[10px] font-bold tracking-wider text-white/90 uppercase px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10">
-                      PriGlob Reel
+                  <div className="absolute top-3.5 left-3.5 right-3.5 z-20 flex items-center justify-between gap-2">
+                    <span className="text-[10px] font-bold tracking-wide text-white/90 uppercase px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/15 truncate max-w-[170px]">
+                      {reel.tagline}
                     </span>
 
                     <button
@@ -193,7 +196,7 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ onSelectProduct }) =
                     </div>
                   </div>
 
-                  {/* Bottom Product Pill Badge (Naturetote identical layout) */}
+                  {/* Bottom Product Pill Badge */}
                   <div className="absolute bottom-4 left-3.5 right-3.5 z-20 flex items-center gap-2.5 bg-black/40 backdrop-blur-md p-2 rounded-2xl border border-white/15 hover:bg-black/60 transition-colors">
                     {/* Product Thumbnail */}
                     <div className="w-11 h-11 bg-white rounded-xl flex-shrink-0 relative overflow-hidden p-0.5 shadow-md">
@@ -213,8 +216,8 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ onSelectProduct }) =
                       <p className="text-xs font-semibold text-white truncate leading-tight">
                         {reel.productTitle}
                       </p>
-                      <p className="text-[11px] font-bold text-white/90 mt-0.5">
-                        {reel.price}
+                      <p className="text-[10px] font-medium text-[#6bcb5b] mt-0.5 truncate">
+                        {reel.subtitle}
                       </p>
                     </div>
 
@@ -249,14 +252,19 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ onSelectProduct }) =
             className="relative w-full max-w-sm aspect-[9/16] bg-black rounded-3xl overflow-hidden shadow-2xl border border-white/20"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
-            <button
-              onClick={() => setActiveModalReel(null)}
-              className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer"
-              aria-label="Close modal"
-            >
-              <X className="w-5 h-5" />
-            </button>
+            {/* Top Bar: Tagline & Close Button */}
+            <div className="absolute top-4 left-4 right-4 z-30 flex items-center justify-between pointer-events-auto">
+              <span className="text-xs font-bold tracking-wide text-white uppercase px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20">
+                {activeModalReel.tagline}
+              </span>
+              <button
+                onClick={() => setActiveModalReel(null)}
+                className="w-10 h-10 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer border border-white/20"
+                aria-label="Close modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
 
             {/* Video Player in Modal */}
             <video
@@ -279,8 +287,8 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ onSelectProduct }) =
                 <p className="text-sm font-semibold text-white truncate">
                   {activeModalReel.productTitle}
                 </p>
-                <p className="text-xs text-[#6bcb5b] font-bold">
-                  {activeModalReel.price}
+                <p className="text-xs text-[#6bcb5b] font-medium">
+                  {activeModalReel.subtitle}
                 </p>
               </div>
               <button
@@ -289,7 +297,7 @@ export const VideoSection: React.FC<VideoSectionProps> = ({ onSelectProduct }) =
                   setActiveModalReel(null);
                   onSelectProduct?.(title);
                 }}
-                className="bg-[#0e5a46] hover:bg-[#197a60] text-white px-3.5 py-1.5 rounded-xl text-xs font-bold transition-transform active:scale-95"
+                className="bg-[#0e5a46] hover:bg-[#197a60] text-white px-3.5 py-1.5 rounded-xl text-xs font-bold transition-transform active:scale-95 cursor-pointer"
               >
                 Inquire
               </button>

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { ActivePage } from './types';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -20,9 +21,53 @@ import {
 } from './data/catalogData';
 
 export default function App() {
-  const [activePage, setActivePage] = useState<ActivePage>('home');
+  const navigate = useNavigate();
+  const location = useLocation();
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
   const [quoteProduct, setQuoteProduct] = useState<string | undefined>(undefined);
+
+  // Derive activePage accurately from the current pathname
+  const activePage: ActivePage = useMemo(() => {
+    const clean = location.pathname.replace(/^\/+/, '').replace(/\/+$/, '');
+    if (!clean || clean === 'home') return 'home';
+    const validPages: ActivePage[] = [
+      'cotton-jute-tote-bag',
+      'gems-jewellery',
+      'indian-spices',
+      'our-company',
+      'our-team',
+      'contact',
+      'faq',
+    ];
+    return validPages.includes(clean as ActivePage) ? (clean as ActivePage) : 'home';
+  }, [location.pathname]);
+
+  // Backward compatibility: If a user or legacy link arrives with a hash like #gems-jewellery,
+  // gracefully redirect to the clean path /gems-jewellery
+  useEffect(() => {
+    if (window.location.hash) {
+      const hashPage = window.location.hash.replace(/^#\/?/, '') as ActivePage;
+      const validPages: ActivePage[] = [
+        'home',
+        'cotton-jute-tote-bag',
+        'gems-jewellery',
+        'indian-spices',
+        'our-company',
+        'our-team',
+        'contact',
+        'faq',
+      ];
+      if (validPages.includes(hashPage)) {
+        const cleanPath = hashPage === 'home' ? '/' : `/${hashPage}`;
+        navigate(cleanPath, { replace: true });
+      }
+    }
+  }, [navigate]);
+
+  // Scroll to top instantly on every page/route change
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [location.pathname]);
 
   // Background prefetch catalog images during idle time so page openings are instantaneous
   useEffect(() => {
@@ -49,34 +94,9 @@ export default function App() {
     }
   }, []);
 
-  // Sync with window hash for seamless back/forward navigation
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '').replace('/', '') as ActivePage;
-      const validPages: ActivePage[] = [
-        'home',
-        'cotton-jute-tote-bag',
-        'gems-jewellery',
-        'indian-spices',
-        'our-company',
-        'our-team',
-        'contact',
-        'faq',
-      ];
-      if (validPages.includes(hash)) {
-        setActivePage(hash);
-      }
-    };
-
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
-
   const handleNavigate = (page: ActivePage) => {
-    setActivePage(page);
-    window.location.hash = page === 'home' ? '' : page;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const targetPath = page === 'home' ? '/' : `/${page}`;
+    navigate(targetPath);
   };
 
   const handleOpenQuoteModal = (product?: string) => {
@@ -93,27 +113,38 @@ export default function App() {
         onOpenQuoteModal={handleOpenQuoteModal}
       />
 
-      {/* Main Content Area */}
+      {/* Main Content Area with React Router Routes */}
       <main className="flex-1">
-        {activePage === 'home' && (
-          <HomePage
-            onNavigate={handleNavigate}
-            onOpenQuoteModal={handleOpenQuoteModal}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                onNavigate={handleNavigate}
+                onOpenQuoteModal={handleOpenQuoteModal}
+              />
+            }
           />
-        )}
-        {activePage === 'cotton-jute-tote-bag' && (
-          <CottonJutePage onOpenQuoteModal={handleOpenQuoteModal} />
-        )}
-        {activePage === 'gems-jewellery' && (
-          <GemsJewelleryPage onOpenQuoteModal={handleOpenQuoteModal} />
-        )}
-        {activePage === 'indian-spices' && (
-          <IndianSpicesPage onOpenQuoteModal={handleOpenQuoteModal} />
-        )}
-        {activePage === 'our-company' && <OurCompanyPage />}
-        {activePage === 'our-team' && <OurTeamPage />}
-        {activePage === 'contact' && <ContactPage />}
-        {activePage === 'faq' && <FAQPage />}
+          <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route
+            path="/cotton-jute-tote-bag"
+            element={<CottonJutePage onOpenQuoteModal={handleOpenQuoteModal} />}
+          />
+          <Route
+            path="/gems-jewellery"
+            element={<GemsJewelleryPage onOpenQuoteModal={handleOpenQuoteModal} />}
+          />
+          <Route
+            path="/indian-spices"
+            element={<IndianSpicesPage onOpenQuoteModal={handleOpenQuoteModal} />}
+          />
+          <Route path="/our-company" element={<OurCompanyPage />} />
+          <Route path="/our-team" element={<OurTeamPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+          {/* Unknown routes redirect cleanly to home */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
 
       {/* Footer */}
@@ -142,3 +173,4 @@ export default function App() {
     </div>
   );
 }
+
