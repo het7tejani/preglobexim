@@ -10,6 +10,9 @@ import { OurCompanyPage } from './pages/OurCompanyPage';
 import { OurTeamPage } from './pages/OurTeamPage';
 import { ContactPage } from './pages/ContactPage';
 import { FAQPage } from './pages/FAQPage';
+import { BlogListPage } from './pages/BlogListPage';
+import { BlogPostDetailPage } from './pages/BlogPostDetailPage';
+import { AdminPage } from './pages/AdminPage';
 import { MessageCircle } from 'lucide-react';
 import { SITE_INFO } from './data/siteContent';
 import { COTTON_JUTE_CATEGORIES } from './data/catalogData';
@@ -24,8 +27,11 @@ export default function App() {
   const activePage: ActivePage = useMemo(() => {
     const clean = location.pathname.replace(/^\/+/, '').replace(/\/+$/, '');
     if (!clean || clean === 'home') return 'home';
+    if (clean.startsWith('blog')) return 'blog';
     const validPages: ActivePage[] = [
       'cotton-jute-tote-bag',
+      'blog',
+      'admin',
       'our-company',
       'our-team',
       'contact',
@@ -42,6 +48,8 @@ export default function App() {
       const validPages: ActivePage[] = [
         'home',
         'cotton-jute-tote-bag',
+        'blog',
+        'admin',
         'our-company',
         'our-team',
         'contact',
@@ -127,6 +135,12 @@ export default function App() {
             path="/indian-spices"
             element={<Navigate to="/cotton-jute-tote-bag" replace />}
           />
+          <Route path="/blog" element={<BlogListPage />} />
+          <Route
+            path="/blog/:slug"
+            element={<BlogPostDetailPage onOpenQuoteModal={handleOpenQuoteModal} />}
+          />
+          <Route path="/admin" element={<AdminPage />} />
           <Route path="/our-company" element={<OurCompanyPage />} />
           <Route path="/our-team" element={<OurTeamPage />} />
           <Route path="/contact" element={<ContactPage />} />

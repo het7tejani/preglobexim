@@ -117,6 +117,18 @@ export const Header: React.FC<HeaderProps> = ({
               Cotton &amp; Jute Bags
             </button>
 
+            {/* Blog Link */}
+            <button
+              onClick={() => handleNav('blog')}
+              className={`py-1.5 transition-colors cursor-pointer ${
+                activePage === 'blog'
+                  ? 'text-[#0e5a46] font-bold border-b-2 border-[#0e5a46]'
+                  : 'hover:text-[#0e5a46]'
+              }`}
+            >
+              Blog
+            </button>
+
             <button
               onClick={() => handleNav('our-company')}
               className={`py-1.5 transition-colors cursor-pointer ${
@@ -192,6 +204,14 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               Cotton &amp; Jute Bags
+            </button>
+            <button
+              onClick={() => handleNav('blog')}
+              className={`text-left py-2 px-3 rounded-lg hover:bg-[#e6dec9]/50 ${
+                activePage === 'blog' ? 'font-bold text-[#0e5a46] bg-[#e6dec9]/40' : ''
+              }`}
+            >
+              Blog &amp; Insights
             </button>
             <div className="border-t border-[#e6dec9] pt-2" />
             <button

@@ -1,5 +1,5 @@
-import React from 'react';
-import { ActivePage } from '../types';
+import React, { useState, useEffect } from 'react';
+import { ActivePage, BlogPost } from '../types';
 import { HeroSlider } from '../components/HeroSlider';
 import { CategorySlider } from '../components/CategorySlider';
 import { ProductCard } from '../components/ProductCard';
@@ -18,6 +18,9 @@ import {
   PackageCheck,
   Sparkles,
   Scissors,
+  BookOpen,
+  Calendar,
+  Clock,
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -37,6 +40,19 @@ export const HomePage: React.FC<HomePageProps> = ({
   const pouchProducts =
     COTTON_JUTE_CATEGORIES.find((c) => c.name.toLowerCase().includes('drawstring'))?.products || [];
   const allBagProducts = COTTON_JUTE_CATEGORIES.flatMap((c) => c.products);
+
+  const [recentBlogs, setRecentBlogs] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    fetch('/api/blogs')
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.success && Array.isArray(json.data)) {
+          setRecentBlogs(json.data.slice(0, 3));
+        }
+      })
+      .catch((err) => console.error('Failed to load recent blogs:', err));
+  }, []);
 
   return (
     <div className="w-full flex flex-col bg-[#f5f1e8] text-[#2f3437]">
@@ -293,6 +309,99 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
         </div>
       </section>
+
+      {/* 8. From Our Manufacturing Journal & Export Blog */}
+      {recentBlogs.length > 0 && (
+        <section className="w-full py-12 sm:py-16 bg-[#fbfaf7] border-t border-[#e6dec9]">
+          <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-widest text-[#478a3f] block mb-2">
+                  Market Intelligence &amp; Technical Guides
+                </span>
+                <h2 className="font-serif-nature text-2xl sm:text-3xl font-bold text-[#0e5a46]">
+                  From Our Manufacturing Journal
+                </h2>
+                <p className="text-xs sm:text-sm text-[#2f3437]/65 mt-1 font-light">
+                  Industry insights, global compliance standards, and sustainable packaging trends for retail buyers.
+                </p>
+              </div>
+
+              <button
+                onClick={() => {
+                  onNavigate('blog');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="text-xs sm:text-sm font-bold text-[#0e5a46] hover:text-[#197a60] flex items-center gap-1.5 hover:underline cursor-pointer whitespace-nowrap self-start sm:self-auto"
+              >
+                <span>Browse All Articles</span>
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+              {recentBlogs.map((blog) => (
+                <article
+                  key={blog._id}
+                  onClick={() => {
+                    window.location.href = `/blog/${blog.slug}`;
+                  }}
+                  className="group cursor-pointer bg-white border border-[#e6dec9] rounded-2xl overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="aspect-[16/10] overflow-hidden bg-[#f5f1e8] relative">
+                      <img
+                        src={blog.coverImage || '/images/Bag-1-638x1024.webp'}
+                        alt={blog.title}
+                        className="w-full h-full object-cover group-hover:scale-104 transition-transform duration-500"
+                      />
+                      <div className="absolute top-3 left-3">
+                        <span className="px-2.5 py-1 bg-white/95 backdrop-blur-xs text-[#0e5a46] text-[10px] font-bold rounded-full uppercase tracking-wider shadow-xs border border-[#e6dec9]">
+                          {blog.category}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="p-5">
+                      <div className="flex items-center gap-2 text-[11px] text-[#2f3437]/60 mb-2">
+                        <Calendar className="w-3 h-3" />
+                        <span>
+                          {new Date(blog.publishedDate).toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric',
+                          })}
+                        </span>
+                        <span>•</span>
+                        <Clock className="w-3 h-3" />
+                        <span>{blog.readTime}</span>
+                      </div>
+
+                      <h3 className="font-serif-nature text-base sm:text-lg font-bold text-[#0e5a46] leading-snug mb-2 group-hover:text-[#478a3f] transition-colors line-clamp-2">
+                        {blog.title}
+                      </h3>
+
+                      <p className="text-xs text-[#2f3437]/70 font-light leading-relaxed line-clamp-2">
+                        {blog.excerpt}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="p-5 pt-0 flex items-center justify-between">
+                    <span className="text-xs text-[#2f3437]/80 font-medium truncate max-w-[150px]">
+                      By {blog.author?.name}
+                    </span>
+                    <span className="text-xs font-bold text-[#0e5a46] inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                      Read
+                      <ArrowRight className="w-3 h-3" />
+                    </span>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* 8. Dedicated "Our Company & Executive Team" Spotlight */}
       <section className="w-full py-14 sm:py-18 bg-white border-b border-[#e6dec9]">

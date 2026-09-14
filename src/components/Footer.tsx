@@ -113,6 +113,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </li>
                 <li>
                   <button
+                    onClick={() => navTo('blog')}
+                    className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
+                  >
+                    Blog &amp; Export Insights
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => navTo('admin')}
+                    className="text-[#2f3437]/50 hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left text-xs inline-flex items-center gap-1"
+                  >
+                    <span>Admin Dashboard</span>
+                  </button>
+                </li>
+                <li>
+                  <button
                     onClick={() => navTo('contact')}
                     className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
                   >
