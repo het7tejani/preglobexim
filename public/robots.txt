@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /api/
 
-Sitemap: https://priglobexim.com/sitemap.xml
+Sitemap: https://www.priglobexim.com/sitemap.xml
