@@ -1,41 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { BlogPost } from '../types';
+import React, { useState } from 'react';
+import { PUBLIC_BLOGS } from '../data/publicBlogs';
 import { Search, Calendar, Clock, User, ArrowRight, Tag, Sparkles, BookOpen } from 'lucide-react';
 
 export const BlogListPage: React.FC = () => {
-  const navigate = useNavigate();
-  const [blogs, setBlogs] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const loading = false;
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
-    fetchBlogs();
-  }, [selectedCategory, searchQuery]);
-
-  const fetchBlogs = async () => {
-    try {
-      setLoading(true);
-      const params = new URLSearchParams();
-      if (selectedCategory && selectedCategory !== 'All') {
-        params.append('category', selectedCategory);
-      }
-      if (searchQuery.trim()) {
-        params.append('search', searchQuery.trim());
-      }
-
-      const res = await fetch(`/api/blogs?${params.toString()}`);
-      const json = await res.json();
-      if (json.success) {
-        setBlogs(json.data);
-      }
-    } catch (err) {
-      console.error('Failed to load blogs:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const blogs = PUBLIC_BLOGS.filter(blog =>
+    (selectedCategory === 'All' || blog.category.toLowerCase() === selectedCategory.toLowerCase()) &&
+    (!searchQuery.trim() || [blog.title, blog.excerpt, ...blog.tags].some(text => text.toLowerCase().includes(searchQuery.trim().toLowerCase())))
+  );
 
   const categories = [
     'All',
@@ -141,8 +116,8 @@ export const BlogListPage: React.FC = () => {
         {/* Featured Hero Article */}
         {!loading && featuredPost && (
           <div className="mb-12">
-            <div
-              onClick={() => navigate(`/blog/${featuredPost.slug}`)}
+            <a
+              href={`/blog/${featuredPost.slug}`}
               className="group cursor-pointer bg-white border border-[#e6dec9] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 grid grid-cols-1 lg:grid-cols-12"
             >
               <div className="lg:col-span-7 aspect-[16/10] lg:aspect-auto overflow-hidden bg-[#fbfaf7] relative">
@@ -203,7 +178,7 @@ export const BlogListPage: React.FC = () => {
                   </span>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
         )}
 
@@ -213,8 +188,7 @@ export const BlogListPage: React.FC = () => {
             {regularPosts.map((blog) => (
               <article
                 key={blog._id}
-                onClick={() => navigate(`/blog/${blog.slug}`)}
-                className="group cursor-pointer bg-white border border-[#e6dec9] rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+                className="relative group cursor-pointer bg-white border border-[#e6dec9] rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="aspect-[16/10] overflow-hidden bg-[#fbfaf7] relative">
@@ -239,9 +213,7 @@ export const BlogListPage: React.FC = () => {
                       <span>{blog.readTime}</span>
                     </div>
 
-                    <h3 className="font-serif-nature text-lg sm:text-xl font-bold text-[#0e5a46] leading-snug mb-2.5 group-hover:text-[#478a3f] transition-colors line-clamp-2">
-                      {blog.title}
-                    </h3>
+                    <h3 className="font-serif-nature text-lg sm:text-xl font-bold text-[#0e5a46] leading-snug mb-2.5 group-hover:text-[#478a3f] transition-colors line-clamp-2"><a href={`/blog/${blog.slug}`} className="after:absolute after:inset-0">{blog.title}</a></h3>
 
                     <p className="text-xs text-[#2f3437]/70 font-light leading-relaxed line-clamp-3 mb-4">
                       {blog.excerpt}

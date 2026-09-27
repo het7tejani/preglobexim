@@ -1,8 +1,47 @@
 {
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/gems-jewellery",
+      "destination": "/cotton-jute-tote-bag",
+      "permanent": true
+    },
+    {
+      "source": "/indian-spices",
+      "destination": "/cotton-jute-tote-bag",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gsm-guide-canvas-tote-bags-bulk-buyers",
+      "destination": "/blog/importers-guide-jute-vs-canvas-durability-gsm",
+      "permanent": true
+    },
+    {
+      "source": "/blog/golden-jute-vs-cotton-choosing-right-eco-bag",
+      "destination": "/blog/importers-guide-jute-vs-canvas-durability-gsm",
+      "permanent": true
+    },
+    {
+      "source": "/blog/incoterms-2020-guide-importing-bags-india",
+      "destination": "/blog",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/"
+      "source": "/blog",
+      "destination": "/blog.html"
+    },
+    {
+      "source": "/admin",
+      "destination": "/admin.html"
     }
   ]
 }

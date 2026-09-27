@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { ActivePage, BlogPost } from '../types';
+import React from 'react';
+import { ActivePage } from '../types';
+import { PUBLIC_BLOGS } from '../data/publicBlogs';
 import { HeroSlider } from '../components/HeroSlider';
 import { CategorySlider } from '../components/CategorySlider';
 import { ProductCard } from '../components/ProductCard';
@@ -41,21 +42,11 @@ export const HomePage: React.FC<HomePageProps> = ({
     COTTON_JUTE_CATEGORIES.find((c) => c.name.toLowerCase().includes('drawstring'))?.products || [];
   const allBagProducts = COTTON_JUTE_CATEGORIES.flatMap((c) => c.products);
 
-  const [recentBlogs, setRecentBlogs] = useState<BlogPost[]>([]);
-
-  useEffect(() => {
-    fetch('/api/blogs')
-      .then((res) => res.json())
-      .then((json) => {
-        if (json.success && Array.isArray(json.data)) {
-          setRecentBlogs(json.data.slice(0, 3));
-        }
-      })
-      .catch((err) => console.error('Failed to load recent blogs:', err));
-  }, []);
+  const recentBlogs = PUBLIC_BLOGS.slice(0, 3);
 
   return (
     <div className="w-full flex flex-col bg-[#f5f1e8] text-[#2f3437]">
+      <h1 className="sr-only">PriGlob Exim - Cotton and Jute Bags Exporter</h1>
       {/* 1. Naturetote Full-Width Hero Slider with Bottom Linear Progress Indicators */}
       <HeroSlider
         onNavigate={onNavigate}
@@ -343,10 +334,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               {recentBlogs.map((blog) => (
                 <article
                   key={blog._id}
-                  onClick={() => {
-                    window.location.href = `/blog/${blog.slug}`;
-                  }}
-                  className="group cursor-pointer bg-white border border-[#e6dec9] rounded-2xl overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+                  className="relative group cursor-pointer bg-white border border-[#e6dec9] rounded-2xl overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
                     <div className="aspect-[16/10] overflow-hidden bg-[#f5f1e8] relative">
@@ -378,7 +366,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                       </div>
 
                       <h3 className="font-serif-nature text-base sm:text-lg font-bold text-[#0e5a46] leading-snug mb-2 group-hover:text-[#478a3f] transition-colors line-clamp-2">
-                        {blog.title}
+                        <a href={`/blog/${blog.slug}`} className="after:absolute after:inset-0">{blog.title}</a>
                       </h3>
 
                       <p className="text-xs text-[#2f3437]/70 font-light leading-relaxed line-clamp-2">

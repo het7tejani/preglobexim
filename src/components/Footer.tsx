@@ -32,8 +32,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
           {/* Col 1: Brand Info & Newsletter (Naturetote ditto copy) */}
           <div className="lg:col-span-5 flex flex-col gap-6">
-            <button
-              onClick={() => navTo('home')}
+            <a
+              href="/"
+              onClick={(e) => { e.preventDefault(); navTo('home'); }}
               className="flex items-center cursor-pointer text-left focus:outline-none group"
               aria-label="PriGlob Exim Home"
             >
@@ -42,7 +43,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 alt="PriGlob Exim"
                 className="h-14 w-auto object-contain max-w-[240px]"
               />
-            </button>
+            </a>
 
             <p className="text-sm font-light text-[#2f3437]/75 leading-relaxed max-w-sm">
               Government of India recognized merchant exporter. Premium organic cotton canvas totes, heavy-duty golden jute hampers, and custom eco-friendly packaging exported to global buyers across 25+ countries.
@@ -88,52 +89,58 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </h4>
               <ul className="flex flex-col gap-3 text-xs sm:text-sm font-medium text-[#2f3437]/80">
                 <li>
-                  <button
-                    onClick={() => navTo('our-company')}
+                  <a
+              href="/our-company"
+              onClick={(e) => { e.preventDefault(); navTo('our-company'); }}
                     className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
                   >
                     Our Story &amp; Company
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button
-                    onClick={() => navTo('our-team')}
+                  <a
+              href="/our-team"
+              onClick={(e) => { e.preventDefault(); navTo('our-team'); }}
                     className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
                   >
                     Executive Leadership
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button
-                    onClick={() => navTo('faq')}
+                  <a
+              href="/faq"
+              onClick={(e) => { e.preventDefault(); navTo('faq'); }}
                     className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
                   >
                     Export FAQs &amp; Incoterms
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button
-                    onClick={() => navTo('blog')}
+                  <a
+              href="/blog"
+              onClick={(e) => { e.preventDefault(); navTo('blog'); }}
                     className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
                   >
                     Blog &amp; Export Insights
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button
-                    onClick={() => navTo('admin')}
+                  <a
+              href="/admin"
+              onClick={(e) => { e.preventDefault(); navTo('admin'); }}
                     className="text-[#2f3437]/50 hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left text-xs inline-flex items-center gap-1"
                   >
                     <span>Admin Dashboard</span>
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button
-                    onClick={() => navTo('contact')}
+                  <a
+              href="/contact"
+              onClick={(e) => { e.preventDefault(); navTo('contact'); }}
                     className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
                   >
                     Contact Trade Desk
-                  </button>
+                  </a>
                 </li>
                 <li>
                   <span className="text-[#2f3437]/50 text-xs">Ports: Mundra &amp; Pipavav</span>
@@ -148,28 +155,31 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </h4>
               <ul className="flex flex-col gap-3 text-xs sm:text-sm font-medium text-[#2f3437]/80">
                 <li>
-                  <button
-                    onClick={() => navTo('cotton-jute-tote-bag')}
+                  <a
+              href="/cotton-jute-tote-bag"
+              onClick={(e) => { e.preventDefault(); navTo('cotton-jute-tote-bag'); }}
                     className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
                   >
                     Cotton Canvas Totes
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button
-                    onClick={() => navTo('cotton-jute-tote-bag')}
+                  <a
+              href="/cotton-jute-tote-bag"
+              onClick={(e) => { e.preventDefault(); navTo('cotton-jute-tote-bag'); }}
                     className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
                   >
                     Golden Jute Bags &amp; Hampers
-                  </button>
+                  </a>
                 </li>
                 <li>
-                  <button
-                    onClick={() => navTo('cotton-jute-tote-bag')}
+                  <a
+              href="/cotton-jute-tote-bag"
+              onClick={(e) => { e.preventDefault(); navTo('cotton-jute-tote-bag'); }}
                     className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
                   >
                     Drawstring Pouches &amp; Packaging
-                  </button>
+                  </a>
                 </li>
                 <li>
                   <span className="text-[#2f3437]/60 text-xs">FCL &amp; LCL Container Lots</span>

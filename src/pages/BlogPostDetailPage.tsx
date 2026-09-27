@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { BlogPost } from '../types';
+import { PUBLIC_BLOGS } from '../data/publicBlogs';
 import {
   Calendar,
   Clock,
@@ -25,42 +25,9 @@ export const BlogPostDetailPage: React.FC<BlogPostDetailPageProps> = ({
 }) => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
-  const [blog, setBlog] = useState<BlogPost | null>(null);
-  const [relatedBlogs, setRelatedBlogs] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const blog = PUBLIC_BLOGS.find(item => item.slug === slug) || null;
+  const relatedBlogs = blog ? PUBLIC_BLOGS.filter(item => item.category === blog.category && item.slug !== slug).slice(0, 3) : [];
   const [copied, setCopied] = useState(false);
-
-  useEffect(() => {
-    if (slug) {
-      fetchBlogDetails(slug);
-    }
-  }, [slug]);
-
-  const fetchBlogDetails = async (postSlug: string) => {
-    try {
-      setLoading(true);
-      const res = await fetch(`/api/blogs/${postSlug}`);
-      const json = await res.json();
-      if (json.success && json.data) {
-        setBlog(json.data);
-
-        // Fetch related blogs in same category
-        const relRes = await fetch(`/api/blogs?category=${encodeURIComponent(json.data.category || 'All')}`);
-        const relJson = await relRes.json();
-        if (relJson.success) {
-          const others = relJson.data.filter((b: BlogPost) => b.slug !== postSlug).slice(0, 3);
-          setRelatedBlogs(others);
-        }
-      } else {
-        setBlog(null);
-      }
-    } catch (err) {
-      console.error('Failed to fetch blog post details:', err);
-      setBlog(null);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -80,15 +47,6 @@ export const BlogPostDetailPage: React.FC<BlogPostDetailPageProps> = ({
       return dateString;
     }
   };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-[#f5f1e8]/30 py-24 text-center">
-        <div className="w-10 h-10 border-3 border-[#0e5a46] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-        <p className="text-xs text-[#2f3437]/60">Loading article...</p>
-      </div>
-    );
-  }
 
   if (!blog) {
     return (
@@ -112,7 +70,7 @@ export const BlogPostDetailPage: React.FC<BlogPostDetailPageProps> = ({
   }
 
   const shareText = encodeURIComponent(`${blog.title} - PriGlob Exim`);
-  const shareUrl = encodeURIComponent(window.location.href);
+  const shareUrl = encodeURIComponent(`https://www.priglobexim.com/blog/${slug}`);
 
   return (
     <div className="min-h-screen bg-[#fbfaf7] py-8 sm:py-14">
@@ -306,7 +264,6 @@ export const BlogPostDetailPage: React.FC<BlogPostDetailPageProps> = ({
               {relatedBlogs.map((rel) => (
                 <div
                   key={rel._id}
-                  onClick={() => navigate(`/blog/${rel.slug}`)}
                   className="group cursor-pointer bg-white border border-[#e6dec9] rounded-2xl overflow-hidden shadow-xs hover:shadow-md transition-shadow"
                 >
                   <div className="aspect-[16/10] overflow-hidden bg-[#f5f1e8]">
@@ -319,7 +276,7 @@ export const BlogPostDetailPage: React.FC<BlogPostDetailPageProps> = ({
                   <div className="p-4">
                     <p className="text-[11px] text-[#2f3437]/60 mb-1">{formatDate(rel.publishedDate)}</p>
                     <h4 className="font-serif-nature text-sm font-bold text-[#0e5a46] group-hover:text-[#478a3f] transition-colors line-clamp-2">
-                      {rel.title}
+                      <a href={`/blog/${rel.slug}`}>{rel.title}</a>
                     </h4>
                   </div>
                 </div>
