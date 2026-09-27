@@ -55,8 +55,9 @@ export const Header: React.FC<HeaderProps> = ({
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
 
-          <button
-            onClick={() => handleNav('home')}
+          <a
+              href="/"
+              onClick={(e) => { e.preventDefault(); handleNav('home'); }}
             className="flex items-center group cursor-pointer focus:outline-hidden"
             aria-label="PriGlob Exim Home"
           >
@@ -65,7 +66,7 @@ export const Header: React.FC<HeaderProps> = ({
               alt="PriGlob Exim"
               className="h-9 sm:h-11 w-auto object-contain max-w-[190px]"
             />
-          </button>
+          </a>
 
           <button
             onClick={() => onOpenQuoteModal?.()}
@@ -80,8 +81,9 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Desktop Header Layout */}
         <div className="hidden lg:flex items-center justify-between w-full gap-8">
           {/* Brand Logo from preglobexim.vercel.app */}
-          <button
-            onClick={() => handleNav('home')}
+          <a
+              href="/"
+              onClick={(e) => { e.preventDefault(); handleNav('home'); }}
             className="flex items-center group flex-shrink-0 cursor-pointer focus:outline-hidden"
             aria-label="PriGlob Exim Home"
           >
@@ -90,12 +92,13 @@ export const Header: React.FC<HeaderProps> = ({
               alt="PriGlob Exim"
               className="h-12 xl:h-14 w-auto object-contain max-w-[240px] transition-transform duration-200 group-hover:scale-102"
             />
-          </button>
+          </a>
 
           {/* Nav Links */}
           <nav className="flex items-center space-x-6 xl:space-x-8 text-[14px] xl:text-[15px] font-medium text-[#2f3437]">
-            <button
-              onClick={() => handleNav('home')}
+            <a
+              href="/"
+              onClick={(e) => { e.preventDefault(); handleNav('home'); }}
               className={`py-1.5 transition-colors cursor-pointer ${
                 activePage === 'home'
                   ? 'text-[#0e5a46] font-bold border-b-2 border-[#0e5a46]'
@@ -103,11 +106,12 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               Home
-            </button>
+            </a>
 
             {/* Cotton & Jute Bags Direct Nav Link */}
-            <button
-              onClick={() => handleNav('cotton-jute-tote-bag')}
+            <a
+              href="/cotton-jute-tote-bag"
+              onClick={(e) => { e.preventDefault(); handleNav('cotton-jute-tote-bag'); }}
               className={`py-1.5 transition-colors cursor-pointer ${
                 activePage === 'cotton-jute-tote-bag'
                   ? 'text-[#0e5a46] font-bold border-b-2 border-[#0e5a46]'
@@ -115,11 +119,12 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               Cotton &amp; Jute Bags
-            </button>
+            </a>
 
             {/* Blog Link */}
-            <button
-              onClick={() => handleNav('blog')}
+            <a
+              href="/blog"
+              onClick={(e) => { e.preventDefault(); handleNav('blog'); }}
               className={`py-1.5 transition-colors cursor-pointer ${
                 activePage === 'blog'
                   ? 'text-[#0e5a46] font-bold border-b-2 border-[#0e5a46]'
@@ -127,10 +132,11 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               Blog
-            </button>
+            </a>
 
-            <button
-              onClick={() => handleNav('our-company')}
+            <a
+              href="/our-company"
+              onClick={(e) => { e.preventDefault(); handleNav('our-company'); }}
               className={`py-1.5 transition-colors cursor-pointer ${
                 activePage === 'our-company'
                   ? 'text-[#0e5a46] font-bold border-b-2 border-[#0e5a46]'
@@ -138,10 +144,11 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               Our Company
-            </button>
+            </a>
 
-            <button
-              onClick={() => handleNav('our-team')}
+            <a
+              href="/our-team"
+              onClick={(e) => { e.preventDefault(); handleNav('our-team'); }}
               className={`py-1.5 transition-colors cursor-pointer ${
                 activePage === 'our-team'
                   ? 'text-[#0e5a46] font-bold border-b-2 border-[#0e5a46]'
@@ -149,10 +156,11 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               Our Team
-            </button>
+            </a>
 
-            <button
-              onClick={() => handleNav('faq')}
+            <a
+              href="/faq"
+              onClick={(e) => { e.preventDefault(); handleNav('faq'); }}
               className={`py-1.5 transition-colors cursor-pointer ${
                 activePage === 'faq'
                   ? 'text-[#0e5a46] font-bold border-b-2 border-[#0e5a46]'
@@ -160,10 +168,11 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               FAQs
-            </button>
+            </a>
 
-            <button
-              onClick={() => handleNav('contact')}
+            <a
+              href="/contact"
+              onClick={(e) => { e.preventDefault(); handleNav('contact'); }}
               className={`py-1.5 transition-colors cursor-pointer ${
                 activePage === 'contact'
                   ? 'text-[#0e5a46] font-bold border-b-2 border-[#0e5a46]'
@@ -171,7 +180,7 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               Contact Us
-            </button>
+            </a>
           </nav>
 
           {/* Right Action Button & RFQ Cart */}
@@ -191,53 +200,60 @@ export const Header: React.FC<HeaderProps> = ({
       {mobileMenuOpen && (
         <div className="lg:hidden w-full bg-[#f5f1e8] border-b border-[#e6dec9] px-4 py-6 shadow-xl space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="flex flex-col space-y-2 text-sm font-medium text-[#2f3437]">
-            <button
-              onClick={() => handleNav('home')}
+            <a
+              href="/"
+              onClick={(e) => { e.preventDefault(); handleNav('home'); }}
               className="text-left py-2 px-3 rounded-lg hover:bg-[#e6dec9]/50"
             >
               Home
-            </button>
-            <button
-              onClick={() => handleNav('cotton-jute-tote-bag')}
+            </a>
+            <a
+              href="/cotton-jute-tote-bag"
+              onClick={(e) => { e.preventDefault(); handleNav('cotton-jute-tote-bag'); }}
               className={`text-left py-2 px-3 rounded-lg hover:bg-[#e6dec9]/50 ${
                 activePage === 'cotton-jute-tote-bag' ? 'font-bold text-[#0e5a46] bg-[#e6dec9]/40' : ''
               }`}
             >
               Cotton &amp; Jute Bags
-            </button>
-            <button
-              onClick={() => handleNav('blog')}
+            </a>
+            <a
+              href="/blog"
+              onClick={(e) => { e.preventDefault(); handleNav('blog'); }}
               className={`text-left py-2 px-3 rounded-lg hover:bg-[#e6dec9]/50 ${
                 activePage === 'blog' ? 'font-bold text-[#0e5a46] bg-[#e6dec9]/40' : ''
               }`}
             >
               Blog &amp; Insights
-            </button>
+            </a>
             <div className="border-t border-[#e6dec9] pt-2" />
-            <button
-              onClick={() => handleNav('our-company')}
+            <a
+              href="/our-company"
+              onClick={(e) => { e.preventDefault(); handleNav('our-company'); }}
               className="text-left py-2 px-3 rounded-lg hover:bg-[#e6dec9]/50"
             >
               Our Company
-            </button>
-            <button
-              onClick={() => handleNav('our-team')}
+            </a>
+            <a
+              href="/our-team"
+              onClick={(e) => { e.preventDefault(); handleNav('our-team'); }}
               className="text-left py-2 px-3 rounded-lg hover:bg-[#e6dec9]/50"
             >
               Our Team
-            </button>
-            <button
-              onClick={() => handleNav('faq')}
+            </a>
+            <a
+              href="/faq"
+              onClick={(e) => { e.preventDefault(); handleNav('faq'); }}
               className="text-left py-2 px-3 rounded-lg hover:bg-[#e6dec9]/50"
             >
               FAQs
-            </button>
-            <button
-              onClick={() => handleNav('contact')}
+            </a>
+            <a
+              href="/contact"
+              onClick={(e) => { e.preventDefault(); handleNav('contact'); }}
               className="text-left py-2 px-3 rounded-lg hover:bg-[#e6dec9]/50"
             >
               Contact Us
-            </button>
+            </a>
           </div>
 
           <div className="pt-2">
