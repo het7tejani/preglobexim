@@ -1,4 +1,4 @@
-import posts from '../server/data/blogs.json';
+import posts from '../server/data/blogs.json' with { type: 'json' };
 
 export default function handler(req: { method?: string; query: Record<string, string | string[]> }, res: { status: (code: number) => any; setHeader: (name: string, value: string) => void }) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
