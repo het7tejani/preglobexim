@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle2, Clock, Globe2 } from 'lucide-react';
+import { submitInquiry } from '../data/submitInquiry';
 
 export const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -13,14 +14,20 @@ export const ContactPage: React.FC = () => {
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
+    setSubmitError('');
+    try {
+      await submitInquiry({ ...formData, _subject: 'PriGlob Exim: Contact inquiry', _replyto: formData.email, form: 'Contact page' });
       setSubmitted(true);
-    }, 600);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Could not send. Please email priglobexim@gmail.com directly.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -73,7 +80,7 @@ export const ContactPage: React.FC = () => {
                 <div>
                   <h4 className="font-serif-nature text-sm font-bold text-[#0e5a46]">Direct Inquiries (Call &amp; WhatsApp)</h4>
                   <p className="text-xs text-[#2f3437]/80 font-light mt-0.5">
-                    Asia &amp; Global: <a href="tel:+919484855426" className="font-medium text-[#0e5a46] hover:underline">+91 948 485 5426</a>
+                    Asia &amp; Global: <a href="tel:+917284866165" className="font-medium text-[#0e5a46] hover:underline">+91 728 486 6165</a>
                   </p>
                   <p className="text-xs text-[#2f3437]/80 font-light mt-0.5">
                     Europe Desk: <a href="tel:+393445784783" className="font-medium text-[#0e5a46] hover:underline">+39 344 578 4783</a>
@@ -136,6 +143,8 @@ export const ContactPage: React.FC = () => {
                   </button>
                 </div>
               ) : (
+                <>
+                {submitError && <p role="alert" className="text-red-700 text-xs mb-3">{submitError}</p>}
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -207,6 +216,7 @@ export const ContactPage: React.FC = () => {
                         <option value="Cotton Canvas Tote Bags">Cotton Canvas Tote Bags</option>
                         <option value="Golden Jute Bags & Hampers">Golden Jute Bags &amp; Hampers</option>
                         <option value="Drawstring Pouches & Packaging">Drawstring Pouches &amp; Packaging</option>
+                        <option value="Bottle Bags (Custom Inquiry)">Bottle Bags (Custom Inquiry)</option>
                         <option value="Custom OEM / ODM Bag Manufacturing">Custom OEM / ODM Bag Manufacturing</option>
                       </select>
                     </div>
@@ -253,6 +263,7 @@ export const ContactPage: React.FC = () => {
                     )}
                   </button>
                 </form>
+                </>
               )}
             </div>
           </div>
