@@ -23,8 +23,8 @@ export const OurTeamPage: React.FC = () => {
           {/* Left Column: Image */}
           <div className="w-full aspect-square rounded-2xl overflow-hidden shadow-md border border-[#e6dec9] bg-white p-2">
             <ImageWithFallback
-              src="/images/ChatGPT-Image-Mar-23-2026-10_01_58-AM.webp"
-              alt="About Our Team"
+              src="/images/Fabric-Bag-Mfg.webp"
+              alt="Cotton bag fabric and production"
               fallbackType="corporate"
               className="w-full h-full object-cover rounded-xl"
             />
