@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, CheckCircle2, Send, ShieldCheck } from 'lucide-react';
 import { SITE_INFO } from '../data/siteContent';
+import { submitInquiry } from '../data/submitInquiry';
 
 interface QuoteModalProps {
   isOpen: boolean;
@@ -27,6 +28,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   useEffect(() => {
     if (defaultProduct) {
@@ -36,13 +38,18 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
+    setSubmitError('');
+    try {
+      await submitInquiry({ ...formData, _subject: 'PriGlob Exim: Export RFQ', _replyto: formData.email, form: 'Export RFQ' });
       setSubmitted(true);
-    }, 600);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Could not send. Please email priglobexim@gmail.com directly.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleReset = () => {
@@ -113,6 +120,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
               </p>
             </div>
 
+            {submitError && <p role="alert" className="text-red-700 text-xs mb-3">{submitError}</p>}
             <form onSubmit={handleSubmit} className="space-y-3.5 text-left text-xs sm:text-sm">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
@@ -266,7 +274,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
               </div>
 
               <p className="text-[11px] text-center text-[#2f3437]/65 pt-1">
-                Direct export inquiries: {SITE_INFO.contacts.asiaAfricaOceania.email} | WhatsApp: +91 948 485 5426
+                Direct export inquiries: {SITE_INFO.contacts.asiaAfricaOceania.email} | WhatsApp: +91 728 486 6165
               </p>
             </form>
           </div>
