@@ -18,7 +18,7 @@ const NATURETOTE_SLIDES: NaturetoteSlide[] = [
     id: 'slide-1',
     desktopImage: '/images/naturetote-slider/slider-1.webp',
     mobileImage: '/images/naturetote-slider/slider-2.webp',
-    alt: 'Sustainable Bags for Better Brand - Naturetote Cotton and Jute Bags',
+    alt: 'Sustainable Bags for Better Brand - PriGlob Exim Cotton and Jute Bags',
     pageTarget: 'cotton-jute-tote-bag',
     actionType: 'navigate',
   },
@@ -35,7 +35,7 @@ const NATURETOTE_SLIDES: NaturetoteSlide[] = [
     id: 'slide-3',
     desktopImage: '/images/naturetote-slider/slider-5.webp',
     mobileImage: '/images/naturetote-slider/slider-6.webp',
-    alt: 'Naturetote Eco Packaging Collections',
+    alt: 'PriGlob Exim Eco Packaging Collections',
     pageTarget: 'cotton-jute-tote-bag',
     actionType: 'navigate',
   },
@@ -95,7 +95,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
   return (
     <section
       id="naturetote-hero"
-      aria-label="Naturetote Hero Slider"
+      aria-label="PriGlob Exim Hero Slider"
       className="relative w-full overflow-hidden bg-[#e6dec9]/20 select-none group/slider"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
