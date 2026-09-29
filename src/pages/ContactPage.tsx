@@ -82,6 +82,9 @@ export const ContactPage: React.FC = () => {
                   <p className="text-xs text-[#2f3437]/80 font-light mt-0.5">
                     Asia &amp; Global: <a href="tel:+917284866165" className="font-medium text-[#0e5a46] hover:underline">+91 728 486 6165</a>
                   </p>
+                  <p className="text-xs text-[#2f3437]/80 font-light mt-0.5">
+                    Europe Desk: <a href="tel:+393445784783" className="font-medium text-[#0e5a46] hover:underline">+39 344 578 4783</a>
+                  </p>
                 </div>
               </div>
 
