@@ -3,36 +3,12 @@ import { HelpCircle, ChevronDown } from 'lucide-react';
 
 export const FAQPage: React.FC = () => {
   const faqs = [
-    {
-      question: 'What types of bags does PriGlob Exim manufacture and export?',
-      answer:
-        'PriGlob Exim specializes in sustainable cotton and golden jute bags for international retail, grocery chains, corporate gifting, and luxury packaging. Our export line covers 100% GOTS organic cotton tote bags, canvas shoppers, heavy-duty 350 GSM natural jute hampers, drawstring packaging pouches, and custom wardrobe organizer covers.',
-    },
-    {
-      question: 'What is the Minimum Order Quantity (MOQ)?',
-      answer:
-        'Our standard export MOQ is 500 to 1,000 units per style with custom OEM screen-printing or embroidery. For bespoke custom-dyed fabrics or specialized hardware requirements, MOQ is 2,000 units. We also support trial sampling orders for verified corporate importers.',
-    },
-    {
-      question: 'How do you ensure fabric quality, stitch durability, and international compliance?',
-      answer:
-        'Every production batch undergoes strict multi-point inspection. Fabrics are verified for GSM weight, tensile strength, and azo-free dye fastness. Handles are reinforced with double X-box stitching tested to hold up to 15-20 kg. All products comply with EU REACH, GOTS organic standards, and zero-plastic eco-regulations.',
-    },
-    {
-      question: 'What Incoterms and shipping methods do you support?',
-      answer:
-        'We support FOB (Mundra & Pipavav Seaports), CIF (any global seaport or international airport), CFR, EXW, and DDP terms. Ocean shipments are containerized in 20ft and 40ft FCL or consolidated LCL with premier freight forwarders.',
-    },
-    {
-      question: 'Can you manufacture custom branded bags with our company logo?',
-      answer:
-        'Yes! We provide complete OEM/ODM solutions including custom dimensions, handle variations, inner zip pockets, woven labels, hangtags, and multi-color silk-screen or digital transfer printing.',
-    },
-    {
-      question: 'How long does sample delivery and full production take?',
-      answer:
-        'Custom pre-production samples are dispatched within 5 to 7 business days via air courier. Standard containerized production takes between 15 to 25 days depending on total order volume and customization specifications.',
-    },
+    { question: 'What is your minimum order quantity?', answer: 'The catalogue lists a standard MOQ of 500 to 1,000 units per style for custom printing or embroidery. Custom-dyed fabric or special hardware may require 2,000 units. Ask for a quote for your exact bag and specification.' },
+    { question: 'Can I request a sample before a bulk order?', answer: 'Yes. Custom pre-production samples are generally dispatched in 5 to 7 business days by air courier. Confirm sample cost, specifications and courier charges when requesting your quote.' },
+    { question: 'Which bags and custom branding options are available?', answer: 'Our catalogue covers cotton canvas totes, drawstring pouches and jute hampers. Ask about dimensions, handles, pockets, labels and screen or transfer printing. Bottle bags are listed as custom inquiries with representative photos only; request an actual sample before ordering.' },
+    { question: 'Which ports and Incoterms do you support?', answer: 'Our listed loading ports are Mundra and Pipavav in Gujarat. We can quote FOB, CIF, CFR, EXW or DDP. Tell us your destination port and preferred Incoterm so the quote states exactly which costs and responsibilities are included.' },
+    { question: 'How long does a bulk order take?', answer: 'The site lists a typical production window of 15 to 25 days for standard bulk orders, depending on quantity and customization. Shipping time depends on the destination and freight option; ask for a schedule with your quote.' },
+    { question: 'What are the payment terms?', answer: 'Payment terms are agreed in the formal quotation for each order. Please ask our trade desk for the accepted method, deposit or balance schedule and currency before confirming production. Do not send payment based on the website alone.' },
   ];
 
   return (
