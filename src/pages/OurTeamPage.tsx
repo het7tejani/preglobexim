@@ -107,12 +107,6 @@ export const OurTeamPage: React.FC = () => {
                     info.priglob@gmail.com
                   </a>
                 </p>
-                <p className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-[#0e5a46]" />
-                  <a href="tel:+393445784783" className="hover:underline">
-                    +39 344 578 4783
-                  </a>
-                </p>
               </div>
             </div>
           </div>
