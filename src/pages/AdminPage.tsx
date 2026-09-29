@@ -31,7 +31,7 @@ export const AdminPage: React.FC = () => {
   const [token, setToken] = useState<string | null>(() => localStorage.getItem('priglob_admin_token'));
   const [authLoading, setAuthLoading] = useState(true);
   const [username, setUsername] = useState('admin');
-  const [password, setPassword] = useState('priglob@2026');
+  const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [submittingLogin, setSubmittingLogin] = useState(false);
 
@@ -396,14 +396,6 @@ export const AdminPage: React.FC = () => {
                 />
               </div>
             </div>
-
-            {/* Quick Demo Credentials Box */}
-            <div className="p-3 bg-[#f5f1e8]/70 border border-[#e6dec9] rounded-xl text-[11px] text-[#2f3437]/75">
-              <p className="font-semibold text-[#0e5a46] mb-0.5">Demo Admin Access:</p>
-              <p>Username: <code className="bg-white px-1.5 py-0.5 rounded border border-[#e6dec9]">admin</code></p>
-              <p className="mt-0.5">Password: <code className="bg-white px-1.5 py-0.5 rounded border border-[#e6dec9]">priglob@2026</code></p>
-            </div>
-
             <button
               type="submit"
               disabled={submittingLogin}
