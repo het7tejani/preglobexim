@@ -12,8 +12,8 @@ const PORT = 3000;
 
 // Configurable Admin Credentials and Secrets
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'priglob@2026';
-const JWT_SECRET = process.env.JWT_SECRET || 'priglob_exim_jwt_secret_token_2026';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Parse JSON & URL-encoded payloads
 app.use(express.json({ limit: '10mb' }));
@@ -82,7 +82,7 @@ const requireAdmin = (req: AuthenticatedRequest, res: Response, next: NextFuncti
 
   const token = authHeader.split(' ')[1];
   try {
-    const decoded = jwt.verify(token, JWT_SECRET);
+    const decoded = jwt.verify(token, JWT_SECRET!);
     req.user = decoded;
     next();
   } catch (err) {
@@ -160,7 +160,7 @@ app.post('/api/admin/login', (req, res) => {
   }
 
   // Check credentials
-  if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+  if (ADMIN_PASSWORD && JWT_SECRET && username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
     const token = jwt.sign(
       { username: ADMIN_USERNAME, role: 'admin' },
       JWT_SECRET,
