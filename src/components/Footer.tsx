@@ -1,31 +1,13 @@
-import React, { useState } from 'react';
-import { Mail, ArrowRight, Phone, MapPin, CheckCircle2 } from 'lucide-react';
+import React from 'react';
+import { Mail, ArrowRight, Phone, MapPin } from 'lucide-react';
 import { ActivePage } from '../types';
 import { SITE_INFO } from '../data/siteContent';
-import { submitInquiry } from '../data/submitInquiry';
 
 interface FooterProps {
   onNavigate: (page: ActivePage) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-  const [subscribeError, setSubscribeError] = useState('');
-
-  const handleSubscribe = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    setSubscribeError('');
-    try {
-      await submitInquiry({ email, _subject: 'PriGlob Exim: Newsletter signup', _replyto: email, form: 'Newsletter signup' });
-      setSubscribed(true);
-      setEmail('');
-    } catch (error) {
-      setSubscribeError(error instanceof Error ? error.message : 'Could not subscribe. Please email priglobexim@gmail.com directly.');
-    }
-  };
-
   const navTo = (page: ActivePage) => {
     onNavigate(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -59,11 +41,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <h4 className="font-serif-nature font-bold text-base text-[#0e5a46]">
                 Subscribe to our trade newsletter
               </h4>
-              <form onSubmit={handleSubscribe} className="relative max-w-sm flex items-center">
+              <form action="https://formsubmit.co/priglobexim@gmail.com" method="POST" className="relative max-w-sm flex items-center">
                 <input
                   type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  name="email"
                   placeholder="Enter your corporate email address"
                   className="w-full h-12 pl-10 pr-24 text-xs sm:text-sm bg-white border border-[#d8ceba] rounded-xl focus:outline-none focus:border-[#478a3f] text-[#2f3437] placeholder-[#2f3437]/50"
                   required
@@ -73,16 +54,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   type="submit"
                   className="absolute right-1.5 top-1.5 h-9 px-4 bg-[#0e5a46] hover:bg-[#197a60] text-white font-semibold rounded-lg flex items-center justify-center gap-1.5 transition-colors cursor-pointer text-xs"
                 >
-                  <span>{subscribed ? 'Joined!' : 'Join'}</span>
-                  {!subscribed && <ArrowRight className="w-3.5 h-3.5" />}
+                  <span>Join</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
+                <input type="hidden" name="_subject" value="PriGlob Exim: Newsletter signup" />
+                <input type="hidden" name="form" value="Newsletter signup" />
+                <input type="hidden" name="_next" value="https://www.priglobexim.com/newsletter-thanks.html" />
               </form>
-              {subscribeError && <p role="alert" className="text-xs text-red-700">{subscribeError}</p>}
-              {subscribed && (
-                <p className="text-xs text-[#0e5a46] font-medium flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5" /> Thank you for subscribing to PriGlob Exim export updates!
-                </p>
-              )}
             </div>
           </div>
 
