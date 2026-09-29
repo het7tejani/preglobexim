@@ -70,6 +70,7 @@ export const CottonJutePage: React.FC<CottonJutePageProps> = ({
                 'Mini & Wide Totes',
                 'Everyday Shopper Bags',
                 'Office & Lunch Bags',
+                'Bottle Bags (Custom Inquiry)',
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-1.5 text-xs text-[#2f3437]/85 font-medium">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#0e5a46] flex-shrink-0" />
