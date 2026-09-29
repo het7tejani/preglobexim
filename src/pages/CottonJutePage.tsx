@@ -122,10 +122,13 @@ export const CottonJutePage: React.FC<CottonJutePageProps> = ({
                 {cat.name}
               </h2>
               <span className="text-xs font-semibold text-[#478a3f]">
-                {cat.products.length} Export Variants Available
+                {cat.name.includes("Bottle Bags") ? "Custom inquiry - sample and availability to confirm" : `${cat.products.length} Export Variants Available`}
               </span>
             </div>
 
+            {cat.name.includes('Bottle Bags') && (
+              <p className="text-sm text-[#2f3437]/75">These are custom inquiries, not stocked bottle-bag products. Photos show existing jute and canvas totes as material examples only. Ask for an actual bottle-bag sample, size, capacity and quote.</p>
+            )}
             <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
               {cat.products.map((product, pIdx) => (
                 <div
