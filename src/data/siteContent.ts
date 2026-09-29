@@ -30,7 +30,7 @@ export const SITE_INFO = {
     asiaAfricaOceania: {
       region: 'For Asia, Africa & Oceania',
       email: 'priglobexim@gmail.com',
-      phone: '+91 948 485 5426',
+      phone: '+91 728 486 6165',
     },
     euAmericas: {
       region: 'For EU & North/South America',
