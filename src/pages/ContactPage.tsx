@@ -65,7 +65,7 @@ export const ContactPage: React.FC = () => {
                 <div>
                   <h4 className="font-serif-nature text-sm font-bold text-[#0e5a46]">Registered Office &amp; Works</h4>
                   <p className="text-xs text-[#2f3437]/75 font-light mt-0.5">
-                    Surat, Gujarat, India - 395007
+                    Surat, Gujarat, India - 395005
                   </p>
                   <p className="text-[11px] text-[#478a3f] font-semibold mt-1">
                     Port of Loading: Mundra &amp; Pipavav
@@ -81,9 +81,6 @@ export const ContactPage: React.FC = () => {
                   <h4 className="font-serif-nature text-sm font-bold text-[#0e5a46]">Direct Inquiries (Call &amp; WhatsApp)</h4>
                   <p className="text-xs text-[#2f3437]/80 font-light mt-0.5">
                     Asia &amp; Global: <a href="tel:+917284866165" className="font-medium text-[#0e5a46] hover:underline">+91 728 486 6165</a>
-                  </p>
-                  <p className="text-xs text-[#2f3437]/80 font-light mt-0.5">
-                    Europe Desk: <a href="tel:+393445784783" className="font-medium text-[#0e5a46] hover:underline">+39 344 578 4783</a>
                   </p>
                 </div>
               </div>
