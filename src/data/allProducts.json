@@ -378,6 +378,23 @@
           "category": "Office & Lunch Bags"
         }
       ]
+    },
+    {
+      "name": "Bottle Bags (Custom Inquiry)",
+      "products": [
+        {
+          "title": "Custom Jute Bottle Bag (Sample Inquiry)",
+          "image": "/images/Artboard_5_80c1f5c2-dc65-4265-bf03-cd57e59c0866-1024x1024.webp",
+          "description": "Wine and gift-bottle packaging concept for merchant inquiries. Representative jute hamper photo only; ask us for dimensions, handle, insert and sample availability before ordering.",
+          "category": "Bottle Bags (Custom Inquiry)"
+        },
+        {
+          "title": "Custom Cotton Canvas Bottle Bag (Sample Inquiry)",
+          "image": "/images/PlainWhiteandBrownToteBag.webp",
+          "description": "Reusable cotton canvas bottle-carrier concept for wine and retail gifting. Representative canvas tote photo only; request the actual bottle-bag sample and specification before ordering.",
+          "category": "Bottle Bags (Custom Inquiry)"
+        }
+      ]
     }
   ],
   "gj": [
