@@ -40,10 +40,10 @@ export const OurTeamPage: React.FC = () => {
               The People Driving Global Trade Excellence
             </h2>
             <p className="text-sm sm:text-base text-[#2f3437]/75 leading-relaxed font-light">
-              Our team brings together trade specialists, master gemologists, agricultural commodity inspectors, and international freight managers. With regional desks operating across key time zones, we provide 24/7 responsiveness for quotes, compliance paperwork, and logistics tracking.
+              Our export team coordinates cotton and jute bag sourcing, product specifications, quality checks, and freight documentation. Contact us for quotations, samples, and shipment updates.
             </p>
             <p className="text-sm sm:text-base text-[#2f3437]/75 leading-relaxed font-light">
-              From our headquarters in Surat to our liaison desks in Europe, we ensure that every customer requirement is addressed promptly and professionally.
+              Based in Surat, we work with buyers on order requirements and shipping arrangements.
             </p>
           </div>
         </div>
@@ -82,8 +82,8 @@ export const OurTeamPage: React.FC = () => {
                 </p>
                 <p className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[#0e5a46]" />
-                  <a href="tel:+919484855426" className="hover:underline">
-                    +91 948 485 5426
+                  <a href="tel:+917284866165" className="hover:underline">
+                    +91 728 486 6165
                   </a>
                 </p>
               </div>
