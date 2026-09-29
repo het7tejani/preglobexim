@@ -35,7 +35,6 @@ export const SITE_INFO = {
     euAmericas: {
       region: 'For EU & North/South America',
       email: 'info.priglob@gmail.com',
-      phone: '+39 344 578 4783',
     },
   },
   socials: {
