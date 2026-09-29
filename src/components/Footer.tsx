@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, ArrowRight, Phone, MapPin, CheckCircle2 } from 'lucide-react';
 import { ActivePage } from '../types';
 import { SITE_INFO } from '../data/siteContent';
+import { submitInquiry } from '../data/submitInquiry';
 
 interface FooterProps {
   onNavigate: (page: ActivePage) => void;
@@ -10,15 +11,19 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [subscribeError, setSubscribeError] = useState('');
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    setSubscribed(true);
-    setTimeout(() => {
-      setSubscribed(false);
+    setSubscribeError('');
+    try {
+      await submitInquiry({ email, _subject: 'PriGlob Exim: Newsletter signup', _replyto: email, form: 'Newsletter signup' });
+      setSubscribed(true);
       setEmail('');
-    }, 4000);
+    } catch (error) {
+      setSubscribeError(error instanceof Error ? error.message : 'Could not subscribe. Please email priglobexim@gmail.com directly.');
+    }
   };
 
   const navTo = (page: ActivePage) => {
@@ -72,6 +77,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   {!subscribed && <ArrowRight className="w-3.5 h-3.5" />}
                 </button>
               </form>
+              {subscribeError && <p role="alert" className="text-xs text-red-700">{subscribeError}</p>}
               {subscribed && (
                 <p className="text-xs text-[#0e5a46] font-medium flex items-center gap-1">
                   <CheckCircle2 className="w-3.5 h-3.5" /> Thank you for subscribing to PriGlob Exim export updates!
@@ -122,15 +128,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     className="hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left"
                   >
                     Blog &amp; Export Insights
-                  </a>
-                </li>
-                <li>
-                  <a
-              href="/admin"
-              onClick={(e) => { e.preventDefault(); navTo('admin'); }}
-                    className="text-[#2f3437]/50 hover:text-[#0e5a46] hover:underline transition-colors underline-offset-4 cursor-pointer text-left text-xs inline-flex items-center gap-1"
-                  >
-                    <span>Admin Dashboard</span>
                   </a>
                 </li>
                 <li>
@@ -202,8 +199,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </p>
                 <p className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[#0e5a46] flex-shrink-0" />
-                  <a href="tel:+919484855426" className="hover:text-[#0e5a46] font-semibold">
-                    +91 948 485 5426
+                  <a href="tel:+917284866165" className="hover:text-[#0e5a46] font-semibold">
+                    +91 728 486 6165
                   </a>
                 </p>
                 <p className="flex items-center gap-2">
