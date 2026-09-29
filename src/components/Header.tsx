@@ -35,9 +35,9 @@ export const Header: React.FC<HeaderProps> = ({
             <span>Global Export Shipping • Mundra &amp; Pipavav Ports • Incoterms 2020</span>
           </div>
           <div className="hidden lg:flex items-center gap-3 text-xs">
-            <a href="tel:+919484855426" className="text-white hover:text-[#6bcb5b] transition flex items-center gap-1">
+            <a href="tel:+917284866165" className="text-white hover:text-[#6bcb5b] transition flex items-center gap-1">
               <Phone className="w-3.5 h-3.5" />
-              <span>+91 948 485 5426</span>
+              <span>+91 728 486 6165</span>
             </a>
           </div>
         </div>
